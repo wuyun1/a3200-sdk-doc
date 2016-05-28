@@ -1,0 +1,791 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GomSpace A3200 Library &mdash; A3200 SDK v0.6 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="A3200 SDK v0.6 documentation" href="../../../../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../../doc/index.html" class="fa fa-home"> A3200 SDK</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/a3200-full.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../doc/a3200-full.html#a3200-sdk-main-modules">A3200 SDK Main modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libasf/doc/libasf.html">GomSpace ASF Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libasf/doc/libasf.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libasf/doc/libasf.html#structure">Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html">GomSpace A3200 Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#a3200-board">A3200 board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#a3200-board-parameters">A3200 Board Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#drivers-and-api">Drivers and API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libcsp/doc/libcsp.html">CubeSat Space Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/README.html">The Cubesat Space Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/history.html">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/structure.html">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/interfaces.html">CSP Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/memory.html">How CSP uses memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/protocolstack.html">The Protocol Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/topology.html">Network Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/mtu.html">Maximum Transfer Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/example.html">Client and server example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html">GomSpace Util Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html">GomSpace Parameter Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#system-overview">System overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#gosh-local-parameter-interface">GOSH: Local parameter interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#gosh-remote-parameter-client">GOSH: Remote parameter client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#network-api">Network API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html">GOSH - GomSpace Shell Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#console">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#command-parser">Command Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#defining-new-commands">Defining new commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#linker-optimizations">Linker-optimizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#implementing-a-handler-function">Implementing a handler function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html">GomSpace Sensor Bus Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/liblog/doc/liblog.html">GomSpace Log Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liblog/doc/client-cmd.html">Client Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html">GomSpace Storage Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#implementation">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html">GomSpace FTP Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../doc/index.html">A3200 SDK</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../doc/index.html">Docs</a> &raquo;</li>
+      
+    <li>GomSpace A3200 Library</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../../../_sources/tst/lib/liba3200/doc/liba3200.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="liba3200">
+<h1>GomSpace A3200 Library<a class="headerlink" href="#liba3200" title="Permalink to this headline">¶</a></h1>
+<p>The GomSpace A3200 Library contains the A3200 specific software modules.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace A3200 Library contains drivers and the API functions for the AVR32 processor and for the
+peripheral devices and sensors on the A3200 board.</p>
+<p>The A3200 on-board computer (OBC) is designed as an efficient system for space applications with limited
+resources, such as e.g. for CubeSat or nano-satellite missions.</p>
+<p>The A3200 board is a powerfull and flexible CPU board that can be used to host several types of
+nanosat/cubesat satellite applications, e.g. Command and Data Handling (CDH)</p>
+</div>
+<div class="section" id="a3200-board">
+<h2>A3200 board<a class="headerlink" href="#a3200-board" title="Permalink to this headline">¶</a></h2>
+<p>The A3200 board is equipped with a set of sensors to enable important tasks in space applications.</p>
+<p>The A3200 board can implement many of these tasks internally on the A3200 board, but the A3200 board can also
+interface to other systems/subsystems internally in the satellite as well as communicating with a Ground Station
+via a radio. The A3200 main interface to other subsystems is CAN and I<sup>2</sup>C.</p>
+<p>For storage the board carries a 128 MB NOR serial flash.</p>
+<p>The Real Time Clock (RTC) chip on the board also functions as a processor companion while 32 kB of FRAM provides
+non-volatile storage.</p>
+<p>Beside the I<sup>2</sup>C controller for the main bus the board also has and extra I<sup>2</sup>C controller that can be
+used to interface to external I<sup>2</sup>C components.</p>
+<p>For interfacing with SPI devices the board has one external connection with three chip selects and
+it also has 8 inputs to an ADC and if needed the ADC inputs can also be used as GPIO.</p>
+<div class="section" id="highlighted-features">
+<h3>Highlighted Features<a class="headerlink" href="#highlighted-features" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">High-performance AVR32 MCU with advanced power saving features</p>
+</li>
+<li><p class="first">512 KB build-in flash</p>
+</li>
+<li><p class="first">IEEE 754 FPU</p>
+</li>
+<li><p class="first">Wide range for clocks speeds with build-in PLL</p>
+</li>
+<li><p class="first">Multiple CSP data interfaces: I<sup>2</sup>C, CAN-Bus, UART</p>
+</li>
+<li><p class="first">128 MB NOR flash (On two dies of 64 MB each)</p>
+</li>
+<li><p class="first">32 kB FRAM for persistent configuration storage</p>
+</li>
+<li><p class="first">32 MB SDRAM</p>
+</li>
+<li><p class="first">RTC clock</p>
+</li>
+<li><p class="first">On-board temperature sensors</p>
+</li>
+<li><p class="first">8 external ADC channels that also can be used as GPIO</p>
+</li>
+<li><p class="first">External SPI with 3 chip selects</p>
+</li>
+<li><dl class="first docutils">
+<dt>Attitude stabilization system</dt>
+<dd><ul class="first last simple">
+<li>3-Axis magnetoresistive sensor</li>
+<li>3-Axis gyroscope</li>
+<li>3 bidirectional PWM output swith current measurements</li>
+<li>I<sup>2</sup>C interface for GomSpace Sensor Bus (GSSB)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="block-diagram">
+<h3>Block Diagram<a class="headerlink" href="#block-diagram" title="Permalink to this headline">¶</a></h3>
+<p>The following block diagram shows the main blocks on the A3200 board:</p>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="../../../../_images/a3200_block1.png"><img alt="../../../../_images/a3200_block1.png" src="../../../../_images/a3200_block1.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-text">Block diagram of the A3200 board</span></p>
+</div>
+<p>Please see the NanoMind A3200 Datasheet for further details on the AVR32 processor and the
+peripheral devices and sensors (available on the GomSpace website <a class="reference external" href="http://www.gomspace.com">http://www.gomspace.com</a>).</p>
+<p>To enable use of all the features of the A3200 board, GomSpace provides the GomSpace A3200 Library.</p>
+</div>
+</div>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace A3200 Library is structured as follows:</p>
+<table border="1" class="docutils" id="id2">
+<caption><span class="caption-text">GomSpace A3200 Library structure</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Folder</strong></th>
+<th class="head"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>liba3200/include</td>
+<td>The include folder contains the header files for the drivers and API&#8217;s for the GomSpace A3200 Library. See <a class="reference internal" href="#liba3200-a3200-drivers-api"><span>Drivers and API</span></a> for further details</td>
+</tr>
+<tr class="row-odd"><td>liba3200/src</td>
+<td>The src folder contains the source code files for the drivers and API&#8217;s for the GomSpace A3200 Library. See <a class="reference internal" href="#liba3200-a3200-drivers-api"><span>Drivers and API</span></a> for further details</td>
+</tr>
+<tr class="row-even"><td>liba3200/client</td>
+<td>The client folder contains the source and header files for the client part of GomSpace A3200 Library</td>
+</tr>
+<tr class="row-odd"><td>liba3200/conf</td>
+<td>The conf folder contains header files with configuration for the different software modules</td>
+</tr>
+<tr class="row-even"><td>liba3200/linkscripts</td>
+<td>The linkscripts folder contains linker scripts for the A3200 board to ensure correct memory configuration and, alignment, etc</td>
+</tr>
+<tr class="row-odd"><td>liba3200/doc</td>
+<td>The doc folder contains the source code for this documentation</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="a3200-board-parameters">
+<span id="liba3200-a3200-board"></span><h2>A3200 Board Parameters<a class="headerlink" href="#a3200-board-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace A3200 Library includes a board parameter table with a set configuration and telemetry data specific to NanoMind A3200 board.
+The board parameter table has mem id 0.</p>
+<p>The telemetry data in the board parameter table is maintained and updated by a board task. The board task is started automatically
+by the <cite>task_init.c</cite> module.</p>
+<p>The GomSpace A3200 Library includes a board parameter table is shown below:</p>
+<table border="1" class="docutils" id="id3">
+<caption><span class="caption-text">Parameter table 0: Board parameters</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="12%" />
+<col width="10%" />
+<col width="7%" />
+<col width="28%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Name</strong></th>
+<th class="head"><strong>Address</strong></th>
+<th class="head"><strong>Type</strong></th>
+<th class="head"><strong>Default Value</strong></th>
+<th class="head"><strong>Comment</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pwrGSSB1</td>
+<td>0x0001</td>
+<td>U8</td>
+<td>0</td>
+<td>Enable power to GSSB1</td>
+</tr>
+<tr class="row-odd"><td>pwrGSSB2</td>
+<td>0x0002</td>
+<td>U8</td>
+<td>0</td>
+<td>Enable power to GSSB2</td>
+</tr>
+<tr class="row-even"><td>pwrFlash</td>
+<td>0x0003</td>
+<td>U8</td>
+<td>1</td>
+<td>Enable power to Flash</td>
+</tr>
+<tr class="row-odd"><td>pwrPWM</td>
+<td>0x0004</td>
+<td>U8</td>
+<td>0</td>
+<td>Enable power to PWM</td>
+</tr>
+<tr class="row-even"><td>pwrGPS</td>
+<td>0x0005</td>
+<td>U8</td>
+<td>0</td>
+<td>Enable power to GPS</td>
+</tr>
+<tr class="row-odd"><td>pwrWDE</td>
+<td>0x0006</td>
+<td>U8</td>
+<td>0</td>
+<td>Enable power to WDE</td>
+</tr>
+<tr class="row-even"><td>swload_image</td>
+<td>0x0010</td>
+<td>STR (32)</td>
+<td>&#8220;&#8221;</td>
+<td>File name for swload image</td>
+</tr>
+<tr class="row-odd"><td>swload_count</td>
+<td>0x0030</td>
+<td>U16</td>
+<td>0</td>
+<td>Number of time to boot swload image</td>
+</tr>
+<tr class="row-even"><td>fs_chipid</td>
+<td>0x0040</td>
+<td>U8</td>
+<td>0</td>
+<td>Chip id for Flash file system (0 or 1)</td>
+</tr>
+<tr class="row-odd"><td>fs_disable</td>
+<td>0x0041</td>
+<td>U8</td>
+<td>0</td>
+<td>Disable Flash file system</td>
+</tr>
+<tr class="row-even"><td>fs_mounted</td>
+<td>0x0042</td>
+<td>U8</td>
+<td>0</td>
+<td>FS mounted flag (0: Not mounted, 1: mounted)</td>
+</tr>
+<tr class="row-odd"><td>log_fram</td>
+<td>0x0043</td>
+<td>U8</td>
+<td>0</td>
+<td>Enable log to FRAM</td>
+</tr>
+<tr class="row-even"><td>temp_a</td>
+<td>0x0050</td>
+<td>I16</td>
+<td>0</td>
+<td>Temperature sensor A value</td>
+</tr>
+<tr class="row-odd"><td>temp_b</td>
+<td>0x0052</td>
+<td>I16</td>
+<td>0</td>
+<td>Temperature sensor B value</td>
+</tr>
+<tr class="row-even"><td>curGSSB1</td>
+<td>0x0060</td>
+<td>U16</td>
+<td>0</td>
+<td>Current draw for GSSB1</td>
+</tr>
+<tr class="row-odd"><td>curGSSB2</td>
+<td>0x0064</td>
+<td>U16</td>
+<td>0</td>
+<td>Current draw for GSSB2</td>
+</tr>
+<tr class="row-even"><td>curFlash</td>
+<td>0x0068</td>
+<td>U16</td>
+<td>0</td>
+<td>Current draw for Flash</td>
+</tr>
+<tr class="row-odd"><td>curPWM</td>
+<td>0x006C</td>
+<td>U16</td>
+<td>0</td>
+<td>Current draw for PWM</td>
+</tr>
+<tr class="row-even"><td>curGPS</td>
+<td>0x0070</td>
+<td>U16</td>
+<td>0</td>
+<td>Current draw for GPS</td>
+</tr>
+<tr class="row-odd"><td>curWDE</td>
+<td>0x0074</td>
+<td>U16</td>
+<td>0</td>
+<td>Current draw for WDE</td>
+</tr>
+<tr class="row-even"><td>boot_count</td>
+<td>0x0078</td>
+<td>U16</td>
+<td>0</td>
+<td>Boot counter</td>
+</tr>
+<tr class="row-odd"><td>boot_cause</td>
+<td>0x007C</td>
+<td>X32</td>
+<td>0</td>
+<td>Boot cause</td>
+</tr>
+<tr class="row-even"><td>clock</td>
+<td>0x0080</td>
+<td>U32</td>
+<td>0</td>
+<td>Current clock value</td>
+</tr>
+<tr class="row-odd"><td>ticks</td>
+<td>0x0084</td>
+<td>U32</td>
+<td>0</td>
+<td>Current CPU ticks value</td>
+</tr>
+<tr class="row-even"><td>csp_rtable</td>
+<td>0x0090</td>
+<td>STR (96)</td>
+<td>&#8220;&#8221;</td>
+<td>CSP routing table</td>
+</tr>
+<tr class="row-odd"><td>tsync_node</td>
+<td>0x00F0</td>
+<td>I16</td>
+<td>0</td>
+<td>CSP address time sync service</td>
+</tr>
+<tr class="row-even"><td>tsync_intv</td>
+<td>0x00F2</td>
+<td>U16</td>
+<td>0</td>
+<td>Interval for time sync</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="drivers-and-api">
+<span id="liba3200-a3200-drivers-api"></span><h2>Drivers and API<a class="headerlink" href="#drivers-and-api" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace A3200 Library includes drivers and API functions for</p>
+<ul class="simple">
+<li>SPI Bus</li>
+<li>I<sup>2</sup>C Bus</li>
+<li>CAN Bus</li>
+<li>FM33256B (FRAM Chip)</li>
+<li>RTC (Real Time Clock)</li>
+<li>ADC Channels</li>
+<li>FL512 Spansion Chip (NOR FLASH)</li>
+<li>PWM (output control)</li>
+<li>PWR Switches</li>
+<li>LM70 (Temperature sensor)</li>
+<li>MPU3300 (Gyro chip)</li>
+<li>HMC5843 (Magnetometer chip)</li>
+</ul>
+<div class="section" id="spi-bus">
+<span id="liba3200-spi-bus"></span><h3>SPI Bus<a class="headerlink" href="#spi-bus" title="Permalink to this headline">¶</a></h3>
+<p>Before using the SPI Bus, the SPI interface needs to be initialised.
+The functions <code class="docutils literal"><span class="pre">init_spi0()</span></code>  and <code class="docutils literal"><span class="pre">init_spi1()</span></code>  must be called to initialise
+the SPI0 and/or SPI1 interface respectively.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">init_spi0</span><span class="p">();</span>
+<span class="n">init_spi1</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Please refer to <a class="reference internal" href="../../../../lib/libasf/doc/libasf.html"><em>GomSpace ASF Library</em></a> for further details on the SPI Bus.</p>
+</div>
+<div class="section" id="i2c-bus">
+<span id="liba3200-i2c-bus"></span><h3>I<sup>2</sup>C Bus<a class="headerlink" href="#i2c-bus" title="Permalink to this headline">¶</a></h3>
+<p>The A3200 board has an I<sup>2</sup>C bus supporting bidirectional data transfer between masters and slaves,
+multi- master bus, arbitration between simultaneously transmitting masters without corruption of
+serial data on the bus.</p>
+<p>There are two I<sup>2</sup>C controllers, one connected to the external I<sup>2</sup>C Bus and one connected to internal I<sup>2</sup>C Bus.</p>
+<p>Before using the I<sup>2</sup>C Bus, the relevant I<sup>2</sup>C controller needs to be initialised.
+The following function <code class="docutils literal"><span class="pre">twi_init()</span></code> shows how to initialise the I<sup>2</sup>C controller connected internal I<sup>2</sup>C Bus,
+where the HMC5843 (Magnetometer chip) and the MPU3300 (Gyro chip) is residing.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/* Init I2C */</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">twi_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+   <span class="cm">/* GPIO map setup */</span>
+   <span class="k">const</span> <span class="kt">gpio_map_t</span> <span class="n">TWIM_GPIO_MAP</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">{</span><span class="n">AVR32_TWIMS2_TWCK_0_0_PIN</span><span class="p">,</span> <span class="n">AVR32_TWIMS2_TWCK_0_0_FUNCTION</span><span class="p">},</span>
+      <span class="p">{</span><span class="n">AVR32_TWIMS2_TWD_0_0_PIN</span><span class="p">,</span> <span class="n">AVR32_TWIMS2_TWD_0_0_FUNCTION</span><span class="p">}</span>
+   <span class="p">};</span>
+   <span class="n">gpio_enable_module</span><span class="p">(</span><span class="n">TWIM_GPIO_MAP</span><span class="p">,</span>
+                      <span class="k">sizeof</span><span class="p">(</span><span class="n">TWIM_GPIO_MAP</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">TWIM_GPIO_MAP</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+
+   <span class="cm">/* Init twi master controller 2 with addr 5 and 100 kHz clock */</span>
+   <span class="n">i2c_init_master</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Please refer to <a class="reference internal" href="../../../../lib/libasf/doc/libasf.html"><em>GomSpace ASF Library</em></a> for further details on the I<sup>2</sup>C Bus.</p>
+</div>
+<div class="section" id="fm33256b-fram-chip">
+<span id="liba3200-lm70"></span><h3>FM33256B (FRAM Chip)<a class="headerlink" href="#fm33256b-fram-chip" title="Permalink to this headline">¶</a></h3>
+<p>For timekeeping and storage of nonvolatile data the board includes a FM33256B processor companion from Cypress.
+This chip includes Real Time Clock (RTC), watch dog and 256 Kb FRAM.</p>
+<p>The FM33256B interfaces to the AVR32 processor through SPI on SPI1, and therefore the SPI1 interface
+must be initialised before using the FM33256B, see <a class="reference internal" href="#liba3200-spi-bus"><span>SPI Bus</span></a>.</p>
+<p>To initiaise the FM33256B, call the function <code class="docutils literal"><span class="pre">fm33256b_init()</span></code>:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">fm33256b_init</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>After calling the function <code class="docutils literal"><span class="pre">fm33256b_init()</span></code>, the FM33256B is ready for use.
+To initialise the RTC, see <a class="reference internal" href="#liba3200-rtc"><span>RTC (Real Time Clock)</span></a> below.</p>
+</div>
+<div class="section" id="rtc-real-time-clock">
+<span id="liba3200-rtc"></span><h3>RTC (Real Time Clock)<a class="headerlink" href="#rtc-real-time-clock" title="Permalink to this headline">¶</a></h3>
+<p>The RTC allows to keep track of current date and time.
+The following function <code class="docutils literal"><span class="pre">init_rtc()</span></code> shows how to initialise the RTC:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">init_rtc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+
+   <span class="cm">/* Setup RTC */</span>
+   <span class="kt">uint8_t</span> <span class="n">cmd</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="n">FM33_WRPC</span><span class="p">,</span> <span class="mh">0x18</span><span class="p">,</span> <span class="mh">0x3D</span><span class="p">};</span>
+   <span class="n">fm33256b_write</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+   <span class="cm">/* RTC */</span>
+   <span class="n">fm33256b_clock_resume</span><span class="p">();</span>
+
+   <span class="cm">/* 32kHz Crystal setup */</span>
+   <span class="n">osc_enable</span><span class="p">(</span><span class="n">OSC_ID_OSC32</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The RTC can now be used to e.g. read the current time:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">struct</span> <span class="n">fm33256b_clock</span> <span class="n">clock</span><span class="p">;</span>
+<span class="cm">/* Read current clock */</span>
+<span class="n">fm33256b_clock_read_burst</span><span class="p">(</span><span class="o">&amp;</span><span class="n">clock</span><span class="p">);</span>
+<span class="cm">/* Convert clock struct to seconds since 1970 */</span>
+<span class="kt">time_t</span> <span class="n">current_time</span><span class="p">;</span>
+<span class="n">fm33256b_clock_to_time</span><span class="p">(</span><span class="o">&amp;</span><span class="n">current_time</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">clock</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Please note that the GomSpace Util Library <a class="reference internal" href="../../../../lib/libutil/doc/libutil.html"><em>GomSpace Util Library</em></a> includes a set of
+convinience functions that encapsulates the RTC fm33256b functions above,
+e.g. use <code class="docutils literal"><span class="pre">void</span> <span class="pre">clock_get_time(timestamp_t</span> <span class="pre">*</span> <span class="pre">time)</span></code> to get the current time from the RTC.
+Please see  <a class="reference internal" href="../../../../lib/libutil/doc/libutil.html"><em>GomSpace Util Library</em></a> for further details.</p>
+</div>
+<div class="section" id="adc-channels">
+<span id="liba3200-adc"></span><h3>ADC Channels<a class="headerlink" href="#adc-channels" title="Permalink to this headline">¶</a></h3>
+<p>To sample external analog values the board supplies 8 ADC channels in one of the main connectors.
+These 8 pins can also be configured to be GPIO instead of ADC inputs.</p>
+<p>Before the ADC channels can be sampled, the ADC channels must be initialised:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">adc_channels_init</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>After the initialisation, the ADC channels can be sampled by calling <code class="docutils literal"><span class="pre">adc_channels_sample()</span></code>:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">adc_channels_sample</span><span class="p">(</span><span class="kt">int16_t</span> <span class="o">*</span><span class="n">adc_values</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal"><span class="pre">adc_channels_sample()</span></code> takes a pointer to an array of 8 16 bit integers.
+Calling <code class="docutils literal"><span class="pre">adc_channels_sample()</span></code> will sample all 8 channels and update the provided array accordingly.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">uint16_t</span> <span class="n">adc_values</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+<span class="n">adc_channels_sample</span><span class="p">(</span><span class="n">adc_values</span><span class="p">);</span>
+<span class="kt">uint16_t</span> <span class="n">value_2</span> <span class="o">=</span> <span class="n">ADC_TO_MV</span> <span class="o">*</span> <span class="n">adc_values</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.025</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fl512-spansion-chip">
+<span id="liba3200-spansion"></span><h3>FL512 Spansion Chip<a class="headerlink" href="#fl512-spansion-chip" title="Permalink to this headline">¶</a></h3>
+<p>The FL512 Spansion chip is a 128 MB NOR flash (On two dies of 64 MB each).</p>
+<p>Before using the FL512, it needs to be initialised by calling <code class="docutils literal"><span class="pre">spn_fl512s_init()</span></code>:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">init_spn_fl512</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">spn_fl512s_init</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Data read from flash is done by calling <code class="docutils literal"><span class="pre">spn_fl512s_read_data()</span></code> and data write to flash is
+done by calling <code class="docutils literal"><span class="pre">spn_fl512s_write_data()</span></code>.</p>
+<p>Flash can be erased in blocks of 256KB <code class="docutils literal"><span class="pre">spn_fl512s_erase_block()</span></code> or the entire chip can be
+erased by calling <code class="docutils literal"><span class="pre">spn_fl512s_erase_chip()</span></code>.</p>
+</div>
+<div class="section" id="pwm-output">
+<span id="liba3200-pwm"></span><h3>PWM output<a class="headerlink" href="#pwm-output" title="Permalink to this headline">¶</a></h3>
+<p>The A3200 has 3 bidirectional outputs from 3 H-bridge drivers designed to be controlled by a PWM output
+from the microcontroller. The main purpose of these bidirectional outputs is to be used for external
+magnetorquers to implement attitude control. It is possible to switch the power to the PWM driver and
+they also support current measurements.</p>
+<p>Before the PWM outputs can be used, the PWM outputs must be initialised:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">gs_pwm_init</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>After calling <code class="docutils literal"><span class="pre">gs_pwm_init()</span></code> the PWM outputs can be used.
+The following code shows how to enable a given PWM output and set the frequency and duty cycle:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="n">channel</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">duty</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">freq</span> <span class="o">=</span> <span class="mi">456</span><span class="p">;</span>
+
+<span class="cm">/* Enable pwm channel */</span>
+<span class="n">gs_pwm_enable</span><span class="p">(</span><span class="n">channel</span><span class="p">);</span>
+<span class="cm">/* Set requested frequency and get the achieved frequncy returned */</span>
+<span class="kt">float</span> <span class="n">freq_achieved</span> <span class="o">=</span> <span class="n">gs_pwm_set_freq</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">freq</span><span class="p">);</span>
+<span class="cm">/* Set the duty cycle */</span>
+<span class="n">gs_pwm_set_duty</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">duty</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pwr-switch-control">
+<span id="liba3200-pwr"></span><h3>PWR switch control<a class="headerlink" href="#pwr-switch-control" title="Permalink to this headline">¶</a></h3>
+<p>The power switch needs to be initialised by calling <code class="docutils literal"><span class="pre">pwr_switch_init()</span></code>.</p>
+<p>After calling <code class="docutils literal"><span class="pre">pwr_switch_init()</span></code> the individual power switches can bu turned on and off by calling
+<code class="docutils literal"><span class="pre">pwr_switch_enable()</span></code> and <code class="docutils literal"><span class="pre">pwr_switch_disable()</span></code>.
+Power switches are by default turned <strong>off</strong> after <code class="docutils literal"><span class="pre">pwr_switch_init()</span></code> has been called.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/* Power off GSSB1 */</span>
+<span class="n">pwr_switch_disable</span><span class="p">(</span><span class="n">PWR_GSSB</span><span class="p">);</span>
+<span class="cm">/* Power off GSSB2 */</span>
+<span class="n">pwr_switch_disable</span><span class="p">(</span><span class="n">PWR_GSSB2</span><span class="p">);</span>
+<span class="cm">/* Power off FLASH */</span>
+<span class="n">pwr_switch_disable</span><span class="p">(</span><span class="n">PWR_SD</span><span class="p">);</span>
+<span class="cm">/* Power off PWM */</span>
+<span class="n">pwr_switch_disable</span><span class="p">(</span><span class="n">PWR_PWM</span><span class="p">);</span>
+
+<span class="cm">/* Power on PWM */</span>
+<span class="n">pwr_switch_enable</span><span class="p">(</span><span class="n">PWR_PWM</span><span class="p">);</span>
+<span class="cm">/* Power on GSSB1 */</span>
+<span class="n">pwr_switch_enable</span><span class="p">(</span><span class="n">PWR_GSSB</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lm70-temperature-sensor">
+<span id="liba3200-mpu3300"></span><h3>LM70 Temperature sensor<a class="headerlink" href="#lm70-temperature-sensor" title="Permalink to this headline">¶</a></h3>
+<p>The LM70 temperature sensor can be used to measure and monitor the temperature on the A3200 board.
+The LM70 interfaces to the AVR32 processor through SPI on SPI1, and therefore the SPI1 interface
+must be initialised before using the LM70, see <a class="reference internal" href="#liba3200-spi-bus"><span>SPI Bus</span></a>.</p>
+<p>The LM70 has two temperature channels that can be sampled individually.</p>
+<p>Before the LM70 can be used to mesaure temperature it needs to be intialised:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">lm70_init</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>After this the temperature can be measured/sampled:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/* Read board temperature sensors */</span>
+<span class="kt">int16_t</span> <span class="n">sensor1</span> <span class="o">=</span> <span class="n">lm70_read_temp</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="kt">int16_t</span> <span class="n">sensor2</span> <span class="o">=</span> <span class="n">lm70_read_temp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal"><span class="pre">lm70_read_temp()</span></code> takes the channel number as argument and returns the temperature in
+10th&#8217;s of degrees celcius, i.e. the value returned by <code class="docutils literal"><span class="pre">lm70_read_temp()</span></code> needs to by divided by 10 to
+get the temperature in ° C.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/* Read board temperature sensors */</span>
+<span class="kt">int16_t</span> <span class="n">sensor1</span> <span class="o">=</span> <span class="n">lm70_read_temp</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="kt">float</span> <span class="n">temp1</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">sensor1</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mpu3300-gyro-chip">
+<span id="liba3200-fm33256b"></span><h3>MPU3300 (Gyro chip)<a class="headerlink" href="#mpu3300-gyro-chip" title="Permalink to this headline">¶</a></h3>
+<p>The A3200 board includes a 3-Axis gyroscope, the MPU3300 from InvenSense.</p>
+<p>The AVR32 interfaces to the MPU3300 via the I<sup>2</sup>C Bus. Therefore the I<sup>2</sup>C controller must be initialised before using the MPU3300, see <a class="reference internal" href="#liba3200-i2c-bus"><span>I2C Bus</span></a>.</p>
+<p>Before the MPU300 can be used it needs to be intialised:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">mpu3300_init</span><span class="p">(</span><span class="n">MPU3300_BW_5</span><span class="p">,</span> <span class="n">MPU3300_FSR_225</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>After this the MPU300 can be read to get gyro x, y, z and temperature:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">float</span> <span class="n">gyro_temp</span><span class="p">;</span>
+<span class="kt">mpu3300_gyro_t</span> <span class="n">gyro_reading</span><span class="p">;</span>
+
+<span class="cm">/* Read gyroscope temperature and rate */</span>
+<span class="n">mpu3300_read_temp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">gyro_temp</span><span class="p">);</span>
+<span class="n">mpu3300_read_gyro</span><span class="p">(</span><span class="o">&amp;</span><span class="n">gyro_reading</span><span class="p">);</span>
+
+<span class="cm">/* Print readings */</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Gyro temp: %.2f</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">gyro_temp</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Gyro x, y, z: %f, %f, %f</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="n">gyro_reading</span><span class="p">.</span><span class="n">gyro_x</span><span class="p">,</span> <span class="n">gyro_reading</span><span class="p">.</span><span class="n">gyro_y</span><span class="p">,</span> <span class="n">gyro_reading</span><span class="p">.</span><span class="n">gyro_z</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hmc5843-magnetometer-chip">
+<span id="liba3200-hmc5843"></span><h3>HMC5843 (Magnetometer chip)<a class="headerlink" href="#hmc5843-magnetometer-chip" title="Permalink to this headline">¶</a></h3>
+<p>The A3200 board includes a 3-Axis magnetometer to sense the Earth’s magnetic field, the HMC5843 from Honeywell.</p>
+<p>The AVR32 interfaces to the HMC5843 via the I<sup>2</sup>C Bus. Therefore the I<sup>2</sup>C controller must be initialised before using the HMC5843, see <a class="reference internal" href="#liba3200-i2c-bus"><span>I2C Bus</span></a>.</p>
+<p>Before the HMC5843 can be used to mesaure temperature it needs to be intialised:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">hmc5843_init</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>After this the HMC5843 can be read to get magnetometer x, y, z:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">hmc5843_data_t</span> <span class="n">hmc_reading</span><span class="p">;</span>
+
+<span class="cm">/* Read magnetometer */</span>
+<span class="n">hmc5843_read_single</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hmc_reading</span><span class="p">);</span>
+
+<span class="cm">/* Print readings */</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Mag x, y, z: %f, %f, %f</span><span class="se">\r\n\r\n</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="n">hmc_reading</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">hmc_reading</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">hmc_reading</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, GomSpace.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'v0.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

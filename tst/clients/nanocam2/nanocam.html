@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Client API &mdash; A3200 SDK v0.6 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="A3200 SDK v0.6 documentation" href="../../../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../doc/index.html" class="fa fa-home"> A3200 SDK</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../doc/a3200-full.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/a3200-full.html#a3200-sdk-main-modules">A3200 SDK Main modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lib/libasf/doc/libasf.html">GomSpace ASF Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libasf/doc/libasf.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libasf/doc/libasf.html#structure">Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lib/liba3200/doc/liba3200.html">GomSpace A3200 Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/liba3200/doc/liba3200.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/liba3200/doc/liba3200.html#a3200-board">A3200 board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/liba3200/doc/liba3200.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/liba3200/doc/liba3200.html#a3200-board-parameters">A3200 Board Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/liba3200/doc/liba3200.html#drivers-and-api">Drivers and API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lib/libcsp/doc/libcsp.html">CubeSat Space Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libcsp/README.html">The Cubesat Space Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libcsp/doc/history.html">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libcsp/doc/structure.html">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libcsp/doc/interfaces.html">CSP Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libcsp/doc/memory.html">How CSP uses memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libcsp/doc/protocolstack.html">The Protocol Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libcsp/doc/topology.html">Network Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libcsp/doc/mtu.html">Maximum Transfer Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libcsp/doc/example.html">Client and server example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lib/libutil/doc/libutil.html">GomSpace Util Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libutil/doc/libutil.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libutil/doc/libutil.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libutil/doc/libutil.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lib/libparam/doc/libparam.html">GomSpace Parameter Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libparam/doc/libparam.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libparam/doc/libparam.html#system-overview">System overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libparam/doc/libparam.html#gosh-local-parameter-interface">GOSH: Local parameter interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libparam/doc/libparam.html#gosh-remote-parameter-client">GOSH: Remote parameter client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libparam/doc/libparam.html#network-api">Network API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libparam/doc/libparam.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libparam/doc/libparam.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lib/libgosh/doc/libgosh.html">GOSH - GomSpace Shell Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libgosh/doc/libgosh.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libgosh/doc/libgosh.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libgosh/doc/libgosh.html#console">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libgosh/doc/libgosh.html#command-parser">Command Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libgosh/doc/libgosh.html#defining-new-commands">Defining new commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libgosh/doc/libgosh.html#linker-optimizations">Linker-optimizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libgosh/doc/libgosh.html#implementing-a-handler-function">Implementing a handler function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libgosh/doc/libgosh.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lib/libgssb/doc/libgssb.html">GomSpace Sensor Bus Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libgssb/doc/libgssb.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libgssb/doc/libgssb.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libgssb/doc/libgssb.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lib/liblog/doc/liblog.html">GomSpace Log Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/liblog/doc/client-cmd.html">Client Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lib/libstorage/doc/libstorage.html">GomSpace Storage Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libstorage/doc/libstorage.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libstorage/doc/libstorage.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libstorage/doc/libstorage.html#implementation">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libstorage/doc/libstorage.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lib/libftp/doc/libftp.html">GomSpace FTP Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libftp/doc/libftp.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libftp/doc/libftp.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lib/libftp/doc/libftp.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../doc/index.html">A3200 SDK</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../doc/index.html">Docs</a> &raquo;</li>
+      
+    <li>Client API</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../../_sources/tst/clients/nanocam2/nanocam.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="client-api">
+<h1>Client API<a class="headerlink" href="#client-api" title="Permalink to this headline">¶</a></h1>
+<p>The client API consists of a set of wrapper functions that simplify the CSP interface to the NanoCam C1U. These functions are implemented in the <code class="docutils literal"><span class="pre">nanocam.c</span></code> file and can be integrated in custom code by including the <code class="docutils literal"><span class="pre">nanocam.h</span></code> header file. The <code class="docutils literal"><span class="pre">cmd_nanocam.c</span></code> implements the GOSH commands for the NanoCam and can be used as an additional reference for the use of the client API.</p>
+<p>All the client functions specify a <code class="docutils literal"><span class="pre">timeout</span></code> argument that is used to specify the maximum number of milliseconds to wait for a reply. The client interface automatically performs endian conversion to network byte order on all arguments.</p>
+<p>The functions return 0 on success and a non-zero error code on error. The error codes are listed below:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cp">#define NANOCAM_ERROR_NONE            0 </span><span class="cm">/** No error */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_ERROR_NOMEM           1 </span><span class="cm">/** Not enough space */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_ERROR_INVAL           2 </span><span class="cm">/** Invalid value */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_ERROR_IOERR           3 </span><span class="cm">/** I/O error */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_ERROR_NOENT           4 </span><span class="cm">/** No such file or directory */</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>Similar to the GOSH interface, the client API operates on a single NanoCam at a time. The CSP address of this NanoCam is set using the <code class="docutils literal"><span class="pre">nanocam_set_node</span></code> function. By default, the commands operate on CSP node <code class="docutils literal"><span class="pre">NANOCAM_DEFAULT_ADDRESS</span></code> which is currently set to 6. If the camera address has not been changed, it is not necessary to call <code class="docutils literal"><span class="pre">nanocam_set_node</span></code>.</p>
+<dl class="function">
+<dt id="c.nanocam_set_node">
+void <code class="descname">nanocam_set_node</code><span class="sig-paren">(</span>uint8_t<em>&nbsp;node</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nanocam_set_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function sets the CSP address of the NanoCam C1U. All other API functions use this CSP address.</p>
+</dd></dl>
+
+<div class="section" id="image-capture">
+<h2>Image Capture<a class="headerlink" href="#image-capture" title="Permalink to this headline">¶</a></h2>
+<p>Capture of images is provided by the <code class="docutils literal"><span class="pre">nanocam_snap</span></code> function.</p>
+<dl class="function">
+<dt id="c.nanocam_snap">
+int <code class="descname">nanocam_snap</code><span class="sig-paren">(</span><a class="reference internal" href="#c.cam_snap_t" title="cam_snap_t">cam_snap_t</a><em>&nbsp;*snap</em>, <a class="reference internal" href="#c.cam_snap_reply_t" title="cam_snap_reply_t">cam_snap_reply_t</a><em>&nbsp;*reply</em>, unsigned int<em>&nbsp;timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nanocam_snap" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to capture an image. The capture parameters should be set in the <code class="docutils literal"><span class="pre">snap</span></code> structure argument prior to calling this function. The reply from the camera is returned in the <code class="docutils literal"><span class="pre">reply</span></code> struct.</p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="type">
+<dt id="c.cam_snap_t">
+<code class="descname">cam_snap_t</code><a class="headerlink" href="#c.cam_snap_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="docutils literal"><span class="pre">cam_snap_t</span></code> struct is used to specify the arguments for the snap command. Each field of the structure is documented below.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_t.flags">
+uint32_t <code class="descname">cam_snap_t.flags</code><a class="headerlink" href="#c.cam_snap_t.flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>This argument supplies optional flag bits that modifies the behavior of the snap request.</p>
+</dd></dl>
+
+<div class="highlight-c"><div class="highlight"><pre><span class="cp">#define NANOCAM_SNAP_FLAG_AUTO_GAIN   (1 &lt;&lt;  0) </span><span class="cm">/** Automatically adjust gain */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_SNAP_FLAG_STORE_RAM   (1 &lt;&lt;  8) </span><span class="cm">/** Store snapped image to RAM */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_SNAP_FLAG_STORE_FLASH (1 &lt;&lt;  9) </span><span class="cm">/** Store snapped image to flash */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_SNAP_FLAG_STORE_THUMB (1 &lt;&lt; 10) </span><span class="cm">/** Store thumbnail to flash */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_SNAP_FLAG_STORE_TAGS  (1 &lt;&lt; 11) </span><span class="cm">/** Store image tag file */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_SNAP_FLAG_NOHIST      (1 &lt;&lt; 16) </span><span class="cm">/** Do not calculate histogram */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_SNAP_FLAG_NOEXPOSURE  (1 &lt;&lt; 17) </span><span class="cm">/** Do not adjust exposure */</span><span class="cp"></span>
+</pre></div>
+</div>
+<dl class="member">
+<dt id="c.cam_snap_t.count">
+uint8_t <code class="descname">cam_snap_t.count</code><a class="headerlink" href="#c.cam_snap_t.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of images to capture. If set to zero a single image capture will be performed. When capturing multiple images, the <code class="docutils literal"><span class="pre">nanocam_snap</span></code> function will only return the <code class="docutils literal"><span class="pre">cam_snap_reply_t</span></code> for the first image.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_t.format">
+uint8_t <code class="descname">cam_snap_t.format</code><a class="headerlink" href="#c.cam_snap_t.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output format to use when <code class="docutils literal"><span class="pre">NANOCAM_SNAP_FLAG_STORE_FLASH</span></code> or <code class="docutils literal"><span class="pre">NANOCAM_SNAP_FLAG_STORE_RAM</span></code> is enabled in the flags field. Valid output formats are:</p>
+</dd></dl>
+
+<div class="highlight-c"><div class="highlight"><pre><span class="cp">#define NANOCAM_STORE_RAW             0 </span><span class="cm">/* Store RAW sensor output */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_STORE_BMP             1 </span><span class="cm">/* Store bitmap output */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_STORE_JPG             2 </span><span class="cm">/* Store JPEG compressed output */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_STORE_DNG             3 </span><span class="cm">/* Store DNG output (Raw, digital negative) */</span><span class="cp"></span>
+</pre></div>
+</div>
+<dl class="member">
+<dt id="c.cam_snap_t.delay">
+uint16_t <code class="descname">cam_snap_t.delay</code><a class="headerlink" href="#c.cam_snap_t.delay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional delay between captures in milliseconds. Only applicable when count &gt; 1.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_t.width">
+uint16_t <code class="descname">cam_snap_t.width</code><a class="headerlink" href="#c.cam_snap_t.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image width in pixels. Set to 0 to use default (maximum = 2048) size.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_t.height">
+uint16_t <code class="descname">cam_snap_t.height</code><a class="headerlink" href="#c.cam_snap_t.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image height in pixels. Set to 0 to use default (maximum = 1536) size.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_t.top">
+uint16_t <code class="descname">cam_snap_t.top</code><a class="headerlink" href="#c.cam_snap_t.top" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image crop rectangle top coordinate. Must be set to 0.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_t.left">
+uint16_t <code class="descname">cam_snap_t.left</code><a class="headerlink" href="#c.cam_snap_t.left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image crop rectangle left coordinate. Must be set to 0.</p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="type">
+<dt id="c.cam_snap_reply_t">
+<code class="descname">cam_snap_reply_t</code><a class="headerlink" href="#c.cam_snap_reply_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>This struct contains the reply of a image capture. The reply contains arrays with information of average brightness and distribution. A couple of defines are used for the length of these arrays:</p>
+</dd></dl>
+
+<div class="highlight-c"><div class="highlight"><pre><span class="cp">#define NANOCAM_SNAP_COLORS           4</span>
+<span class="cp">#define NANOCAM_SNAP_HIST_BINS        16</span>
+</pre></div>
+</div>
+<dl class="member">
+<dt id="c.cam_snap_reply_t.result">
+uint8_t <code class="descname">cam_snap_reply_t.result</code><a class="headerlink" href="#c.cam_snap_reply_t.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Result of the capture. One of the error codes listed in the introduction.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_reply_t.seq">
+uint8_t <code class="descname">cam_snap_reply_t.seq</code><a class="headerlink" href="#c.cam_snap_reply_t.seq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Zero-index sequence number when capturing multiple images, i.e. when <code class="docutils literal"><span class="pre">count</span></code> &gt; 1 in the <code class="docutils literal"><span class="pre">cam_snap_t</span></code> argument.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_reply_t.light_avg">
+uint8_t[NANOCAM_SNAP_COLORS] <code class="descname">cam_snap_reply_t.light_avg</code><a class="headerlink" href="#c.cam_snap_reply_t.light_avg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Array of <code class="docutils literal"><span class="pre">NANOCAM_SNAP_COLORS</span></code> elements corresponding to the average brightness of all pixels plus the red, green and blue channel pixels. The numbers are scaled from 0-255, so e.g. 128 corresponds to an average brightness of 50%.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_reply_t.light_peak">
+uint8_t[NANOCAM_SNAP_COLORS] <code class="descname">cam_snap_reply_t.light_peak</code><a class="headerlink" href="#c.cam_snap_reply_t.light_peak" title="Permalink to this definition">¶</a></dt>
+<dd><p>Array of <code class="docutils literal"><span class="pre">NANOCAM_SNAP_COLORS</span></code> elements corresponding to the estimated peak brightness of all pixels plus the red, green and blue channel pixels.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_reply_t.light_min">
+uint8_t[NANOCAM_SNAP_COLORS] <code class="descname">cam_snap_reply_t.light_min</code><a class="headerlink" href="#c.cam_snap_reply_t.light_min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Array of <code class="docutils literal"><span class="pre">NANOCAM_SNAP_COLORS</span></code> elements corresponding to the minimum brightness of all pixels plus the red, green and blue channel pixels.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_reply_t.light_max">
+uint8_t[NANOCAM_SNAP_COLORS] <code class="descname">cam_snap_reply_t.light_max</code><a class="headerlink" href="#c.cam_snap_reply_t.light_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Array of <code class="docutils literal"><span class="pre">NANOCAM_SNAP_COLORS</span></code> elements corresponding to the maximum brightness of all pixels plus the red, green and blue channel pixels.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_snap_reply_t.hist">
+uint8_t[NANOCAM_SNAP_COLORS][NANOCAM_SNAP_HIST_BINS] <code class="descname">cam_snap_reply_t.hist</code><a class="headerlink" href="#c.cam_snap_reply_t.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Array of <code class="docutils literal"><span class="pre">NANOCAM_SNAP_COLORS</span></code> elements each consisting on an array of <code class="docutils literal"><span class="pre">NANOCAM_SNAP_HIST_BINS</span></code> bins. Each bin contains a number from 0 to 255 matching the distribution of brightness, with the sum of all bins being 255. Thus, if a bin is 128, 50% of all pixels falls within the brightness range covered by that particular bin.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="image-storage">
+<h2>Image Storage<a class="headerlink" href="#image-storage" title="Permalink to this headline">¶</a></h2>
+<p>Storage of images captured to the snap buffer is provided by the <code class="docutils literal"><span class="pre">nanocam_store</span></code> functions. Images are stored in the <code class="docutils literal"><span class="pre">/mnt/data/images</span></code> directory on the camera file system.</p>
+<dl class="function">
+<dt id="c.nanocam_store">
+int <code class="descname">nanocam_store</code><span class="sig-paren">(</span><a class="reference internal" href="#c.cam_store_t" title="cam_store_t">cam_store_t</a><em>&nbsp;*store</em>, <a class="reference internal" href="#c.cam_store_reply_t" title="cam_store_reply_t">cam_store_reply_t</a><em>&nbsp;*reply</em>, unsigned int<em>&nbsp;timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nanocam_store" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to store a captured image from the snap buffer to persistant storage and/or RAM.</p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="type">
+<dt id="c.cam_store_t">
+<code class="descname">cam_store_t</code><a class="headerlink" href="#c.cam_store_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>This struct is used to supply store arguments to the <code class="docutils literal"><span class="pre">nanocam_store</span></code> function.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_store_t.format">
+uint8_t <code class="descname">cam_store_t.format</code><a class="headerlink" href="#c.cam_store_t.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output format of the stored image. See the argument list to <code class="docutils literal"><span class="pre">cam_snap_t.format</span></code> for a list of valid options.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_store_t.scale">
+uint8_t <code class="descname">cam_store_t.scale</code><a class="headerlink" href="#c.cam_store_t.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>This argument is currently unused and should be set to 0.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_store_t.flags">
+uint32_t <code class="descname">cam_store_t.flags</code><a class="headerlink" href="#c.cam_store_t.flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>This argument supplies optional flag bits that modifies the behavior of the store request. If the <code class="docutils literal"><span class="pre">NANOCAM_STORE_FLAG_FREEBUF</span></code> flag is cleared, a copy of the stored image will be kept in the RAM list.</p>
+</dd></dl>
+
+<div class="highlight-c"><div class="highlight"><pre><span class="cp">#define NANOCAM_STORE_FLAG_FREEBUF      (1 &lt;&lt; 0) </span><span class="cm">/* Free buffer after store */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_STORE_FLAG_THUMB        (1 &lt;&lt; 1) </span><span class="cm">/* Create thumbnail */</span><span class="cp"></span>
+<span class="cp">#define NANOCAM_STORE_FLAG_TAG          (1 &lt;&lt; 2) </span><span class="cm">/* Create tag file */</span><span class="cp"></span>
+</pre></div>
+</div>
+<dl class="member">
+<dt id="c.cam_store_t.filename">
+char[40] <code class="descname">cam_store_t.filename</code><a class="headerlink" href="#c.cam_store_t.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filename of the stored image. The file type is not required to match the file format, but it is recommend to e.g. store JPEG images with a <em>.jpg</em> ending. Setting this field to an empty string, i.e. set filename[0] to <code class="docutils literal"><span class="pre">\0</span></code>, will only store the image in the RAM list.</p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="type">
+<dt id="c.cam_store_reply_t">
+<code class="descname">cam_store_reply_t</code><a class="headerlink" href="#c.cam_store_reply_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>This struct contains the reply of a image store command.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_store_reply_t.result">
+uint8_t <code class="descname">cam_store_reply_t.result</code><a class="headerlink" href="#c.cam_store_reply_t.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Result of the store command. One of the error codes listed in the introduction.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_store_reply_t.image_ptr">
+uint32_t <code class="descname">cam_store_reply_t.image_ptr</code><a class="headerlink" href="#c.cam_store_reply_t.image_ptr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Address of the RAM copy of the stored image.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="c.cam_store_reply_t.image_size">
+uint32_t <code class="descname">cam_store_reply_t.image_size</code><a class="headerlink" href="#c.cam_store_reply_t.image_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Size in bytes of the RAM copy of the stored image.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="modifying-sensor-registers">
+<h2>Modifying Sensor Registers<a class="headerlink" href="#modifying-sensor-registers" title="Permalink to this headline">¶</a></h2>
+<p>The image sensor registers can be adjusted using the <code class="docutils literal"><span class="pre">nanocam_reg_read</span></code> and <code class="docutils literal"><span class="pre">nanocam_reg_write</span></code> functions. Any modifications of the registers are volatile, and may be overridden by the auto-gain and exposure setting algorithms.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For normal operation, it is not necessary to adjust sensor registers directly. Instead the image configuration parameters from table 1 should be used. See more in <code class="xref doc docutils literal"><span class="pre">/doc/parameters</span></code>.</p>
+</div>
+<p>Please refer to the <em>Aptina MT9T031</em> datasheet for a description of individual sensor registers.</p>
+<dl class="function">
+<dt id="c.nanocam_reg_read">
+int <code class="descname">nanocam_reg_read</code><span class="sig-paren">(</span>uint8_t<em>&nbsp;reg</em>, uint16_t<em>&nbsp;*value</em>, unsigned int<em>&nbsp;timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nanocam_reg_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function reads a sensor register and returns the current value. The <code class="docutils literal"><span class="pre">reg</span></code> argument contains the address of the register to read and the current value is returned in the <code class="docutils literal"><span class="pre">value</span></code> pointer.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.nanocam_reg_write">
+int <code class="descname">nanocam_reg_write</code><span class="sig-paren">(</span>uint8_t<em>&nbsp;reg</em>, uint16_t<em>&nbsp;value</em>, unsigned int<em>&nbsp;timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nanocam_reg_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this function to update the value of a register. Again, <code class="docutils literal"><span class="pre">reg</span></code> contains the register address and <code class="docutils literal"><span class="pre">value</span></code> contains the new value to write to the register.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="in-memory-images">
+<h2>In-memory Images<a class="headerlink" href="#in-memory-images" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nanocam_img_list">
+int <code class="descname">nanocam_img_list</code><span class="sig-paren">(</span><a class="reference internal" href="#c.nanocam_img_list_cb" title="nanocam_img_list_cb">nanocam_img_list_cb</a><em>&nbsp;cb</em>, unsigned int<em>&nbsp;timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nanocam_img_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this function to list all images in the RAM list. The <code class="docutils literal"><span class="pre">nanocam_img_list_cb</span></code> callback will be called once for each image element in the list.</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="c.nanocam_img_list_cb">
+typedef void <code class="descname">(*nanocam_img_list_cb)</code><span class="sig-paren">(</span>int<em>&nbsp;seq</em>, cam_list_element_t<em>&nbsp;*elm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nanocam_img_list_cb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement an image listing callback function matching this prototype, and supply it to the <code class="docutils literal"><span class="pre">nanocam_img_list</span></code> list function. If no images are available in memory, the callback is called with <code class="docutils literal"><span class="pre">elm</span></code> set to NULL.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.nanocam_img_list_flush">
+int <code class="descname">nanocam_img_list_flush</code><span class="sig-paren">(</span>unsigned int<em>&nbsp;timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nanocam_img_list_flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function flushes all images stored in the RAM image list. Note that the current image in the snap buffer can not be flushed, so a single image will always be returned by <code class="docutils literal"><span class="pre">nanocam_img_list</span></code>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="focus-assist-routine">
+<h2>Focus Assist Routine<a class="headerlink" href="#focus-assist-routine" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nanocam_focus">
+int <code class="descname">nanocam_focus</code><span class="sig-paren">(</span>uint8_t<em>&nbsp;algorithm</em>, uint32_t<em>&nbsp;*af</em>, unsigned int<em>&nbsp;timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nanocam_focus" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function runs a single iteration of the focus assist algorithm. The <code class="docutils literal"><span class="pre">algorithm</span></code> argument is used to select between different algorithms. Currently, <code class="docutils literal"><span class="pre">NANOCAM_AF_JPEG</span></code> is the only supported option.</p>
+<p>The focus assist algorithm captures an image, JPEG compresses the center of the image and returns the size of the compressed data in the <code class="docutils literal"><span class="pre">af</span></code> pointer. The premise is that a more focused image will be more difficult to compress, giving a larger size of the compressed data. Continuously running this algorithm can thus be used to adjust the focus until a maximum size is found.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="data-partition-recovery">
+<h2>Data Partition Recovery<a class="headerlink" href="#data-partition-recovery" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nanocam_recoverfs">
+int <code class="descname">nanocam_recoverfs</code><span class="sig-paren">(</span>unsigned int<em>&nbsp;timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nanocam_recoverfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function can be used to recreate the data file system. Note that this erases ALL images stored on the camera. If you just want to delete all captured images, using the FTP <code class="docutils literal"><span class="pre">rm</span></code> command is much faster and a safer option than rebuilding the entire file system.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, GomSpace.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'v0.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GomSpace Util Library &mdash; A3200 SDK v0.6 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="A3200 SDK v0.6 documentation" href="../../../index.html"/>
+        <link rel="next" title="GomSpace Parameter Library" href="../../libparam/doc/libparam.html"/>
+        <link rel="prev" title="Client and server example" href="../../libcsp/doc/example.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../doc/index.html" class="fa fa-home"> A3200 SDK</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../doc/a3200-full.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/a3200-full.html#a3200-sdk-main-modules">A3200 SDK Main modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libasf/doc/libasf.html">GomSpace ASF Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libasf/doc/libasf.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libasf/doc/libasf.html#structure">Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../liba3200/doc/liba3200.html">GomSpace A3200 Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#a3200-board">A3200 board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#a3200-board-parameters">A3200 Board Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#drivers-and-api">Drivers and API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcsp/doc/libcsp.html">CubeSat Space Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/README.html">The Cubesat Space Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/history.html">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/structure.html">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/interfaces.html">CSP Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/memory.html">How CSP uses memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/protocolstack.html">The Protocol Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/topology.html">Network Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/mtu.html">Maximum Transfer Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/example.html">Client and server example</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">GomSpace Util Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libparam/doc/libparam.html">GomSpace Parameter Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#system-overview">System overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#gosh-local-parameter-interface">GOSH: Local parameter interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#gosh-remote-parameter-client">GOSH: Remote parameter client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#network-api">Network API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libgosh/doc/libgosh.html">GOSH - GomSpace Shell Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#console">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#command-parser">Command Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#defining-new-commands">Defining new commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#linker-optimizations">Linker-optimizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#implementing-a-handler-function">Implementing a handler function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libgssb/doc/libgssb.html">GomSpace Sensor Bus Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libgssb/doc/libgssb.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgssb/doc/libgssb.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgssb/doc/libgssb.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../liblog/doc/liblog.html">GomSpace Log Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../liblog/doc/client-cmd.html">Client Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libstorage/doc/libstorage.html">GomSpace Storage Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libstorage/doc/libstorage.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libstorage/doc/libstorage.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libstorage/doc/libstorage.html#implementation">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libstorage/doc/libstorage.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libftp/doc/libftp.html">GomSpace FTP Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libftp/doc/libftp.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libftp/doc/libftp.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libftp/doc/libftp.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../doc/index.html">A3200 SDK</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../doc/index.html">Docs</a> &raquo;</li>
+      
+    <li>GomSpace Util Library</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../../_sources/lib/libutil/doc/libutil.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="libutil">
+<h1>GomSpace Util Library<a class="headerlink" href="#libutil" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace Util Library contains a number of usefull utilities that can be used when developing A3200 applications.</p>
+<p>The following sections desctibes the GomSpace Util Library structure and API.</p>
+</div>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace Util Library is structured as follows:</p>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">GomSpace Util Library structure</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Folder</strong></th>
+<th class="head"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>libutil/include</td>
+<td>The include folder contains the GomSpace Util Library API header files</td>
+</tr>
+<tr class="row-odd"><td>libutil/src</td>
+<td>The src folder contains the GomSpace Util Library API source code files. See <a class="reference internal" href="../../../tst/lib/libutil/doc/libutil.html#libutil-api"><span>API</span></a> below for further details</td>
+</tr>
+<tr class="row-even"><td>libutil/doc</td>
+<td>The doc folder contains the source code for this documentation</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="api">
+<span id="libutil-api"></span><h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace Util Library includes API functions for</p>
+<ul class="simple">
+<li>Time and clock functions</li>
+<li>Byte order handling</li>
+<li>Print and print formatting functions</li>
+<li>CRC and checksum functions</li>
+<li>Delay functions</li>
+<li>Compression &amp; decompression functions (LZO)</li>
+<li>Hash, List, Linked List, and Array operation</li>
+</ul>
+<div class="section" id="time-and-clock-functions">
+<h3>Time and clock functions<a class="headerlink" href="#time-and-clock-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="clock">
+<span id="libutil-api-clock"></span><h4>Clock<a class="headerlink" href="#clock" title="Permalink to this headline">¶</a></h4>
+<p>The clock module contains functions for getting and setting the Real Time Clock (RTC) and for getting the time since last boot.</p>
+<p>The clock module uses the type <code class="docutils literal"><span class="pre">timestamp_t</span></code> for exchanging timestamps:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+   <span class="kt">uint32_t</span> <span class="n">tv_sec</span><span class="p">;</span>
+   <span class="kt">uint32_t</span> <span class="n">tv_nsec</span><span class="p">;</span>
+<span class="p">}</span> <span class="kt">timestamp_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Getting the time as a local time timestamp. The elements tv_sec and tv_nsec represents the seconds and nano-seconds since 1970.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">clock_get_time</span><span class="p">(</span><span class="kt">timestamp_t</span> <span class="o">*</span> <span class="n">time</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Setting the time from an UTC timestamp.The elements tv_sec and tv_nsec must represent the seconds and nano-seconds since 1970 as an UTC timestamp.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">clock_set_time</span><span class="p">(</span><span class="kt">timestamp_t</span> <span class="o">*</span> <span class="n">utc_time</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Getting the time as a monotonic timestamp (i.e. seconds and nano-seconds since boot):</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">clock_get_monotonic</span><span class="p">(</span><span class="kt">timestamp_t</span> <span class="o">*</span> <span class="n">time</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Getting the nano-seconds since boot as 64 bit unsigned integer:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">uint64_t</span> <span class="nf">clock_get_nsec</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="timestamp">
+<h4>Timestamp<a class="headerlink" href="#timestamp" title="Permalink to this headline">¶</a></h4>
+<p>The timestamp module contains function for added, subtracting, comparing and copying timestamps.
+The timestamps are of type <code class="docutils literal"><span class="pre">timestamp_t</span></code> as described in <a class="reference internal" href="../../../tst/lib/libutil/doc/libutil.html#libutil-api-clock"><span>Clock</span></a>.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/** Add two timestamps, return result in base */</span>
+<span class="kt">int</span> <span class="nf">timestamp_add</span><span class="p">(</span><span class="kt">timestamp_t</span> <span class="o">*</span> <span class="n">base</span><span class="p">,</span> <span class="kt">timestamp_t</span> <span class="o">*</span> <span class="n">add</span><span class="p">);</span>
+
+<span class="cm">/** Subtract two timestamps, return result in base */</span>
+<span class="kt">int</span> <span class="nf">timestamp_diff</span><span class="p">(</span><span class="kt">timestamp_t</span> <span class="o">*</span> <span class="n">base</span><span class="p">,</span> <span class="kt">timestamp_t</span> <span class="o">*</span> <span class="n">diff</span><span class="p">);</span>
+
+<span class="cm">/** Compare two timestamps, return 1 if test &gt; base, otherwise 0 */</span>
+<span class="kt">int</span> <span class="nf">timestamp_ge</span><span class="p">(</span><span class="kt">timestamp_t</span> <span class="o">*</span> <span class="n">base</span><span class="p">,</span> <span class="kt">timestamp_t</span> <span class="o">*</span> <span class="n">test</span><span class="p">);</span>
+
+<span class="cm">/** Copy timestamp from &#39;from&#39; to &#39;to&#39; */</span>
+<span class="kt">int</span> <span class="nf">timestamp_copy</span><span class="p">(</span><span class="kt">timestamp_t</span> <span class="o">*</span> <span class="n">from</span><span class="p">,</span> <span class="kt">timestamp_t</span> <span class="o">*</span> <span class="n">to</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="byte-order-handling">
+<h3>Byte order handling<a class="headerlink" href="#byte-order-handling" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="byteorder">
+<h4>Byteorder<a class="headerlink" href="#byteorder" title="Permalink to this headline">¶</a></h4>
+<p>The byte order module contains functions for converting numbers from host to network byte order and vice verca.
+The byte order module also contains functions for converting numbers from host to little/big endian byte order and vice verca.</p>
+<p>Host - Network byte order:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/** Convert 16-bit integer from host byte order to network byte order</span>
+<span class="cm"> * @param h16 Host byte order 16-bit integer*/</span>
+<span class="kt">uint16_t</span> <span class="nf">util_htons</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">h16</span><span class="p">);</span>
+
+<span class="cm">/** Convert 16-bit integer from host byte order to host byte order</span>
+<span class="cm"> * @param n16 Network byte order 16-bit integer */</span>
+<span class="kt">uint16_t</span> <span class="nf">util_ntohs</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">n16</span><span class="p">);</span>
+
+<span class="cm">/** Convert 32-bit integer from host byte order to network byte order</span>
+<span class="cm"> * @param h32 Host byte order 32-bit integer */</span>
+<span class="kt">uint32_t</span> <span class="nf">util_htonl</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">h32</span><span class="p">);</span>
+
+<span class="cm">/** Convert 32-bit integer from host byte order to network byte order</span>
+<span class="cm"> * @param h32 Host byte order 32-bit integer */</span>
+<span class="kt">uint32_t</span> <span class="nf">util_ntohl</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">n32</span><span class="p">);</span>
+
+<span class="cm">/** Convert 16-bit integer from host byte order to network byte order</span>
+<span class="cm"> * @param h16 Host byte order 16-bit integer */</span>
+<span class="kt">uint16_t</span> <span class="nf">util_hton16</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">h16</span><span class="p">);</span>
+
+<span class="cm">/** Convert 16-bit integer from host byte order to host byte order</span>
+<span class="cm"> * @param n16 Network byte order 16-bit integer */</span>
+<span class="kt">uint16_t</span> <span class="nf">util_ntoh16</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">n16</span><span class="p">);</span>
+
+<span class="cm">/** Convert 32-bit integer from host byte order to network byte order</span>
+<span class="cm"> * @param h32 Host byte order 32-bit integer */</span>
+<span class="kt">uint32_t</span> <span class="nf">util_hton32</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">h32</span><span class="p">);</span>
+
+<span class="cm">/** Convert 32-bit integer from host byte order to host byte order</span>
+<span class="cm"> * @param n32 Network byte order 32-bit integer */</span>
+<span class="kt">uint32_t</span> <span class="nf">util_ntoh32</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">n32</span><span class="p">);</span>
+
+<span class="cm">/** Convert 64-bit integer from host byte order to network byte order</span>
+<span class="cm"> * @param h64 Host byte order 64-bit integer */</span>
+<span class="kt">uint64_t</span> <span class="nf">util_hton64</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">h64</span><span class="p">);</span>
+
+<span class="cm">/** Convert 64-bit integer from host byte order to host byte order</span>
+<span class="cm"> * @param n64 Network byte order 64-bit integer */</span>
+<span class="kt">uint64_t</span> <span class="nf">util_ntoh64</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">n64</span><span class="p">);</span>
+
+<span class="cm">/** Convert float from network to host byte order</span>
+<span class="cm"> * @param float in host byte order */</span>
+<span class="kt">float</span> <span class="nf">util_htonflt</span><span class="p">(</span><span class="kt">float</span> <span class="n">f</span><span class="p">);</span>
+
+<span class="cm">/** Convert float from network to host byte order</span>
+<span class="cm"> * @param float in network byte order */</span>
+<span class="kt">float</span> <span class="nf">util_ntohflt</span><span class="p">(</span><span class="kt">float</span> <span class="n">f</span><span class="p">);</span>
+
+<span class="cm">/** Convert double from network to host byte order</span>
+<span class="cm"> * @param d double in network byte order */</span>
+<span class="kt">double</span> <span class="nf">util_htondbl</span><span class="p">(</span><span class="kt">double</span> <span class="n">d</span><span class="p">);</span>
+
+<span class="cm">/** Convert double from network to host byte order</span>
+<span class="cm"> * @param d double in network byte order */</span>
+<span class="kt">double</span> <span class="nf">util_ntohdbl</span><span class="p">(</span><span class="kt">double</span> <span class="n">d</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Host - Little/Big Endian byte order:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/** Convert 16-bit integer from host byte order to big endian byte order</span>
+<span class="cm"> * @param h16 Host byte order 16-bit integer */</span>
+<span class="kt">uint16_t</span> <span class="nf">util_htobe16</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">h16</span><span class="p">);</span>
+
+<span class="cm">/** Convert 16-bit integer from host byte order to little endian byte order</span>
+<span class="cm"> * @param h16 Host byte order 16-bit integer */</span>
+<span class="kt">uint16_t</span> <span class="nf">util_htole16</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">h16</span><span class="p">);</span>
+
+<span class="cm">/** Convert 16-bit integer from big endian byte order to little endian byte order</span>
+<span class="cm"> * @param be16 Big endian byte order 16-bit integer */</span>
+<span class="kt">uint16_t</span> <span class="nf">util_betoh16</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">be16</span><span class="p">);</span>
+
+<span class="cm">/** Convert 16-bit integer from little endian byte order to host byte order</span>
+<span class="cm"> * @param le16 Little endian byte order 16-bit integer */</span>
+<span class="kt">uint16_t</span> <span class="nf">util_letoh16</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">le16</span><span class="p">);</span>
+
+<span class="cm">/** Convert 32-bit integer from host byte order to big endian byte order</span>
+<span class="cm"> * @param h32 Host byte order 32-bit integer */</span>
+<span class="kt">uint32_t</span> <span class="nf">util_htobe32</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">h32</span><span class="p">);</span>
+
+<span class="cm">/** Convert 32-bit integer from little endian byte order to host byte order</span>
+<span class="cm"> * @param h32 Host byte order 32-bit integer */</span>
+<span class="kt">uint32_t</span> <span class="nf">util_htole32</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">h32</span><span class="p">);</span>
+
+<span class="cm">/** Convert 32-bit integer from big endian byte order to host byte order</span>
+<span class="cm"> * @param be32 Big endian byte order 32-bit integer */</span>
+<span class="kt">uint32_t</span> <span class="nf">util_betoh32</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">be32</span><span class="p">);</span>
+
+<span class="cm">/** Convert 32-bit integer from little endian byte order to host byte order</span>
+<span class="cm"> * @param le32 Little endian byte order 32-bit integer */</span>
+<span class="kt">uint32_t</span> <span class="nf">util_letoh32</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">le32</span><span class="p">);</span>
+
+<span class="cm">/** Convert 64-bit integer from host byte order to big endian byte order</span>
+<span class="cm"> * @param h64 Host byte order 64-bit integer */</span>
+<span class="kt">uint64_t</span> <span class="nf">util_htobe64</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">h64</span><span class="p">);</span>
+
+<span class="cm">/** Convert 64-bit integer from host byte order to little endian byte order</span>
+<span class="cm"> * @param h64 Host byte order 64-bit integer */</span>
+<span class="kt">uint64_t</span> <span class="nf">util_htole64</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">h64</span><span class="p">);</span>
+
+<span class="cm">/** Convert 64-bit integer from big endian byte order to host byte order</span>
+<span class="cm"> * @param be64 Big endian byte order 64-bit integer */</span>
+<span class="kt">uint64_t</span> <span class="nf">util_betoh64</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">be64</span><span class="p">);</span>
+
+<span class="cm">/** Convert 64-bit integer from little endian byte order to host byte order</span>
+<span class="cm"> * @param le64 Little endian byte order 64-bit integer */</span>
+<span class="kt">uint64_t</span> <span class="nf">util_letoh64</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">le64</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="print-and-print-formatting-functions">
+<h3>Print and print formatting functions<a class="headerlink" href="#print-and-print-formatting-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="time">
+<h4>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h4>
+<p>The time module contains function for formatting a timestamp:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">strtime</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">,</span> <span class="kt">int64_t</span> <span class="n">utime</span><span class="p">,</span> <span class="kt">int</span> <span class="n">year_base</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The formatted timestamp will be returned in <code class="docutils literal"><span class="pre">str</span></code>, <code class="docutils literal"><span class="pre">utime</span></code> is the timestamp as a 64 bit signed integer representing milliseconds.</p>
+<p>If the <code class="docutils literal"><span class="pre">year_base</span></code> is 1970, the formatted timestamp returned in <code class="docutils literal"><span class="pre">str</span></code> will be:</p>
+<p><code class="docutils literal"><span class="pre">day-month-year</span> <span class="pre">hour:minute:second.millisecond</span></code>,</p>
+<p>Example <code class="docutils literal"><span class="pre">22-06-2015</span> <span class="pre">12:34:56.234</span></code>.</p>
+<p>If the <code class="docutils literal"><span class="pre">year_base</span></code> is not 1970, the formatted timestamp returned in <code class="docutils literal"><span class="pre">str</span></code> will treated as delta time
+and will just count the years, months, days, hours, minutes, seconds and milliseconds. If the number years is larger than zero,
+the formatted string will be:</p>
+<p><code class="docutils literal"><span class="pre">&lt;years&gt;</span> <span class="pre">years</span> <span class="pre">&lt;months&gt;</span> <span class="pre">months</span> <span class="pre">&lt;days&gt;</span> <span class="pre">days</span> <span class="pre">&lt;hours&gt;</span> <span class="pre">hours</span> <span class="pre">&lt;minutes&gt;</span> <span class="pre">minutes</span> <span class="pre">&lt;seconds&gt;</span> <span class="pre">seconds</span> <span class="pre">&lt;milliseconds&gt;</span> <span class="pre">milliseconds</span></code></p>
+<p>For each counter (years, months, days, ...), while the value is zero, the value will be omitted in the output,
+e.g. if years and months are zero, the format will be:</p>
+<p><code class="docutils literal"><span class="pre">&lt;days&gt;</span> <span class="pre">days</span> <span class="pre">&lt;hours&gt;</span> <span class="pre">hours</span> <span class="pre">&lt;minutes&gt;</span> <span class="pre">minutes</span> <span class="pre">&lt;seconds&gt;</span> <span class="pre">seconds</span> <span class="pre">&lt;milliseconds&gt;</span> <span class="pre">milliseconds</span></code></p>
+<p>If the <code class="docutils literal"><span class="pre">utime</span></code> parameter is negative, the formatted string will be prefixed with a &#8216;-&#8216;.</p>
+</div>
+<div class="section" id="byte-size">
+<h4>Byte size<a class="headerlink" href="#byte-size" title="Permalink to this headline">¶</a></h4>
+<p>Format a string with a byte size in the format &lt;size&gt; M/K/B, counting the number of 1048576/1024/1 byte blocks respectively.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">bytesize</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="kt">long</span> <span class="n">n</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">char</span> <span class="n">my_str</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+
+<span class="n">bytesize</span><span class="p">(</span><span class="n">my_str</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">512</span><span class="p">);</span>
+<span class="n">bytesize</span><span class="p">(</span><span class="n">my_str</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">1024</span><span class="p">);</span>
+<span class="n">bytesize</span><span class="p">(</span><span class="n">my_str</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">1048576</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>will return the result <code class="docutils literal"><span class="pre">512.0B</span></code>, <code class="docutils literal"><span class="pre">1.0K</span></code> and <code class="docutils literal"><span class="pre">1.0M</span></code> in <code class="docutils literal"><span class="pre">my_str</span></code>.</p>
+</div>
+<div class="section" id="color-printf">
+<h4>Color printf<a class="headerlink" href="#color-printf" title="Permalink to this headline">¶</a></h4>
+<p>Color printf allows printing string to the console with colors, using the standard terminal escape sequences for setting the color.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">color_printf</span><span class="p">(</span><span class="kt">color_printf_t</span> <span class="n">color_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+</pre></div>
+</div>
+<p>The following colors are defined:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">COLOR_NONE</span>
+<span class="n">COLOR_BLACK</span>
+<span class="n">COLOR_RED</span>
+<span class="n">COLOR_GREEN</span>
+<span class="n">COLOR_YELLOW</span>
+<span class="n">COLOR_BLUE</span>
+<span class="n">COLOR_MAGENTA</span>
+<span class="n">COLOR_CYAN</span>
+<span class="n">COLOR_WHITE</span>
+</pre></div>
+</div>
+<p>The following colors attributes are defined:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">COLOR_BOLD</span>
+</pre></div>
+</div>
+<p>The colors and color attributes must be OR&#8217;ed together, e.g. to print a string in green bold:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">color_printf</span><span class="p">(</span><span class="n">COLOR_GREEN</span> <span class="o">|</span> <span class="n">COLOR_BOLD</span><span class="p">,</span> <span class="s">&quot;Hello bold-green-world</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="base16">
+<h4>Base16<a class="headerlink" href="#base16" title="Permalink to this headline">¶</a></h4>
+<p>The base16 module contains functions for encoding and decoding base16 arrays to and from strings.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/** Base16-encode data</span>
+<span class="cm"> *</span>
+<span class="cm"> * The buffer must be the correct length for the encoded string.  Use</span>
+<span class="cm"> * something like</span>
+<span class="cm"> *</span>
+<span class="cm"> *     char buf[ base16_encoded_len ( len ) + 1 ];</span>
+<span class="cm"> *</span>
+<span class="cm"> * (the +1 is for the terminating NUL) to provide a buffer of the</span>
+<span class="cm"> * correct size.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param raw Raw data</span>
+<span class="cm"> * @param len Length of raw data</span>
+<span class="cm"> * @param encoded Buffer for encoded string */</span>
+<span class="kt">void</span> <span class="nf">base16_encode</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="o">*</span><span class="n">raw</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">encoded</span><span class="p">);</span>
+
+<span class="cm">/** Base16-decode data</span>
+<span class="cm"> *</span>
+<span class="cm"> * The buffer must be large enough to contain the decoded data.  Use</span>
+<span class="cm"> * something like</span>
+<span class="cm"> *</span>
+<span class="cm"> *     char buf[ base16_decoded_max_len ( encoded ) ];</span>
+<span class="cm"> *</span>
+<span class="cm"> * to provide a buffer of the correct size.</span>
+<span class="cm"> * @param encoded Encoded string</span>
+<span class="cm"> * @param raw Raw data</span>
+<span class="cm"> * @return Length of raw data, or negative error */</span>
+<span class="kt">int</span> <span class="nf">base16_decode</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">encoded</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">raw</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The base16 module also contains two utility functions for calculating required length of buffers for encoding and decoding:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/** Calculate length of base16-encoded data</span>
+<span class="cm"> * @param raw_len Raw data length</span>
+<span class="cm"> * @return Encoded string length (excluding NUL) */</span>
+<span class="k">static</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="nf">base16_encoded_len</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">raw_len</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">raw_len</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/** Calculate maximum length of base16-decoded string</span>
+<span class="cm"> * @param encoded Encoded string</span>
+<span class="cm"> * @return Maximum length of raw data */</span>
+<span class="k">static</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="nf">base16_decoded_max_len</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">encoded</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="p">((</span><span class="n">strlen</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hexdump">
+<h4>Hexdump<a class="headerlink" href="#hexdump" title="Permalink to this headline">¶</a></h4>
+<p>The hexdump module contains a function for dumping a piece of memory as hex numbers and ascii characters:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">hex_dump</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+
+<span class="n">memset</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>
+<span class="n">strcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&quot;01234567&quot;</span><span class="p">);</span>
+<span class="n">hex_dump</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>will print the following:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="mi">80010120</span> <span class="o">:</span> <span class="mi">30</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span>  <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="o">|</span> <span class="mf">01234567.</span><span class="p">.......</span>
+<span class="mi">80010130</span> <span class="o">:</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span>  <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="o">|</span> <span class="p">................</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">80010120</span></code> is the address of <code class="docutils literal"><span class="pre">buf</span></code>. The dots to the right are printed if the corresponding byte does not respresent a printable character.</p>
+</div>
+<div class="section" id="error">
+<h4>Error<a class="headerlink" href="#error" title="Permalink to this headline">¶</a></h4>
+<p>The error module contains error code definitions and a function for getting the error code description as a string.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">char</span> <span class="o">*</span><span class="nf">error_string</span><span class="p">(</span><span class="kt">int</span> <span class="n">code</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">code</span></code> is one of:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cp">#define E_NO_ERR -1</span>
+<span class="cp">#define E_NO_DEVICE -2</span>
+<span class="cp">#define E_MALLOC_FAIL -3</span>
+<span class="cp">#define E_THREAD_FAIL -4</span>
+<span class="cp">#define E_NO_QUEUE -5</span>
+<span class="cp">#define E_INVALID_BUF_SIZE -6</span>
+<span class="cp">#define E_INVALID_PARAM -7</span>
+<span class="cp">#define E_NO_SS -8</span>
+<span class="cp">#define E_GARBLED_BUFFER -9</span>
+<span class="cp">#define E_FLASH_ERROR -10</span>
+<span class="cp">#define E_BOOT_SER -13</span>
+<span class="cp">#define E_BOOT_DEBUG -14</span>
+<span class="cp">#define E_BOOT_FLASH -15</span>
+<span class="cp">#define E_TIMEOUT -16</span>
+<span class="cp">#define E_NO_BUFFER -17</span>
+<span class="cp">#define E_OUT_OF_MEM -18</span>
+<span class="cp">#define E_FAIL -19</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="crc-and-checksum-functions">
+<h3>CRC and checksum functions<a class="headerlink" href="#crc-and-checksum-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="crc32">
+<h4>Crc32<a class="headerlink" href="#crc32" title="Permalink to this headline">¶</a></h4>
+<p>The crc32 module functions for calculating CRC32 from a sequence of bytes.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/** Calculate single step of crc32 */</span>
+<span class="kt">uint32_t</span> <span class="nf">chksum_crc32_step</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">crc</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">byte</span><span class="p">);</span>
+
+<span class="cm">/** Caluclate crc32 of a block */</span>
+<span class="kt">uint32_t</span> <span class="nf">chksum_crc32</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="o">*</span><span class="n">block</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal"><span class="pre">chksum_crc32</span></code> takes a pointer to a data <code class="docutils literal"><span class="pre">block</span></code> together with a <code class="docutils literal"><span class="pre">length</span></code> parameter
+and then calculates the CRC32 from the data in <code class="docutils literal"><span class="pre">block</span></code>.</p>
+<p>Normally the function <code class="docutils literal"><span class="pre">chksum_crc32_step</span></code> is not used outside the crc32 module, but it is possible to use
+it to manually do the CRC32 calculation. <code class="docutils literal"><span class="pre">chksum_crc32_step</span></code> takes the current CRC32 value <code class="docutils literal"><span class="pre">crc</span></code> and updates it with
+from the <code class="docutils literal"><span class="pre">byte</span></code> parameter.</p>
+</div>
+</div>
+<div class="section" id="delay-functions">
+<h3>Delay functions<a class="headerlink" href="#delay-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="delay">
+<h4>Delay<a class="headerlink" href="#delay" title="Permalink to this headline">¶</a></h4>
+<p>The delay module contains a function for waiting (delaying execution) a number of micro seconds.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/** Init delay system</span>
+<span class="cm"> * @param freq CPU frequency in Hz */</span>
+<span class="kt">void</span> <span class="nf">delay_init</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">freq</span><span class="p">);</span>
+
+<span class="cm">/** Delay for number of microseconds</span>
+<span class="cm"> * @param us Number of microseconds to wait */</span>
+<span class="kt">void</span> <span class="nf">delay_us</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">us</span><span class="p">);</span>
+
+<span class="cm">/** Delay until condition is true or timeout_us microseconds have passed.</span>
+<span class="cm"> * @return 0 if condition was met before the timeout, -1 otherwise */</span>
+<span class="cp">#define delay_until(condition, timeout_us)</span>
+</pre></div>
+</div>
+<p>Before using the delay functions, the <code class="docutils literal"><span class="pre">delay_init</span></code> should be called with the cpu frequency as parameter,
+e.g. <code class="docutils literal"><span class="pre">delay_init(16000000)</span></code> to initialise the delay system with CPU frquency 16 MHz.</p>
+<p>The function <code class="docutils literal"><span class="pre">delay_us</span></code> is called with the number of micro seconds to wait, e.g. <code class="docutils literal"><span class="pre">delay_us(1000)</span></code> to wait 1 millisecond.</p>
+<p>The macro <code class="docutils literal"><span class="pre">delay_until</span></code> is called with a condition and the number of micro seconds to wait, e.g. <code class="docutils literal"><span class="pre">delay_until(my_condition,</span> <span class="pre">10000)</span></code>
+to wait until <code class="docutils literal"><span class="pre">my_condition</span></code> is not zero or 10 milliseconds have elapsed.</p>
+</div>
+</div>
+<div class="section" id="compression-decompression-functions-lzo">
+<h3>Compression &amp; decompression functions (LZO)<a class="headerlink" href="#compression-decompression-functions-lzo" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="lzo">
+<h4>LZO<a class="headerlink" href="#lzo" title="Permalink to this headline">¶</a></h4>
+<p>The LZO module contains function for compressing and decompressing data using the LZO algorithm.</p>
+<p>Functions for compressing and decompressing data:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">lzo_compress_buffer</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">src_len</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">out</span><span class="p">,</span>
+                        <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">out_len</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">out_size</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">lzo_decompress_buffer</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">srclen</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">dst</span><span class="p">,</span>
+                          <span class="kt">uint32_t</span> <span class="n">dstlen</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="o">*</span> <span class="n">decomp_len_p</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Functions for reading and writing LZO header:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">lzo_write_header</span><span class="p">(</span><span class="kt">lzo_header_t</span> <span class="o">*</span> <span class="n">head</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal"><span class="pre">lzo_write_header</span></code> will fill out a LZO header defined by <code class="docutils literal"><span class="pre">lzo_header_t</span></code>, including the header checksum:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">))</span> <span class="p">{</span>
+   <span class="kt">uint8_t</span> <span class="n">magic</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span>
+   <span class="kt">uint16_t</span> <span class="n">version</span><span class="p">;</span>
+   <span class="kt">uint16_t</span> <span class="n">libversion</span><span class="p">;</span>
+   <span class="kt">uint16_t</span> <span class="n">versionneeded</span><span class="p">;</span>
+   <span class="kt">uint8_t</span> <span class="n">method</span><span class="p">;</span>
+   <span class="kt">uint8_t</span> <span class="n">level</span><span class="p">;</span>
+   <span class="kt">uint32_t</span> <span class="n">flags</span><span class="p">;</span>
+   <span class="kt">uint32_t</span> <span class="n">mode</span><span class="p">;</span>
+   <span class="kt">uint32_t</span> <span class="n">mtime_low</span><span class="p">;</span>
+   <span class="kt">uint32_t</span> <span class="n">mtime_high</span><span class="p">;</span>
+   <span class="kt">uint8_t</span> <span class="n">fnamelen</span><span class="p">;</span>
+   <span class="kt">uint32_t</span> <span class="n">checksum_header</span><span class="p">;</span>
+   <span class="kt">uint8_t</span> <span class="n">data</span><span class="p">[];</span>
+<span class="p">}</span> <span class="kt">lzo_header_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Example code for compressing data from memory to memory</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">compress_data</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">length</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">comp</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">max_len</span><span class="p">)</span> <span class="p">{</span>
+
+   <span class="k">if</span> <span class="p">(</span><span class="n">length</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">log_error</span><span class="p">(</span><span class="s">&quot;Error compressing data - length too large&quot;</span><span class="p">);</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="cm">/* Zip / compress */</span>
+   <span class="kt">uint32_t</span> <span class="n">comp_len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">lzo_compress_buffer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">comp_len</span><span class="p">,</span> <span class="n">max_len</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">log_error</span><span class="p">(</span><span class="s">&quot;Error compressing data&quot;</span><span class="p">);</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">return</span> <span class="n">comp_len</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example code for decompressing data from memory to memory</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">decompress_data</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">length</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">decomp</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">max_len</span><span class="p">)</span> <span class="p">{</span>
+
+   <span class="k">if</span> <span class="p">(</span><span class="n">length</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">log_error</span><span class="p">(</span><span class="s">&quot;Error decompressing data - length too large&quot;</span><span class="p">);</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="cm">/* Unip / decompress */</span>
+   <span class="kt">uint32_t</span> <span class="n">decomp_len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">lzo_decompress_buffer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">decomp</span><span class="p">,</span> <span class="n">max_len</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">decomp_len</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">log_error</span><span class="p">(</span><span class="s">&quot;Error decompressing data&quot;</span><span class="p">);</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">return</span> <span class="n">decomp_len</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="hash-list-linked-list-and-array-operation">
+<span id="libutil-uthash"></span><h3>Hash, List, Linked List, and Array operation<a class="headerlink" href="#hash-list-linked-list-and-array-operation" title="Permalink to this headline">¶</a></h3>
+<p>The uthash module is a set of header files containing some rather clever macros. These
+macros include <strong>uthash.h</strong> for hash tables, <strong>utlist.h</strong> for linked lists and <strong>utarray.h</strong> for arrays.</p>
+<p>The list macros support the basic linked list operations: adding and deleting elements, sorting them and
+iterating over them. It does so for both single linked list double linked lists and circular lists.</p>
+<p>The dynamic array macros supports basic operations such as push, pop, and erase on the array elements.
+These array elements can be any simple datatype or structure. The array operations are based loosely
+on the C++ STL vector methods. Internally the dynamic array contains a contiguous memory region into
+which the elements are copied. This buffer is grown as needed using realloc to accomodate all the data
+that is pushed into it.</p>
+<p>The hash tables provides a good alternative to linked lists for larger tables where scanning through
+the entire list is going to be slow. The overhead added is larger memory usage and the additional
+hash processing time, so for short sets of data linked lists are preferred.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../libparam/doc/libparam.html" class="btn btn-neutral float-right" title="GomSpace Parameter Library">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../libcsp/doc/example.html" class="btn btn-neutral" title="Client and server example"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, GomSpace.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'v0.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
