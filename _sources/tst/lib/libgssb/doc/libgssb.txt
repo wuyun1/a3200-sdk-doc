@@ -1,0 +1,475 @@
+.. |libgssb| replace:: GomSpace Sensor Bus Library
+.. |I2C| replace:: I\ :sup:`2`\ C
+.. role:: c(code)
+    :language: c
+
+**********
+|libgssb|
+**********
+
+
+.. toctree::
+   :maxdepth: 3
+   
+
+Introduction
+============
+
+The |libgssb| is intended for use with sensor connected to a GomSpace OBC.
+
+The following sections desctibes the |libgssb| structure and API.
+
+Structure
+=========
+
+The |libgssb| is structured as follows:
+
+.. csv-table:: |libgssb| structure
+   :header-rows: 0
+   :header: "**Folder**", "**Description**"
+   :widths: 30, 70
+
+   "| libgssb/include", "| The inlcude folder contains the |libgssb| API header files."
+   "| libgssb/src", "| The src folder contains the |libgssb| API source code files."
+   "| libgssb/doc", "| The doc folder contains the source code for this documentation."
+
+.. _libgssb_api:
+
+API
+===
+
+The |libgssb| includes API functions for 
+
+* Coarse- and fine sun sensor setup and sampling
+* Magnetometer setup and sampling
+* Gyroscope setup and sampling
+* Interstage communication
+* Antenna release 
+
+Generic GSSB functions
+-----------------------
+
+gssb_set_i2c_addr
+^^^^^^^^^^^^^^^^^^^^
+
+Set a new |I2C| address of a device by using the following function with the :c:`new_addr` as the new address:
+
+.. code-block:: c
+
+    int gssb_set_i2c_addr(uint8_t addr, uint16_t timeout_ms, uint8_t new_addr);
+
+
+gssb_commit_i2c_addr
+^^^^^^^^^^^^^^^^^^^^
+
+If a sensor address has been modified the address can be stored by excecuting the following function: 
+    
+.. code-block:: c
+
+    int gssb_commit_i2c_addr(uint8_t addr, uint16_t timeout_ms);
+    
+gssb_get_version
+^^^^^^^^^^^^^^^^^^^^
+
+Retrieve the software version of the GSSB device with :c:`rxbuff` and :c:`len` a 8 long uint8 array: 
+
+.. code-block:: c
+    
+    int gssb_get_version(uint8_t addr, uint16_t timeout_ms, uint8_t * rxbuff, uint8_t len);
+    
+gssb_get_uuid
+^^^^^^^^^^^^^^^^^^^^
+
+Get the UUID of the GSSB device:
+
+.. code-block:: c
+
+    int gssb_get_uuid(uint8_t addr, uint16_t timeout_ms, uint32_t * uuid);
+
+gssb_bus_scan
+^^^^^^^^^^^^^^^^^^^^
+
+Scan the bus for connected GSSB devices. The :c:`devices` array is masked with a -1 is a device was found at that index:
+
+.. code-block:: c
+    
+    void gssb_bus_scan(uint8_t start_addr, uint8_t stop_addr, uint16_t timeout_ms, int8_t devices[127]);
+
+Example: 
+
+.. code-block:: c
+
+    	gssb_bus_scan(1, 126, 100, devices);
+
+	for (addr=0; addr <= 126; addr++) {
+		if (devices[addr] == -1) {
+			printf("Found device at: %d\r\n", addr);
+		}
+	}
+
+
+
+
+Interstage functions
+--------------------
+
+istage_status
+^^^^^^^^^^^^^^^^^^^^
+
+Get the status of an interstage at address :c:`addr`. Uses the :c:`gssb_istage_status_t` as return: 
+
+.. code-block:: c
+
+    int istage_status(uint8_t addr, uint16_t timeout_ms, gssb_istage_status_t * status);
+    
+.. code-block:: c
+    
+    typedef struct __attribute__((__packed__)) gssb_csp_istage_status {
+	int8_t 		i2c_res;		// Result of i2c transaction with gssb dev
+	uint16_t 	deploy_in_s;		// Time before deploying
+	uint8_t 	number_of_deploys;	// Number of deploy tries since boot
+	uint8_t		active_knife;		// The thermal knife that will be used in next deploy
+	uint8_t		state;			// Interstage state. 0 = not armed, 1 = armed for manual deploy, 2 = armed for auto deploy, 3 and 4 = deploying
+	uint16_t	total_number_of_deploys;// Total number of deploys in interstage life time
+	uint8_t		reboot_deploy_cnt;	// Number of reboots left before interstage will deploy on boot
+	uint8_t 	release_status;		// Release switch state. 1 = released, 0 = not released
+    } gssb_istage_status_t;
+
+istage_get_temp
+^^^^^^^^^^^^^^^^^^^^
+
+Retrieve the temperature of an interstage: 
+
+.. code-block:: c
+
+    int istage_get_temp(uint8_t addr, uint16_t timeout_ms, float * temp);
+
+istage_get_sun_voltage
+^^^^^^^^^^^^^^^^^^^^^^
+
+Get the coarse sun sensor reading at selected interstage:
+
+.. code-block:: c
+
+    int istage_get_sun_voltage(uint8_t addr, uint16_t timeout_ms, uint16_t * voltage);
+    
+istage_burn
+^^^^^^^^^^^^^^^^^^^^
+
+Command the antenna release to burn:
+
+.. code-block:: c
+
+    int istage_burn(uint8_t addr, uint16_t timeout_ms);
+
+.. note:: The interstage must be set to ARMED_MANUAL
+
+
+istage_get_burn_settings
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Get the current settings of the antenna release. Uses :c:`istage_burn_settings_t` as return:
+
+.. code-block:: c
+
+    int istage_get_burn_settings(uint8_t addr, uint16_t timeout_ms, istage_burn_settings_t * settings);
+    
+.. code-block:: c
+
+    typedef struct __attribute__((__packed__)) istage_burn_settings {
+	uint16_t std_time_ms;		// Burn time for first burn [ms]
+	uint16_t increment_ms;		// How much to increment burn time for each retry [ms]
+	uint16_t short_cnt_down; 	// The burn process will run once after this cntr runs out [s]
+	uint8_t max_repeat;		// Max number of retries
+	uint8_t rep_time_s;		// Time between retries [s]
+	uint8_t switch_polarity;	// Release sense switch polarity
+	uint8_t status;			
+	uint8_t locked;
+	uint8_t reboot_deploy_cnt;
+    } istage_burn_settings_t;
+
+istage_set_burn_settings
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Set settings for the antenna release at interstage :c:`addr`:
+
+.. code-block:: c
+
+    int istage_set_burn_settings(uint8_t addr, uint16_t timeout_ms, istage_burn_settings_t * settings);
+
+.. note:: The interstage must be unlocked
+
+
+istage_set_burn_settings_cnt
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Set the values for :c:`reboot_deploy_cnt` and :c:`switch_polarity`: 
+
+.. code-block:: c
+   
+    int istage_set_burn_settings_cnt(uint8_t addr, uint16_t timeout_ms, istage_burn_settings_t * settings);
+    
+.. note:: The interstage must be unlocked
+
+
+istage_set_arm
+^^^^^^^^^^^^^^^^^^^^
+
+Arm the interstage: 
+
+.. code-block:: c
+   
+    int istage_set_arm(uint8_t addr, uint16_t timeout_ms, uint8_t data);
+    
+.. todo:: Let MJ explain the content in data (Auto arm, ??)
+
+
+istage_set_state
+^^^^^^^^^^^^^^^^^^^^
+
+Change the state of an interstage. :c:`data` contains the new state: 
+
+.. code-block:: c
+
+    int istage_set_state(uint8_t addr, uint16_t timeout_ms, uint8_t data);
+    
+.. note:: The interstage must not be in a deploy-state
+
+
+istage_settings_unlock
+^^^^^^^^^^^^^^^^^^^^^^
+
+Unlock the interstage at address :c:`addr`:
+
+.. code-block:: c
+
+    int istage_settings_unlock(uint8_t addr, uint16_t timeout_ms);
+
+istage_settings_lock
+^^^^^^^^^^^^^^^^^^^^
+
+Lock the interstage at address :c:`addr`:
+
+.. code-block:: c
+
+    int istage_settings_lock(uint8_t addr, uint16_t timeout_ms);
+
+istage_soft_reset
+^^^^^^^^^^^^^^^^^^^^
+
+Perform a reboot of the interstage. The stored EEPROM values will be read upon restart.
+
+.. code-block:: c
+
+    int istage_soft_reset(uint8_t addr, uint16_t timeout_ms);
+
+
+
+
+Fine Sun Sensors
+-----------------
+
+sun_sample_sensor
+^^^^^^^^^^^^^^^^^
+
+.. code-block:: c
+
+    int sun_sample_sensor(uint8_t addr, uint16_t timeout_ms);
+
+
+sun_read_sensor_samples
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: c
+
+    int sun_read_sensor_samples(uint8_t addr, uint16_t timeout_ms, uint16_t *sun);
+
+
+sun_sample_temp
+^^^^^^^^^^^^^^^
+
+.. code-block:: c
+
+    int sun_sample_temp(uint8_t addr, uint16_t timeout_ms);
+
+
+sun_get_temp
+^^^^^^^^^^^^
+
+.. code-block:: c
+
+    int sun_get_temp(uint8_t addr, uint16_t timeout_ms, float * temp);
+
+
+sun_sensor_conf
+^^^^^^^^^^^^^^^
+
+.. code-block:: c
+
+    int sun_sensor_conf(uint8_t addr, uint16_t timeout_ms, uint16_t conf);
+
+
+sun_sensor_conf_save
+^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: c
+
+    int sun_sensor_conf_save(uint8_t addr, uint16_t timeout_ms);
+
+
+Magnetometer
+------------
+
+An extra magnetometer can be placed in the spacecraft at a location with low EMI to increase measurement precision.
+
+rm3100_init
+^^^^^^^^^^^
+
+Set up the sampling of the RM3100 magnetometer. Using the :c:`rm3100_rate_t` struct:
+
+.. code-block:: c
+
+    typedef enum rm3100_rate_e {
+        RM3100_RATE_600 = 0x92,
+        RM3100_RATE_300 = 0x93,
+        RM3100_RATE_150 = 0x94,
+        RM3100_RATE_75 = 0x95,
+        RM3100_RATE_37 = 0x96,
+    } rm3100_rate_t;
+
+.. code-block:: c
+
+    /**
+     * Setup rm3100 device
+     * @return result of I2C transaction.
+     */
+    int rm3100_init(rm3100_rate_t rate);
+    
+rm3100_node
+^^^^^^^^^^^
+
+.. code-block:: c
+
+    /**
+     * Used for setting device address. If this function is not called the address is set to 0x20
+     * @param device_i2c_addr Magnetometer device i2c addr.
+     * @param device_temp_i2c_addr Temperature device i2c addr.
+     */
+    void rm3100_node(int device_i2c_addr, int device_temp_i2c_addr);
+    
+rm3100_single_meas
+^^^^^^^^^^^^^^^^^^
+
+Sample the magnetometer: 
+
+.. code-block:: c
+
+    typedef struct rm3100_data_s {
+        	float x;
+        	float y;
+        	float z;
+        	int valid;
+    } rm3100_data_t;
+
+.. code-block:: c
+
+    /**
+     * Perform single measurement
+     * @param data: returns data in mG
+     * @return result of I2C transaction.
+     */
+    int rm3100_single_meas(rm3100_data_t *data);
+    
+rm3100_start_single_meas
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: c
+
+    /**
+     * Start a single measurement
+     * @return result of I2C transaction.
+     */
+    int rm3100_start_single_meas();
+    
+rm3100_poll_single_meas
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: c
+
+    /**
+     * Poll a single measurement previously started
+     * @param data: returns data in mG
+     * @return result of I2C transaction.
+     */
+    int rm3100_poll_single_meas(rm3100_data_t *data);
+    
+
+rm3100_continuous_meas_setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: c
+
+    /**
+     * Enabled or disable continuous sampling on selected axis
+     * @param enable if set to one the command will enable continuous meas and if set to zero it will disable it.
+     * @return result of I2C transaction. 
+     */
+    int rm3100_continuous_meas_setup(int enabled);
+    
+    
+rm3100_read_meas_raw
+^^^^^^^^^^^^^^^^^^^^    
+
+.. code-block:: c
+    
+    /**
+     * Read the measurement registers
+     * @param rawdata pointer to raw data struct
+     * return result of I2C transaction.
+     */
+    int rm3100_read_meas_raw(rm3100_rawdata_t *rawdata);
+
+
+rm3100_read_meas
+^^^^^^^^^^^^^^^^
+
+.. code-block:: c
+
+    /**
+     * Read the measurement registers
+     * @param data pointer to data struct (mG)
+     * return result of I2C transaction.
+     */
+    int rm3100_read_meas(rm3100_data_t *data);
+
+rm3100_drdy
+^^^^^^^^^^^
+
+.. code-block:: c
+
+    /**
+     * Read the status register
+     * return data_ready 0=no, 1=yes.
+     */
+    int rm3100_drdy();
+
+rm3100_read_temp
+^^^^^^^^^^^^^^^^
+    
+.. code-block:: c
+
+    /**
+     * Read sensor temperature
+     * @param data pointer to temperature in degC
+     * return result of I2C transaction
+     */
+    int rm3100_read_temp(float *temp);
+
+
+
+
+
+
+
+
+

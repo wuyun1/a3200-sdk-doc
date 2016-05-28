@@ -1,0 +1,98 @@
+.. A3200 SDK Main Documentation
+
+.. |a3200-sdk| replace:: A3200 SDK
+
+************
+Introduction
+************
+
+This manual describes the |a3200-sdk| software package.
+
+The |a3200-sdk| software package consist of a main module and a comprehensive set of 
+software modules for a complete |a3200-sdk| application.
+
+The |a3200-sdk| includes a set of advanced and feature rich modules that enable fast and efficient 
+development of rich featured OBC applications for NanoMind A3200 Board:
+* Board Support Package, including FreeRTOS
+* CSP Communication, including drivers for I2C, CAN and USART (KISS)
+* Parameter System for Configuration and Status
+* Console interface for test and control
+* GomSpace Sensor Bus (GSSB) interface for controlling GSSB devices
+* FTP Service for upload and download of data.
+* File system for Flash Storage
+
+The main software modules and the included libraries are described in the following chapters.
+
+
+########################
+|a3200-sdk| Main modules
+########################
+
+This chapter describes the main software module for the |a3200-sdk| application.
+The |a3200-sdk| application contains a single source code module `hook.c` in the src folder.
+
+The file `hook.c` provides 3 hook functions that enables initialisation of the NanoMind A3200 application
+at different stages of the boot sequence. This allows initiliasation of the entire mission specific code 
+by modifying only the file `hook.c` and adding all mission specific code either to the `hook.c` file or by adding 
+mission specific source code modules to the `src` folder and calling this code form `hook.c`.
+
+If more fine grained control of boot sequence is required, please see :ref:`a3200_full_advanced_options` for 
+details on changing the default boot behaviour.
+
+hook.c
+======
+
+The file `hook.c` provides 3 hook functions that enables initialisation of the NanoMind A3200 application
+at different stages of the boot sequence:
+
+* `hook_main()` - called very early in `main()`
+* `hook_init_early()` - called in the begging of `task_init()`
+* `hook_init()` - called right at the end of `task_init()`
+
+
+Listing of `hook.c`:
+
+.. literalinclude:: ../src/hook.c
+   :language: c
+   :linenos:
+
+When the system has finished booting it calls the hook_init() function where custom mission code can be added.
+
+Example:
+
+.. code-block:: c
+
+   void init_custom_code_and_tasks(void) {
+      
+      init_custom_payload();
+      
+      extern void task_custom_server(void *parameters);
+      xTaskCreate(task_custiom_server, "CUSTSRV", 4000, NULL, 2, NULL);
+      
+   }
+
+   void hook_init(void) {
+      printf("Welcome to nanomind...\r\n");
+   
+      // Implement your code here
+      init_custom_code_and_tasks();
+   
+   }
+
+
+.. _a3200_full_advanced_options:
+   
+Advanced options
+================
+
+When the NanoMind A3200 application boots, the code in `main.c` will initialise the first peripherals such as the USART.
+After that the code in `task_init.c` will initialise the remaining periphirals suach as the I2C and CA interfaces, GSSB devices etc.
+It also initialises the CSP network stack, the network interfaces and the basic console commands.
+
+The files `main.c` and `task_init.c` are located in `lib/liba3200/src`. These files should normally not be modified, 
+but if special boot sequence or initialisation is required, it is possible to modify the this. 
+
+The recommended approach is to copy the three files `main.c` `task_init.c` and `server.c` files from `lib/liba3200/src` to
+the `src` folder and then change the wscript option `enable_main` option from True to False. In this way, the modules
+`main.c` `task_init.c` and `server.c` in the `src` folder will be compiled instead of the corresponding files in `lib/liba3200/src` folder. 
+The files in the `src` can then be modified for specific needs, without changing the liba3200 code.

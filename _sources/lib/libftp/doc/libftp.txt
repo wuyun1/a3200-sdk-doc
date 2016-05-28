@@ -1,0 +1,85 @@
+.. libftp main documentation
+
+.. include:: <isonum.txt>
+
+.. |libftp| replace:: GomSpace FTP Library
+
+********
+|libftp|
+********
+
+.. toctree::
+   :maxdepth: 3
+
+Introduction
+============
+
+The |libftp| implements a generic File Transfer Protocol (FTP) running over CSP. FTP allows remote transfers and manipulation of files to and from the NanoMind. The file transfer functionality is built on top of CSP and RDP as a transport layer protocol. This ensures flow control and correct ordering of messages. FTP uses a simple chunk based protocol with a bitmap file to mark which chunks has been transferred. The protocol is e.g. used by NanoMind OBCs to uplaod new software images to the flash filesystem or directly to RAM for rapid testing of code.
+
+The protocol implementation consists of a server and a client. The NanoMind runs a server that provides access to its local filesystems, but it can also be act as a client to other subsystems, e.g. to download pictures from a NanoCam. The figure below shows major components and call chains.
+
+.. figure:: img/ftp.png
+   :align: center
+   :width: 40 %
+   
+   File Transfer Protocol components.
+
+The server component interfaces to two *backends*, one for accessing the filesystems and one for direct access to memory. A client library (see ``libstorage/src/ftp/ftp_client.c``) implements the client side of the FTP transfer. The ``ftp`` GOSH commands is implemented on top of this client interface.
+
+Structure
+=========
+
+The |libftp| is structured as follows:
+
+.. csv-table::
+   :header-rows: 0
+   :header: "**Folder**", "**Description**"
+   :widths: 30, 70
+
+   "| libftp/include", "| |libftp| API header files."
+   "| libftp/src/ftp", "| This folder contains the FTP implementation."
+   "| libftp/doc",     "| The doc folder contains the source code for this documentation."
+
+GOSH Commands
+=============
+
+The GomSpace Shell includes a number of commands for using the FTP, all placed under the global ``ftp`` command. These commands are available in both CSP-term and on NanoMind systems:
+
+=============  =========================================
+**Command**    **Description**
+=============  =========================================
+ls             List files
+rm             Remove files
+mkfs           Make file system
+mv             Move files
+cp             Copy files
+zip            Compress file
+unzip          Decompress file
+server         Set host and port
+backend        Set filesystem backend
+upload_file    Upload file
+download_file  Download file
+upload_mem     Upload to memory
+download_mem   Download from memory
+timeout        General timeout
+=============  =========================================
+
+To interface with a remote FTP server, you first need to specify its CSP address and port using the ``ftp server <address> [port]`` command. In the default configuration, NanoMind A3200 systems use address 1 and port 9 for FTP, and NanoMind A712D systems use address 1 and port 7. The remaining FTP commands will then use these variables when connecting to the server.
+
+An example of transfer setup, listing, download and removal of the ``/flash/test`` file from a NanoMind A3200 is shown below::
+  
+  csp-term # ftp server 1 9   
+  csp-term # ftp ls /flash/
+   97.7K test
+  csp-term # ftp download_file /flash/test 
+  1447321375.671 ftp: Download begin: path /flash/test, type 3, addr 0x0, size 0, chunk size 185
+  File size is 100000
+  Checksum is 0xaacf4fc9
+  Transfer Status: 0 of 541 (0.00%)
+  1447321377.542 ftp: Transfer Status: 0 of 541 (0.00%)
+  100.0% [########################################] (541/541) 25.2 kB/s 
+  CRC Remote: 0xaacf4fc9, Local: 0xaacf4fc9
+  csp-term # ftp rm /flash/test
+  csp-term #
+
+Refer to the :ref:`GomSpace Storage Library <libstorage>` documentation for a list of valid filesystem paths.

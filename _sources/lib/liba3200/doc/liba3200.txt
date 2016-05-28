@@ -1,0 +1,484 @@
+.. liba3200 main documentation
+
+.. include:: <isonum.txt>
+
+.. |liba3200| replace:: GomSpace A3200 Library
+.. |I2C| replace:: I\ :sup:`2`\ C
+
+**********
+|liba3200|
+**********
+
+The |liba3200| contains the A3200 specific software modules.
+
+Introduction
+============
+
+The |liba3200| contains drivers and the API functions for the AVR32 processor and for the 
+peripheral devices and sensors on the A3200 board.
+
+The A3200 on-board computer (OBC) is designed as an efficient system for space applications with limited
+resources, such as e.g. for CubeSat or nano-satellite missions.
+
+The A3200 board is a powerfull and flexible CPU board that can be used to host several types of 
+nanosat/cubesat satellite applications, e.g. Command and Data Handling (CDH)
+
+A3200 board
+===========
+
+The A3200 board is equipped with a set of sensors to enable important tasks in space applications.
+
+The A3200 board can implement many of these tasks internally on the A3200 board, but the A3200 board can also 
+interface to other systems/subsystems internally in the satellite as well as communicating with a Ground Station 
+via a radio. The A3200 main interface to other subsystems is CAN and |I2C|.
+
+For storage the board carries a 128 MB NOR serial flash. 
+
+The Real Time Clock (RTC) chip on the board also functions as a processor companion while 32 kB of FRAM provides 
+non-volatile storage.
+
+Beside the |I2C| controller for the main bus the board also has and extra |I2C| controller that can be
+used to interface to external |I2C| components. 
+
+For interfacing with SPI devices the board has one external connection with three chip selects and 
+it also has 8 inputs to an ADC and if needed the ADC inputs can also be used as GPIO.
+
+Highlighted Features
+--------------------
+
+* High-performance AVR32 MCU with advanced power saving features
+* 512 KB build-in flash
+* IEEE 754 FPU
+* Wide range for clocks speeds with build-in PLL
+* Multiple CSP data interfaces: |I2C|, CAN-Bus, UART
+* 128 MB NOR flash (On two dies of 64 MB each)
+* 32 kB FRAM for persistent configuration storage
+* 32 MB SDRAM
+* RTC clock
+* On-board temperature sensors
+* 8 external ADC channels that also can be used as GPIO
+* External SPI with 3 chip selects
+* Attitude stabilization system
+   * 3-Axis magnetoresistive sensor
+   * 3-Axis gyroscope
+   * 3 bidirectional PWM output swith current measurements
+   * |I2C| interface for GomSpace Sensor Bus (GSSB)
+
+Block Diagram
+-------------
+
+The following block diagram shows the main blocks on the A3200 board:
+
+.. figure:: img/a3200_block.png
+   :width: 90 %
+   
+   Block diagram of the A3200 board
+
+Please see the NanoMind A3200 Datasheet for further details on the AVR32 processor and the 
+peripheral devices and sensors (available on the GomSpace website http://www.gomspace.com).
+
+To enable use of all the features of the A3200 board, GomSpace provides the |liba3200|.
+
+Structure
+=========
+
+The |liba3200| is structured as follows:
+
+.. tabularcolumns:: |p{4.0cm}|p{12.0cm}|
+.. table:: |liba3200| structure
+
+   ===========================  ==============================================
+   **Folder**                   **Description**
+   ===========================  ==============================================
+   liba3200/include             The include folder contains the header files for the drivers and API's for the |liba3200|. See :ref:`liba3200_a3200_drivers_api` for further details
+   liba3200/src                 The src folder contains the source code files for the drivers and API's for the |liba3200|. See :ref:`liba3200_a3200_drivers_api` for further details
+   liba3200/client              The client folder contains the source and header files for the client part of |liba3200|
+   liba3200/conf                The conf folder contains header files with configuration for the different software modules
+   liba3200/linkscripts         The linkscripts folder contains linker scripts for the A3200 board to ensure correct memory configuration and, alignment, etc
+   liba3200/doc                 The doc folder contains the source code for this documentation
+   ===========================  ==============================================
+
+.. _liba3200_a3200_board:
+
+A3200 Board Parameters
+======================
+
+The |liba3200| includes a board parameter table with a set configuration and telemetry data specific to NanoMind A3200 board.
+The board parameter table has mem id 0.
+
+The telemetry data in the board parameter table is maintained and updated by a board task. The board task is started automatically
+by the `task_init.c` module. 
+
+The |liba3200| includes a board parameter table is shown below:
+
+.. tabularcolumns:: |p{2.4cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{8.8cm}|
+.. table:: Parameter table 0: Board parameters
+
+   =============  ===========  ========  ==============================  ==============================================
+   **Name**       **Address**  **Type**  **Default Value**               **Comment**
+   =============  ===========  ========  ==============================  ==============================================
+   pwrGSSB1       0x0001       U8        0                               Enable power to GSSB1
+   pwrGSSB2       0x0002       U8        0                               Enable power to GSSB2
+   pwrFlash       0x0003       U8        1                               Enable power to Flash
+   pwrPWM         0x0004       U8        0                               Enable power to PWM 
+   pwrGPS         0x0005       U8        0                               Enable power to GPS
+   pwrWDE         0x0006       U8        0                               Enable power to WDE
+   swload_image   0x0010       STR (32)  ""                              File name for swload image
+   swload_count   0x0030       U16       0                               Number of time to boot swload image 
+   fs_chipid      0x0040       U8        0                               Chip id for Flash file system (0 or 1)
+   fs_disable     0x0041       U8        0                               Disable Flash file system
+   fs_mounted     0x0042       U8        0                               FS mounted flag (0: Not mounted, 1: mounted)
+   log_fram       0x0043       U8        0                               Enable log to FRAM
+   temp_a         0x0050       I16       0                               Temperature sensor A value
+   temp_b         0x0052       I16       0                               Temperature sensor B value
+   curGSSB1       0x0060       U16       0                               Current draw for GSSB1
+   curGSSB2       0x0064       U16       0                               Current draw for GSSB2
+   curFlash       0x0068       U16       0                               Current draw for Flash
+   curPWM         0x006C       U16       0                               Current draw for PWM
+   curGPS         0x0070       U16       0                               Current draw for GPS
+   curWDE         0x0074       U16       0                               Current draw for WDE
+   boot_count     0x0078       U16       0                               Boot counter
+   boot_cause     0x007C       X32       0                               Boot cause
+   clock          0x0080       U32       0                               Current clock value
+   ticks          0x0084       U32       0                               Current CPU ticks value
+   csp_rtable     0x0090       STR (96)  ""                              CSP routing table
+   tsync_node     0x00F0       I16       0                               CSP address time sync service
+   tsync_intv     0x00F2       U16       0                               Interval for time sync
+   =============  ===========  ========  ==============================  ==============================================
+   
+
+
+.. _liba3200_a3200_drivers_api:
+
+Drivers and API
+===============
+
+The |liba3200| includes drivers and API functions for 
+
+* SPI Bus
+* |I2C| Bus
+* CAN Bus
+* FM33256B (FRAM Chip)
+* RTC (Real Time Clock)
+* ADC Channels
+* FL512 Spansion Chip (NOR FLASH)
+* PWM (output control)
+* PWR Switches
+* LM70 (Temperature sensor)
+* MPU3300 (Gyro chip)
+* HMC5843 (Magnetometer chip)
+
+
+.. _liba3200_spi_bus:
+
+SPI Bus
+-------
+
+Before using the SPI Bus, the SPI interface needs to be initialised.
+The functions ``init_spi0()``  and ``init_spi1()``  must be called to initialise 
+the SPI0 and/or SPI1 interface respectively.
+
+.. code-block:: c
+
+   init_spi0();
+   init_spi1();
+   
+
+Please refer to :doc:`/lib/libasf/doc/libasf` for further details on the SPI Bus.
+
+.. _liba3200_i2c_bus:
+
+|I2C| Bus
+---------
+
+The A3200 board has an |I2C| bus supporting bidirectional data transfer between masters and slaves, 
+multi- master bus, arbitration between simultaneously transmitting masters without corruption of 
+serial data on the bus.
+
+There are two |I2C| controllers, one connected to the external |I2C| Bus and one connected to internal |I2C| Bus.
+
+Before using the |I2C| Bus, the relevant |I2C| controller needs to be initialised.
+The following function ``twi_init()`` shows how to initialise the |I2C| controller connected internal |I2C| Bus,
+where the HMC5843 (Magnetometer chip) and the MPU3300 (Gyro chip) is residing.
+ 
+.. code-block:: c
+
+   /* Init I2C */
+   static void twi_init(void) {
+      /* GPIO map setup */
+      const gpio_map_t TWIM_GPIO_MAP = {
+         {AVR32_TWIMS2_TWCK_0_0_PIN, AVR32_TWIMS2_TWCK_0_0_FUNCTION},
+         {AVR32_TWIMS2_TWD_0_0_PIN, AVR32_TWIMS2_TWD_0_0_FUNCTION}
+      };
+      gpio_enable_module(TWIM_GPIO_MAP, 
+                         sizeof(TWIM_GPIO_MAP) / sizeof(TWIM_GPIO_MAP[0]));
+   
+      /* Init twi master controller 2 with addr 5 and 100 kHz clock */
+      i2c_init_master(2, 5, 100);
+   }
+
+Please refer to :doc:`/lib/libasf/doc/libasf` for further details on the |I2C| Bus.
+
+.. _liba3200_lm70:
+
+FM33256B (FRAM Chip)
+--------------------
+
+For timekeeping and storage of nonvolatile data the board includes a FM33256B processor companion from Cypress.
+This chip includes Real Time Clock (RTC), watch dog and 256 Kb FRAM.
+
+The FM33256B interfaces to the AVR32 processor through SPI on SPI1, and therefore the SPI1 interface
+must be initialised before using the FM33256B, see :ref:`liba3200_spi_bus`.
+
+To initiaise the FM33256B, call the function ``fm33256b_init()``:
+
+.. code-block:: c
+
+   fm33256b_init();
+   
+After calling the function ``fm33256b_init()``, the FM33256B is ready for use. 
+To initialise the RTC, see :ref:`liba3200_rtc` below. 
+
+.. _liba3200_rtc:
+
+RTC (Real Time Clock)
+---------------------
+
+The RTC allows to keep track of current date and time. 
+The following function ``init_rtc()`` shows how to initialise the RTC:
+
+.. code-block:: c
+
+   static void init_rtc(void) {
+   
+      /* Setup RTC */
+      uint8_t cmd[] = {FM33_WRPC, 0x18, 0x3D};
+      fm33256b_write(cmd, 3);
+   
+      /* RTC */
+      fm33256b_clock_resume();
+   
+      /* 32kHz Crystal setup */
+      osc_enable(OSC_ID_OSC32);
+   
+   }
+   
+The RTC can now be used to e.g. read the current time:
+
+.. code-block:: c
+
+   struct fm33256b_clock clock;
+   /* Read current clock */
+   fm33256b_clock_read_burst(&clock);
+   /* Convert clock struct to seconds since 1970 */
+   time_t current_time; 
+   fm33256b_clock_to_time(&current_time, &clock);
+
+Please note that the GomSpace Util Library :doc:`/lib/libutil/doc/libutil` includes a set of 
+convinience functions that encapsulates the RTC fm33256b functions above,
+e.g. use ``void clock_get_time(timestamp_t * time)`` to get the current time from the RTC.
+Please see  :doc:`/lib/libutil/doc/libutil` for further details.
+
+.. _liba3200_adc:
+
+ADC Channels
+------------
+
+To sample external analog values the board supplies 8 ADC channels in one of the main connectors.
+These 8 pins can also be configured to be GPIO instead of ADC inputs.
+
+Before the ADC channels can be sampled, the ADC channels must be initialised:
+
+.. code-block:: c
+
+   adc_channels_init();
+
+After the initialisation, the ADC channels can be sampled by calling ``adc_channels_sample()``:
+
+.. code-block:: c
+
+   int adc_channels_sample(int16_t *adc_values);
+
+The function ``adc_channels_sample()`` takes a pointer to an array of 8 16 bit integers.
+Calling ``adc_channels_sample()`` will sample all 8 channels and update the provided array accordingly.
+
+.. code-block:: c
+
+   uint16_t adc_values[8];
+   adc_channels_sample(adc_values);
+   uint16_t value_2 = ADC_TO_MV * adc_values[2] / 0.025 / 100;
+
+.. _liba3200_spansion:
+
+FL512 Spansion Chip
+-------------------
+
+The FL512 Spansion chip is a 128 MB NOR flash (On two dies of 64 MB each).
+
+Before using the FL512, it needs to be initialised by calling ``spn_fl512s_init()``:
+
+.. code-block:: c
+
+   static void init_spn_fl512(void) {
+      spn_fl512s_init((unsigned int) 0);
+   }
+
+Data read from flash is done by calling ``spn_fl512s_read_data()`` and data write to flash is
+done by calling ``spn_fl512s_write_data()``.
+
+Flash can be erased in blocks of 256KB ``spn_fl512s_erase_block()`` or the entire chip can be 
+erased by calling ``spn_fl512s_erase_chip()``.
+
+.. _liba3200_pwm:
+
+PWM output
+----------
+
+The A3200 has 3 bidirectional outputs from 3 H-bridge drivers designed to be controlled by a PWM output
+from the microcontroller. The main purpose of these bidirectional outputs is to be used for external
+magnetorquers to implement attitude control. It is possible to switch the power to the PWM driver and
+they also support current measurements.
+
+Before the PWM outputs can be used, the PWM outputs must be initialised:
+
+.. code-block:: c
+
+   gs_pwm_init();
+
+After calling ``gs_pwm_init()`` the PWM outputs can be used.
+The following code shows how to enable a given PWM output and set the frequency and duty cycle:
+
+.. code-block:: c
+
+   int channel = 0;
+   float duty = 123;
+   float freq = 456;
+
+   /* Enable pwm channel */
+   gs_pwm_enable(channel);
+   /* Set requested frequency and get the achieved frequncy returned */
+   float freq_achieved = gs_pwm_set_freq(channel, freq);
+   /* Set the duty cycle */
+   gs_pwm_set_duty(channel, duty);
+
+.. _liba3200_pwr:
+
+PWR switch control
+------------------
+
+The power switch needs to be initialised by calling ``pwr_switch_init()``. 
+
+After calling ``pwr_switch_init()`` the individual power switches can bu turned on and off by calling
+``pwr_switch_enable()`` and ``pwr_switch_disable()``.
+Power switches are by default turned **off** after ``pwr_switch_init()`` has been called.
+
+.. code-block:: c
+
+   /* Power off GSSB1 */
+   pwr_switch_disable(PWR_GSSB);
+   /* Power off GSSB2 */
+   pwr_switch_disable(PWR_GSSB2);
+   /* Power off FLASH */
+   pwr_switch_disable(PWR_SD);
+   /* Power off PWM */
+   pwr_switch_disable(PWR_PWM);
+
+   /* Power on PWM */
+   pwr_switch_enable(PWR_PWM);
+   /* Power on GSSB1 */
+   pwr_switch_enable(PWR_GSSB);
+
+
+.. _liba3200_mpu3300:
+
+LM70 Temperature sensor
+-----------------------
+
+The LM70 temperature sensor can be used to measure and monitor the temperature on the A3200 board.
+The LM70 interfaces to the AVR32 processor through SPI on SPI1, and therefore the SPI1 interface
+must be initialised before using the LM70, see :ref:`liba3200_spi_bus`.
+
+The LM70 has two temperature channels that can be sampled individually.
+
+Before the LM70 can be used to mesaure temperature it needs to be intialised:
+
+.. code-block:: c
+
+   lm70_init();
+
+After this the temperature can be measured/sampled:
+
+.. code-block:: c
+
+   /* Read board temperature sensors */
+   int16_t sensor1 = lm70_read_temp(1);
+   int16_t sensor2 = lm70_read_temp(2);
+
+The function ``lm70_read_temp()`` takes the channel number as argument and returns the temperature in
+10th's of degrees celcius, i.e. the value returned by ``lm70_read_temp()`` needs to by divided by 10 to 
+get the temperature in |deg| C.
+
+.. code-block:: c
+
+   /* Read board temperature sensors */
+   int16_t sensor1 = lm70_read_temp(1);
+   float temp1 = (float) sensor1 / 10.0;
+
+.. _liba3200_fm33256b:
+
+MPU3300 (Gyro chip)
+-------------------
+
+The A3200 board includes a 3-Axis gyroscope, the MPU3300 from InvenSense. 
+
+The AVR32 interfaces to the MPU3300 via the |I2C| Bus. Therefore the |I2C| controller must be initialised before using the MPU3300, see :ref:`liba3200_i2c_bus`.
+
+Before the MPU300 can be used it needs to be intialised:
+
+.. code-block:: c
+
+   mpu3300_init(MPU3300_BW_5, MPU3300_FSR_225);
+
+After this the MPU300 can be read to get gyro x, y, z and temperature:
+
+.. code-block:: c
+
+   float gyro_temp;
+   mpu3300_gyro_t gyro_reading;
+
+   /* Read gyroscope temperature and rate */
+   mpu3300_read_temp(&gyro_temp);
+   mpu3300_read_gyro(&gyro_reading);
+
+   /* Print readings */
+   printf("Gyro temp: %.2f\r\n", gyro_temp);
+   printf("Gyro x, y, z: %f, %f, %f\r\n",
+           gyro_reading.gyro_x, gyro_reading.gyro_y, gyro_reading.gyro_z);
+
+.. _liba3200_hmc5843:
+
+HMC5843 (Magnetometer chip)
+---------------------------
+
+The A3200 board includes a 3-Axis magnetometer to sense the Earth’s magnetic field, the HMC5843 from Honeywell.
+
+The AVR32 interfaces to the HMC5843 via the |I2C| Bus. Therefore the |I2C| controller must be initialised before using the HMC5843, see :ref:`liba3200_i2c_bus`.
+
+Before the HMC5843 can be used to mesaure temperature it needs to be intialised:
+
+.. code-block:: c
+
+   hmc5843_init();
+
+After this the HMC5843 can be read to get magnetometer x, y, z:
+
+.. code-block:: c
+
+   hmc5843_data_t hmc_reading;
+   
+   /* Read magnetometer */
+   hmc5843_read_single(&hmc_reading);
+
+   /* Print readings */
+   printf("Mag x, y, z: %f, %f, %f\r\n\r\n", 
+           hmc_reading.x, hmc_reading.y, hmc_reading.z);

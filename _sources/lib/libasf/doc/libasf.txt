@@ -1,0 +1,47 @@
+.. libasf main documentation
+
+.. |libasf| replace:: GomSpace ASF Library
+.. |I2C| replace:: I\ :sup:`2`\ C
+
+********
+|libasf|
+********
+
+Introduction
+============
+
+The |libasf| is basically a customised and extended version of the Atmel Software Framework (ASF) library. 
+The |libasf| contians the low level Board Support Package (BSP) that enables software development for the 
+AVR32 processor and the GomSpace NanoMind A3200 board.
+
+GomSpace has customised and extended the original ASF to include a number of 
+usefull drivers and FreeRTOS enhancements for the AVR32 processor and the A3200 board.
+
+Structure
+=========
+The |libasf| is structured as follows:
+
+.. tabularcolumns:: |p{4.0cm}|p{12.0cm}|
+.. table:: |libasf| structure
+
+   ===========================  ==============================================
+   **Folder**                   **Description**
+   ===========================  ==============================================
+   libasf/avr32                 The avr32 folder contains modules for the AVR32 processor and relevant peripherals. Please refer to http://www.atmel.com for detailed information about the avr32 modules
+   libasf/avr32/components      Memory and storage components (EEPROM, FLASH, SD MMC, SDRAM)
+   libasf/avr32/drivers         Device drivers for the relevant AVR32 on-chip devices, including but not limited to USART, |I2C|, SPI, CAN, PWM, ADC, GPIO
+   libasf/avr32/services        CAN example service
+   libasf/avr32/utils           Debug functions, linker scripts, makefile examples"
+   libasf/common                The common folder contains common definitions and templates for the modules listed in avr32
+   libasf/gomspace              The gomspace folder contains drivers and FreeRTOS enhancements for the AVR32 processor and the A3200 board
+   libasf/gomspace/drivers      Drivers for CPU, |I2C|, CAN and USART
+   libasf/gomspace/freertos     GomSpace extensions and enhancements for FreeRTOS
+   libasf/thirdparty            The thirdparty folder contains the source code for FreeRTOS and for FAT filesystem
+   libasf/doc                   The doc folder contains the source code for this documentation
+   ===========================  ==============================================
+
+The |libasf| is not documented further in this manual.
+
+Please refer to http://www.atmel.com for detailed information about the Atmel Software Framework.
+
+Please refer to http://www.freertos.org for details on FreeRTOS.

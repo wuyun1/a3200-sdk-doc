@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CSP Interfaces &mdash; A3200 SDK v0.6 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="A3200 SDK v0.6 documentation" href="../../../index.html"/>
+        <link rel="up" title="CubeSat Space Protocol" href="libcsp.html"/>
+        <link rel="next" title="How CSP uses memory" href="memory.html"/>
+        <link rel="prev" title="Structure" href="structure.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../doc/index.html" class="fa fa-home"> A3200 SDK</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../doc/a3200-full.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/a3200-full.html#a3200-sdk-main-modules">A3200 SDK Main modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libasf/doc/libasf.html">GomSpace ASF Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libasf/doc/libasf.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libasf/doc/libasf.html#structure">Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../liba3200/doc/liba3200.html">GomSpace A3200 Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#a3200-board">A3200 board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#a3200-board-parameters">A3200 Board Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#drivers-and-api">Drivers and API</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="libcsp.html">CubeSat Space Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../README.html">The Cubesat Space Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure.html">Structure</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">CSP Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">How CSP uses memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocolstack.html">The Protocol Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Network Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtu.html">Maximum Transfer Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html">Client and server example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libutil/doc/libutil.html">GomSpace Util Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libutil/doc/libutil.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libutil/doc/libutil.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libutil/doc/libutil.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libparam/doc/libparam.html">GomSpace Parameter Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#system-overview">System overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#gosh-local-parameter-interface">GOSH: Local parameter interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#gosh-remote-parameter-client">GOSH: Remote parameter client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#network-api">Network API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libgosh/doc/libgosh.html">GOSH - GomSpace Shell Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#console">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#command-parser">Command Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#defining-new-commands">Defining new commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#linker-optimizations">Linker-optimizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#implementing-a-handler-function">Implementing a handler function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libgssb/doc/libgssb.html">GomSpace Sensor Bus Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libgssb/doc/libgssb.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgssb/doc/libgssb.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgssb/doc/libgssb.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../liblog/doc/liblog.html">GomSpace Log Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../liblog/doc/client-cmd.html">Client Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libstorage/doc/libstorage.html">GomSpace Storage Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libstorage/doc/libstorage.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libstorage/doc/libstorage.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libstorage/doc/libstorage.html#implementation">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libstorage/doc/libstorage.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libftp/doc/libftp.html">GomSpace FTP Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libftp/doc/libftp.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libftp/doc/libftp.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libftp/doc/libftp.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../doc/index.html">A3200 SDK</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../doc/index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="libcsp.html">CubeSat Space Protocol</a> &raquo;</li>
+      
+    <li>CSP Interfaces</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../../_sources/lib/libcsp/doc/interfaces.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="csp-interfaces">
+<h1>CSP Interfaces<a class="headerlink" href="#csp-interfaces" title="Permalink to this headline">¶</a></h1>
+<p>This is an example of how to implement a new layer-2 interface in CSP. The example is going to show how to create a <cite>csp_if_fifo</cite>, using a set of [named pipes](<a class="reference external" href="http://en.wikipedia.org/wiki/Named_pipe">http://en.wikipedia.org/wiki/Named_pipe</a>). The complete interface example code can be found in <cite>examples/fifo.c</cite>. For an example of a fragmenting interface, see the CAN interface in <cite>src/interfaces/csp_if_can.c</cite>.</p>
+<p>CSP interfaces are declared in a <cite>csp_iface_t</cite> structure, which sets the interface nexthop function and name. A maximum transmission unit can also be set, which forces CSP to drop outgoing packets above a certain size. The fifo interface is defined as:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cp">#include &lt;csp/csp.h&gt;</span>
+<span class="cp">#include &lt;csp/csp_interface.h&gt;</span>
+
+<span class="kt">csp_iface_t</span> <span class="n">csp_if_fifo</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;fifo&quot;</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">nexthop</span> <span class="o">=</span> <span class="n">csp_fifo_tx</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">mtu</span> <span class="o">=</span> <span class="n">BUF_SIZE</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="section" id="outgoing-traffic">
+<h2>Outgoing traffic<a class="headerlink" href="#outgoing-traffic" title="Permalink to this headline">¶</a></h2>
+<p>The nexthop function takes a pointer to a CSP packet and a timeout as parameters. All outgoing packets that are routed to the interface are passed to this function:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">csp_fifo_tx</span><span class="p">(</span><span class="kt">csp_packet_t</span> <span class="o">*</span><span class="n">packet</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">timeout</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">write</span><span class="p">(</span><span class="n">tx_channel</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">packet</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">,</span> <span class="n">packet</span><span class="o">-&gt;</span><span class="n">length</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uint16_t</span><span class="p">));</span>
+    <span class="n">csp_buffer_free</span><span class="p">(</span><span class="n">packet</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the fifo interface, we simply transmit the header, length field and data using a write to the fifo. CSP does not dictate the wire format, so other interfaces may decide to e.g. ignore the length field if the physical layer provides start/stop flags.</p>
+<p>_Important notice: If the transmission succeeds, the interface must free the packet and return 1. If transmission fails, the nexthop function should return 0 and not free the packet, to allow retransmissions by the caller._</p>
+</div>
+<div class="section" id="incoming-traffic">
+<h2>Incoming traffic<a class="headerlink" href="#incoming-traffic" title="Permalink to this headline">¶</a></h2>
+<p>The interface also needs to receive incoming packets and pass it to the CSP protocol stack. In the fifo interface, this is handled by a thread that blocks on the incoming fifo and waits for packets:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="o">*</span> <span class="nf">fifo_rx</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">parameters</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">csp_packet_t</span> <span class="o">*</span><span class="n">buf</span> <span class="o">=</span> <span class="n">csp_buffer_get</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">);</span>
+    <span class="cm">/* Wait for packet on fifo */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="n">rx_channel</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">buf</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">,</span> <span class="n">BUF_SIZE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">csp_new_packet</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">csp_if_fifo</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="n">csp_buffer_get</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A new CSP buffer is preallocated with csp_buffer_get(). When data is received, the packet is passed to CSP using <cite>csp_new_packet()</cite> and a new buffer is allocated for the next packet. In addition to the received packet, <cite>csp_new_packet()</cite> takes two additional arguments:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">csp_new_packet</span><span class="p">(</span><span class="kt">csp_packet_t</span> <span class="o">*</span><span class="n">packet</span><span class="p">,</span> <span class="kt">csp_iface_t</span> <span class="o">*</span><span class="n">interface</span><span class="p">,</span> <span class="n">CSP_BASE_TYPE</span> <span class="o">*</span><span class="n">pxTaskWoken</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The calling interface must be passed in <cite>interface</cite> to avoid routing loops. Furthermore, <cite>pxTaskWoken</cite> must be set to a non-NULL value if the packet is received in an interrupt service routine. If the packet is received in task context, NULL must be passed. &#8216;pxTaskWoken&#8217; only applies to FreeRTOS systems, and POSIX system should always set the value to NULL.</p>
+<p><cite>csp_new_packet</cite> will either accept the packet or free the packet buffer, so the interface must never free the packet after passing it to CSP.</p>
+</div>
+<div class="section" id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
+<p>In order to initialize the interface, and make it available to the router, use the following function found in <cite>csp/csp_interface.h</cite>:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">csp_route_add_if</span><span class="p">(</span><span class="o">&amp;</span><span class="n">csp_if_fifo</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This actually happens automatically if you try to call <cite>csp_route_add()</cite> with an interface that is inknown to the router. This may however be removed in the future, in order to ensure that all interfaces are initialised before configuring the routing table. The reason is, that some products released in the future may ship with an empty routing table, which is then configured by a routing protocol rather than a static configuration.</p>
+<p>In order to setup a manual static route, use the follwing example where the default route is set to the fifo interface:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">csp_route_set</span><span class="p">(</span><span class="n">CSP_DEFAULT_ROUTE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">csp_if_fifo</span><span class="p">,</span> <span class="n">CSP_NODE_MAC</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>All outgoing traffic except loopback, is now passed to the fifo interface&#8217;s nexthop function.</p>
+</div>
+<div class="section" id="building-the-example">
+<h2>Building the example<a class="headerlink" href="#building-the-example" title="Permalink to this headline">¶</a></h2>
+<p>The fifo examples can be compiled with:</p>
+<div class="highlight-bash"><div class="highlight"><pre>% gcc csp_if_fifo.c -o csp_if_fifo -I&lt;CSP PATH&gt;/include -L&lt;CSP PATH&gt;/build -lcsp -lpthread -lrt
+</pre></div>
+</div>
+<p>The two named pipes are created with:</p>
+<div class="highlight-bash"><div class="highlight"><pre>% mkfifo server_to_client client_to_server
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="memory.html" class="btn btn-neutral float-right" title="How CSP uses memory">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="structure.html" class="btn btn-neutral" title="Structure"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, GomSpace.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'v0.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

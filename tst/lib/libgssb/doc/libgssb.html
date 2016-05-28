@@ -1,0 +1,654 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GomSpace Sensor Bus Library &mdash; A3200 SDK v0.6 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="A3200 SDK v0.6 documentation" href="../../../../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../../doc/index.html" class="fa fa-home"> A3200 SDK</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/a3200-full.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../doc/a3200-full.html#a3200-sdk-main-modules">A3200 SDK Main modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libasf/doc/libasf.html">GomSpace ASF Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libasf/doc/libasf.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libasf/doc/libasf.html#structure">Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html">GomSpace A3200 Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#a3200-board">A3200 board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#a3200-board-parameters">A3200 Board Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#drivers-and-api">Drivers and API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libcsp/doc/libcsp.html">CubeSat Space Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/README.html">The Cubesat Space Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/history.html">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/structure.html">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/interfaces.html">CSP Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/memory.html">How CSP uses memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/protocolstack.html">The Protocol Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/topology.html">Network Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/mtu.html">Maximum Transfer Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/example.html">Client and server example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html">GomSpace Util Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html">GomSpace Parameter Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#system-overview">System overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#gosh-local-parameter-interface">GOSH: Local parameter interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#gosh-remote-parameter-client">GOSH: Remote parameter client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#network-api">Network API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html">GOSH - GomSpace Shell Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#console">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#command-parser">Command Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#defining-new-commands">Defining new commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#linker-optimizations">Linker-optimizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#implementing-a-handler-function">Implementing a handler function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html">GomSpace Sensor Bus Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/liblog/doc/liblog.html">GomSpace Log Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liblog/doc/client-cmd.html">Client Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html">GomSpace Storage Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#implementation">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html">GomSpace FTP Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../doc/index.html">A3200 SDK</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../doc/index.html">Docs</a> &raquo;</li>
+      
+    <li>GomSpace Sensor Bus Library</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../../../_sources/tst/lib/libgssb/doc/libgssb.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="libgssb">
+<h1>GomSpace Sensor Bus Library<a class="headerlink" href="#libgssb" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace Sensor Bus Library is intended for use with sensor connected to a GomSpace OBC.</p>
+<p>The following sections desctibes the GomSpace Sensor Bus Library structure and API.</p>
+</div>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace Sensor Bus Library is structured as follows:</p>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">GomSpace Sensor Bus Library structure</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Folder</strong></th>
+<th class="head"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">libgssb/include</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">The inlcude folder contains the GomSpace Sensor Bus Library API header files.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">libgssb/src</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">The src folder contains the GomSpace Sensor Bus Library API source code files.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">libgssb/doc</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">The doc folder contains the source code for this documentation.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="api">
+<span id="libgssb-api"></span><h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace Sensor Bus Library includes API functions for</p>
+<ul class="simple">
+<li>Coarse- and fine sun sensor setup and sampling</li>
+<li>Magnetometer setup and sampling</li>
+<li>Gyroscope setup and sampling</li>
+<li>Interstage communication</li>
+<li>Antenna release</li>
+</ul>
+<div class="section" id="generic-gssb-functions">
+<h3>Generic GSSB functions<a class="headerlink" href="#generic-gssb-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="gssb-set-i2c-addr">
+<h4>gssb_set_i2c_addr<a class="headerlink" href="#gssb-set-i2c-addr" title="Permalink to this headline">¶</a></h4>
+<p>Set a new I<sup>2</sup>C address of a device by using the following function with the <code class="code c docutils literal"><span class="name"><span class="pre">new_addr</span></span></code> as the new address:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">gssb_set_i2c_addr</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">new_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gssb-commit-i2c-addr">
+<h4>gssb_commit_i2c_addr<a class="headerlink" href="#gssb-commit-i2c-addr" title="Permalink to this headline">¶</a></h4>
+<p>If a sensor address has been modified the address can be stored by excecuting the following function:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">gssb_commit_i2c_addr</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gssb-get-version">
+<h4>gssb_get_version<a class="headerlink" href="#gssb-get-version" title="Permalink to this headline">¶</a></h4>
+<p>Retrieve the software version of the GSSB device with <code class="code c docutils literal"><span class="name"><span class="pre">rxbuff</span></span></code> and <code class="code c docutils literal"><span class="name"><span class="pre">len</span></span></code> a 8 long uint8 array:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">gssb_get_version</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">rxbuff</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">len</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gssb-get-uuid">
+<h4>gssb_get_uuid<a class="headerlink" href="#gssb-get-uuid" title="Permalink to this headline">¶</a></h4>
+<p>Get the UUID of the GSSB device:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">gssb_get_uuid</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="o">*</span> <span class="n">uuid</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gssb-bus-scan">
+<h4>gssb_bus_scan<a class="headerlink" href="#gssb-bus-scan" title="Permalink to this headline">¶</a></h4>
+<p>Scan the bus for connected GSSB devices. The <code class="code c docutils literal"><span class="name"><span class="pre">devices</span></span></code> array is masked with a -1 is a device was found at that index:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">gssb_bus_scan</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">start_addr</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">stop_addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">int8_t</span> <span class="n">devices</span><span class="p">[</span><span class="mi">127</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">gssb_bus_scan</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">126</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">devices</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">addr</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">addr</span> <span class="o">&lt;=</span> <span class="mi">126</span><span class="p">;</span> <span class="n">addr</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Found device at: %d</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">addr</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="interstage-functions">
+<h3>Interstage functions<a class="headerlink" href="#interstage-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="istage-status">
+<h4>istage_status<a class="headerlink" href="#istage-status" title="Permalink to this headline">¶</a></h4>
+<p>Get the status of an interstage at address <code class="code c docutils literal"><span class="name"><span class="pre">addr</span></span></code>. Uses the <code class="code c docutils literal"><span class="keyword type"><span class="pre">gssb_istage_status_t</span></span></code> as return:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_status</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">gssb_istage_status_t</span> <span class="o">*</span> <span class="n">status</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">))</span> <span class="n">gssb_csp_istage_status</span> <span class="p">{</span>
+    <span class="kt">int8_t</span>          <span class="n">i2c_res</span><span class="p">;</span>                <span class="c1">// Result of i2c transaction with gssb dev</span>
+    <span class="kt">uint16_t</span>        <span class="n">deploy_in_s</span><span class="p">;</span>            <span class="c1">// Time before deploying</span>
+    <span class="kt">uint8_t</span>         <span class="n">number_of_deploys</span><span class="p">;</span>      <span class="c1">// Number of deploy tries since boot</span>
+    <span class="kt">uint8_t</span>         <span class="n">active_knife</span><span class="p">;</span>           <span class="c1">// The thermal knife that will be used in next deploy</span>
+    <span class="kt">uint8_t</span>         <span class="n">state</span><span class="p">;</span>                  <span class="c1">// Interstage state. 0 = not armed, 1 = armed for manual deploy, 2 = armed for auto deploy, 3 and 4 = deploying</span>
+    <span class="kt">uint16_t</span>        <span class="n">total_number_of_deploys</span><span class="p">;</span><span class="c1">// Total number of deploys in interstage life time</span>
+    <span class="kt">uint8_t</span>         <span class="n">reboot_deploy_cnt</span><span class="p">;</span>      <span class="c1">// Number of reboots left before interstage will deploy on boot</span>
+    <span class="kt">uint8_t</span>         <span class="n">release_status</span><span class="p">;</span>         <span class="c1">// Release switch state. 1 = released, 0 = not released</span>
+<span class="p">}</span> <span class="kt">gssb_istage_status_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="istage-get-temp">
+<h4>istage_get_temp<a class="headerlink" href="#istage-get-temp" title="Permalink to this headline">¶</a></h4>
+<p>Retrieve the temperature of an interstage:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_get_temp</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">temp</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="istage-get-sun-voltage">
+<h4>istage_get_sun_voltage<a class="headerlink" href="#istage-get-sun-voltage" title="Permalink to this headline">¶</a></h4>
+<p>Get the coarse sun sensor reading at selected interstage:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_get_sun_voltage</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="o">*</span> <span class="n">voltage</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="istage-burn">
+<h4>istage_burn<a class="headerlink" href="#istage-burn" title="Permalink to this headline">¶</a></h4>
+<p>Command the antenna release to burn:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_burn</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The interstage must be set to ARMED_MANUAL</p>
+</div>
+</div>
+<div class="section" id="istage-get-burn-settings">
+<h4>istage_get_burn_settings<a class="headerlink" href="#istage-get-burn-settings" title="Permalink to this headline">¶</a></h4>
+<p>Get the current settings of the antenna release. Uses <code class="code c docutils literal"><span class="keyword type"><span class="pre">istage_burn_settings_t</span></span></code> as return:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_get_burn_settings</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">istage_burn_settings_t</span> <span class="o">*</span> <span class="n">settings</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">))</span> <span class="n">istage_burn_settings</span> <span class="p">{</span>
+    <span class="kt">uint16_t</span> <span class="n">std_time_ms</span><span class="p">;</span>           <span class="c1">// Burn time for first burn [ms]</span>
+    <span class="kt">uint16_t</span> <span class="n">increment_ms</span><span class="p">;</span>          <span class="c1">// How much to increment burn time for each retry [ms]</span>
+    <span class="kt">uint16_t</span> <span class="n">short_cnt_down</span><span class="p">;</span>        <span class="c1">// The burn process will run once after this cntr runs out [s]</span>
+    <span class="kt">uint8_t</span> <span class="n">max_repeat</span><span class="p">;</span>             <span class="c1">// Max number of retries</span>
+    <span class="kt">uint8_t</span> <span class="n">rep_time_s</span><span class="p">;</span>             <span class="c1">// Time between retries [s]</span>
+    <span class="kt">uint8_t</span> <span class="n">switch_polarity</span><span class="p">;</span>        <span class="c1">// Release sense switch polarity</span>
+    <span class="kt">uint8_t</span> <span class="n">status</span><span class="p">;</span>
+    <span class="kt">uint8_t</span> <span class="n">locked</span><span class="p">;</span>
+    <span class="kt">uint8_t</span> <span class="n">reboot_deploy_cnt</span><span class="p">;</span>
+<span class="p">}</span> <span class="kt">istage_burn_settings_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="istage-set-burn-settings">
+<h4>istage_set_burn_settings<a class="headerlink" href="#istage-set-burn-settings" title="Permalink to this headline">¶</a></h4>
+<p>Set settings for the antenna release at interstage <code class="code c docutils literal"><span class="name"><span class="pre">addr</span></span></code>:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_set_burn_settings</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">istage_burn_settings_t</span> <span class="o">*</span> <span class="n">settings</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The interstage must be unlocked</p>
+</div>
+</div>
+<div class="section" id="istage-set-burn-settings-cnt">
+<h4>istage_set_burn_settings_cnt<a class="headerlink" href="#istage-set-burn-settings-cnt" title="Permalink to this headline">¶</a></h4>
+<p>Set the values for <code class="code c docutils literal"><span class="name"><span class="pre">reboot_deploy_cnt</span></span></code> and <code class="code c docutils literal"><span class="name"><span class="pre">switch_polarity</span></span></code>:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_set_burn_settings_cnt</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">istage_burn_settings_t</span> <span class="o">*</span> <span class="n">settings</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The interstage must be unlocked</p>
+</div>
+</div>
+<div class="section" id="istage-set-arm">
+<h4>istage_set_arm<a class="headerlink" href="#istage-set-arm" title="Permalink to this headline">¶</a></h4>
+<p>Arm the interstage:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_set_arm</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Let MJ explain the content in data (Auto arm, ??)</p>
+</div>
+</div>
+<div class="section" id="istage-set-state">
+<h4>istage_set_state<a class="headerlink" href="#istage-set-state" title="Permalink to this headline">¶</a></h4>
+<p>Change the state of an interstage. <code class="code c docutils literal"><span class="name"><span class="pre">data</span></span></code> contains the new state:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_set_state</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The interstage must not be in a deploy-state</p>
+</div>
+</div>
+<div class="section" id="istage-settings-unlock">
+<h4>istage_settings_unlock<a class="headerlink" href="#istage-settings-unlock" title="Permalink to this headline">¶</a></h4>
+<p>Unlock the interstage at address <code class="code c docutils literal"><span class="name"><span class="pre">addr</span></span></code>:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_settings_unlock</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="istage-settings-lock">
+<h4>istage_settings_lock<a class="headerlink" href="#istage-settings-lock" title="Permalink to this headline">¶</a></h4>
+<p>Lock the interstage at address <code class="code c docutils literal"><span class="name"><span class="pre">addr</span></span></code>:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_settings_lock</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="istage-soft-reset">
+<h4>istage_soft_reset<a class="headerlink" href="#istage-soft-reset" title="Permalink to this headline">¶</a></h4>
+<p>Perform a reboot of the interstage. The stored EEPROM values will be read upon restart.</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">istage_soft_reset</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fine-sun-sensors">
+<h3>Fine Sun Sensors<a class="headerlink" href="#fine-sun-sensors" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="sun-sample-sensor">
+<h4>sun_sample_sensor<a class="headerlink" href="#sun-sample-sensor" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">sun_sample_sensor</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sun-read-sensor-samples">
+<h4>sun_read_sensor_samples<a class="headerlink" href="#sun-read-sensor-samples" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">sun_read_sensor_samples</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="o">*</span><span class="n">sun</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sun-sample-temp">
+<h4>sun_sample_temp<a class="headerlink" href="#sun-sample-temp" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">sun_sample_temp</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sun-get-temp">
+<h4>sun_get_temp<a class="headerlink" href="#sun-get-temp" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">sun_get_temp</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">temp</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sun-sensor-conf">
+<h4>sun_sensor_conf<a class="headerlink" href="#sun-sensor-conf" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">sun_sensor_conf</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">conf</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sun-sensor-conf-save">
+<h4>sun_sensor_conf_save<a class="headerlink" href="#sun-sensor-conf-save" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">sun_sensor_conf_save</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="magnetometer">
+<h3>Magnetometer<a class="headerlink" href="#magnetometer" title="Permalink to this headline">¶</a></h3>
+<p>An extra magnetometer can be placed in the spacecraft at a location with low EMI to increase measurement precision.</p>
+<div class="section" id="rm3100-init">
+<h4>rm3100_init<a class="headerlink" href="#rm3100-init" title="Permalink to this headline">¶</a></h4>
+<p>Set up the sampling of the RM3100 magnetometer. Using the <code class="code c docutils literal"><span class="keyword type"><span class="pre">rm3100_rate_t</span></span></code> struct:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">typedef</span> <span class="k">enum</span> <span class="n">rm3100_rate_e</span> <span class="p">{</span>
+    <span class="n">RM3100_RATE_600</span> <span class="o">=</span> <span class="mh">0x92</span><span class="p">,</span>
+    <span class="n">RM3100_RATE_300</span> <span class="o">=</span> <span class="mh">0x93</span><span class="p">,</span>
+    <span class="n">RM3100_RATE_150</span> <span class="o">=</span> <span class="mh">0x94</span><span class="p">,</span>
+    <span class="n">RM3100_RATE_75</span> <span class="o">=</span> <span class="mh">0x95</span><span class="p">,</span>
+    <span class="n">RM3100_RATE_37</span> <span class="o">=</span> <span class="mh">0x96</span><span class="p">,</span>
+<span class="p">}</span> <span class="kt">rm3100_rate_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Setup rm3100 device</span>
+<span class="cm"> * @return result of I2C transaction.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">rm3100_init</span><span class="p">(</span><span class="kt">rm3100_rate_t</span> <span class="n">rate</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rm3100-node">
+<h4>rm3100_node<a class="headerlink" href="#rm3100-node" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Used for setting device address. If this function is not called the address is set to 0x20</span>
+<span class="cm"> * @param device_i2c_addr Magnetometer device i2c addr.</span>
+<span class="cm"> * @param device_temp_i2c_addr Temperature device i2c addr.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">rm3100_node</span><span class="p">(</span><span class="kt">int</span> <span class="n">device_i2c_addr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">device_temp_i2c_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rm3100-single-meas">
+<h4>rm3100_single_meas<a class="headerlink" href="#rm3100-single-meas" title="Permalink to this headline">¶</a></h4>
+<p>Sample the magnetometer:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span> <span class="n">rm3100_data_s</span> <span class="p">{</span>
+            <span class="kt">float</span> <span class="n">x</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">y</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">z</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">valid</span><span class="p">;</span>
+<span class="p">}</span> <span class="kt">rm3100_data_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Perform single measurement</span>
+<span class="cm"> * @param data: returns data in mG</span>
+<span class="cm"> * @return result of I2C transaction.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">rm3100_single_meas</span><span class="p">(</span><span class="kt">rm3100_data_t</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rm3100-start-single-meas">
+<h4>rm3100_start_single_meas<a class="headerlink" href="#rm3100-start-single-meas" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Start a single measurement</span>
+<span class="cm"> * @return result of I2C transaction.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">rm3100_start_single_meas</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rm3100-poll-single-meas">
+<h4>rm3100_poll_single_meas<a class="headerlink" href="#rm3100-poll-single-meas" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Poll a single measurement previously started</span>
+<span class="cm"> * @param data: returns data in mG</span>
+<span class="cm"> * @return result of I2C transaction.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">rm3100_poll_single_meas</span><span class="p">(</span><span class="kt">rm3100_data_t</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rm3100-continuous-meas-setup">
+<h4>rm3100_continuous_meas_setup<a class="headerlink" href="#rm3100-continuous-meas-setup" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Enabled or disable continuous sampling on selected axis</span>
+<span class="cm"> * @param enable if set to one the command will enable continuous meas and if set to zero it will disable it.</span>
+<span class="cm"> * @return result of I2C transaction.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">rm3100_continuous_meas_setup</span><span class="p">(</span><span class="kt">int</span> <span class="n">enabled</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rm3100-read-meas-raw">
+<h4>rm3100_read_meas_raw<a class="headerlink" href="#rm3100-read-meas-raw" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Read the measurement registers</span>
+<span class="cm"> * @param rawdata pointer to raw data struct</span>
+<span class="cm"> * return result of I2C transaction.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">rm3100_read_meas_raw</span><span class="p">(</span><span class="kt">rm3100_rawdata_t</span> <span class="o">*</span><span class="n">rawdata</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rm3100-read-meas">
+<h4>rm3100_read_meas<a class="headerlink" href="#rm3100-read-meas" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Read the measurement registers</span>
+<span class="cm"> * @param data pointer to data struct (mG)</span>
+<span class="cm"> * return result of I2C transaction.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">rm3100_read_meas</span><span class="p">(</span><span class="kt">rm3100_data_t</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rm3100-drdy">
+<h4>rm3100_drdy<a class="headerlink" href="#rm3100-drdy" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Read the status register</span>
+<span class="cm"> * return data_ready 0=no, 1=yes.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">rm3100_drdy</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rm3100-read-temp">
+<h4>rm3100_read_temp<a class="headerlink" href="#rm3100-read-temp" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Read sensor temperature</span>
+<span class="cm"> * @param data pointer to temperature in degC</span>
+<span class="cm"> * return result of I2C transaction</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">rm3100_read_temp</span><span class="p">(</span><span class="kt">float</span> <span class="o">*</span><span class="n">temp</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, GomSpace.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'v0.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

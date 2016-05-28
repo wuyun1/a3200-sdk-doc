@@ -1,0 +1,900 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GomSpace Parameter Library &mdash; A3200 SDK v0.6 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="A3200 SDK v0.6 documentation" href="../../../../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../../doc/index.html" class="fa fa-home"> A3200 SDK</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/a3200-full.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../doc/a3200-full.html#a3200-sdk-main-modules">A3200 SDK Main modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libasf/doc/libasf.html">GomSpace ASF Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libasf/doc/libasf.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libasf/doc/libasf.html#structure">Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html">GomSpace A3200 Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#a3200-board">A3200 board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#a3200-board-parameters">A3200 Board Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liba3200/doc/liba3200.html#drivers-and-api">Drivers and API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libcsp/doc/libcsp.html">CubeSat Space Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/README.html">The Cubesat Space Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/history.html">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/structure.html">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/interfaces.html">CSP Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/memory.html">How CSP uses memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/protocolstack.html">The Protocol Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/topology.html">Network Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/mtu.html">Maximum Transfer Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libcsp/doc/example.html">Client and server example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html">GomSpace Util Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libutil/doc/libutil.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html">GomSpace Parameter Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#system-overview">System overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#gosh-local-parameter-interface">GOSH: Local parameter interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#gosh-remote-parameter-client">GOSH: Remote parameter client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#network-api">Network API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libparam/doc/libparam.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html">GOSH - GomSpace Shell Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#console">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#command-parser">Command Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#defining-new-commands">Defining new commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#linker-optimizations">Linker-optimizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#implementing-a-handler-function">Implementing a handler function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgosh/doc/libgosh.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html">GomSpace Sensor Bus Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libgssb/doc/libgssb.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/liblog/doc/liblog.html">GomSpace Log Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/liblog/doc/client-cmd.html">Client Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html">GomSpace Storage Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#implementation">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libstorage/doc/libstorage.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html">GomSpace FTP Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/libftp/doc/libftp.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../doc/index.html">A3200 SDK</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../doc/index.html">Docs</a> &raquo;</li>
+      
+    <li>GomSpace Parameter Library</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../../../_sources/tst/lib/libparam/doc/libparam.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="libparam">
+<h1>GomSpace Parameter Library<a class="headerlink" href="#libparam" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>GomSpace Parameter System is a light-weight parameter system designed for GomSpace satellite subsystems.
+It is based around a logical memory architecture, where every parameter is referenced directly by its logical address.
+A backend system takes care of translating addresses into physical addresses. The features of this system includes:</p>
+<ul class="simple">
+<li>Direct memory access for quick parameter reads</li>
+<li>Simple datatypes: uint, int, float, double, string and hex</li>
+<li>Arrays of data</li>
+<li>Simple static parameter table and setup</li>
+<li>Multiple backends for non-volatile storage: FRAM and FILE</li>
+<li>Scratch memory and running memory configurations</li>
+<li>Remote client with full support for all commands</li>
+<li>Packed GET, SET queries with multiple parameters</li>
+<li>Simple data-set serialization and deserialization</li>
+<li>Supports both little and big-endian systems</li>
+<li>Gomspace Shell (GOSH) commands for both local and remote access</li>
+<li>Built-in CSP parameter server</li>
+<li>Service oriented Architecture (SoA) support with full download of parameter tables</li>
+<li>Autogeneration of client GUI</li>
+<li>Compile-time configuration of parameter system</li>
+</ul>
+<div class="section" id="basic-principle-of-operation">
+<span id="libparam-principle-of-operation"></span><h3>Basic Principle of operation<a class="headerlink" href="#basic-principle-of-operation" title="Permalink to this headline">¶</a></h3>
+<p>The parameter system is a generic system that translates a memory area into network messages and vice-versa.
+It has two basic operations: Read or Write. This basic operation is how most memory works and is something that most programmers can understand.
+Therefore the parameter system have been designed to work just like you would expect a memory to work.
+However it also throws in some more added benefits such as parameter tables, object serialization, arrays, data locking and intuitive client interfaces.
+To best demonstrate this principle, let&#8217;s take a simple example:</p>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="../../../../_images/command_example1.png"><img alt="../../../../_images/command_example1.png" src="../../../../_images/command_example1.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Example of Set and Get commands</span></p>
+</div>
+<p>In this example, a set command is sent from the client to the memory, to update the parameter with address 0x00.
+The response is an OK message. Later the client issues a get command to the memory and receives the value that was stored.
+While this example shows the basic principle, it is of course pretty difficult for the programmer to be able to remember the address 0x00 of a given parameter.
+Therefore the parameter system only uses addresses internally. Externally to the programmer, only parameter names are used.
+The next example will show how parameter tables work:</p>
+</div>
+<div class="section" id="parameter-tables">
+<h3>Parameter tables<a class="headerlink" href="#parameter-tables" title="Permalink to this headline">¶</a></h3>
+<p>In order to translate from names to addresses, a parameter table is used:</p>
+<table border="1" class="docutils" id="id2">
+<caption><span class="caption-text">Parameter table example</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="9%" />
+<col width="27%" />
+<col width="9%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Address</strong></th>
+<th class="head"><strong>Name</strong></th>
+<th class="head"><strong>Type</strong></th>
+<th class="head"><strong>Description</strong></th>
+</tr>
+<tr class="row-even"><th class="head">0x00</th>
+<th class="head">param1</th>
+<th class="head">U32</th>
+<th class="head">Parameter 1</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>0x04</td>
+<td>param2</td>
+<td>U32</td>
+<td>Parameter 2</td>
+</tr>
+</tbody>
+</table>
+<p>The complexity of packing and unpacking data into messages is now handled by the parameter system based upon a pre-shared parameter-table.
+This means that a command such as &#8216;set param1 to 0x1234&#8217; can easily be translated into a request by the client.</p>
+<div class="figure" id="id3">
+<a class="reference internal image-reference" href="../../../../_images/translate_example1.png"><img alt="../../../../_images/translate_example1.png" src="../../../../_images/translate_example1.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Parameter Translator example</span></p>
+</div>
+<p>Here the first abstraction have been performed by the parameter translator.
+This now uses the address and type of the parameter &#8216;param1&#8217; to generate a c-function that can be called by the source code.
+This c-function will ensure proper locking of the memory while the parameter is read and make sure that the data is also in the correct endian and datatype when returned.</p>
+<p><em>This interface is known as the source API and is only available on a local system compiled with the parameter system library &#8216;libparam&#8217;.
+For more details on the source API, please consult the parameter system manual.</em></p>
+</div>
+<div class="section" id="network-service">
+<h3>Network service<a class="headerlink" href="#network-service" title="Permalink to this headline">¶</a></h3>
+<p>In order for the parameter system to work across multiple nodes, a client/server network API has been added also.
+The client and server shares the same serialization core, which is based on the parameter tables shown above.
+This means that a simple request can be sent over the network in a simple manner, without having to write any specific software client for a given command.</p>
+<div class="figure" id="id4">
+<a class="reference internal image-reference" href="../../../../_images/network_example1.png"><img alt="../../../../_images/network_example1.png" src="../../../../_images/network_example1.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-text">Network Example</span></p>
+</div>
+<p>The parameter client can now use a pre-shared parameter table from a remote systems to generate lists and change parameters on remote systems.</p>
+</div>
+<div class="section" id="parameter-storage">
+<h3>Parameter storage<a class="headerlink" href="#parameter-storage" title="Permalink to this headline">¶</a></h3>
+<p>The final thing that the parameter system needs is a method to store configurations into non-volatile memory.
+The parameter system is not limited to one or two types of memory, but for the most common setups there will be one
+volatile memory such as the RAM and another non-volatile memory such as FRAM or FLASH. This can be illustrated in the following way:</p>
+<div class="figure" id="id5">
+<a class="reference internal image-reference" href="../../../../_images/param_storage1.png"><img alt="../../../../_images/param_storage1.png" src="../../../../_images/param_storage1.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Parameter Storage overview</span></p>
+</div>
+<p>The memory map for the volatile RAM memory is quite normal. Each set of parameters, each have their own reserved area in physical memory,
+and each logical parameter address then uniquely translates into a physical address by adding with an offset for the given parameter table.
+In this example the system have two tables, 0 which is used for configuration and 4 which is used for telemetry data.
+The storage system solves 2 issues for the parameter system:</p>
+<div class="section" id="storing-of-multiple-system-configurations-with-fallback-to-factory-configuration">
+<h4>Storing of multiple system configurations with fallback to factory configuration<a class="headerlink" href="#storing-of-multiple-system-configurations-with-fallback-to-factory-configuration" title="Permalink to this headline">¶</a></h4>
+<p>The parameter system has a storage backend which allows storing copies of parameter tables to a file.
+In this case the FRAM has an extremely simple filesystem where every file is denoted with a number and that number directly translates into a memory address.
+In the example, file number zero is used as the default configuration that will be loaded into RAM during the system boot-up.
+This configuration can be loaded, saved or cleared at any time. If file number zero does not contain a valid configuration (verified by a checksum),
+then the system could continue to load from other file-id&#8217;s in a certain order.
+In the example the system will try to load from file number 111 after failing at file number zero.
+This file number is special because the address resolves to an area of the FRAM chip which is write protected, so this area can be great to store a read-only fallback configuration.</p>
+</div>
+<div class="section" id="storage-of-persistent-data-bootcounter-etc">
+<h4>Storage of persistent data (bootcounter, etc.)<a class="headerlink" href="#storage-of-persistent-data-bootcounter-etc" title="Permalink to this headline">¶</a></h4>
+<p>The other thing that the FRAM chip is particularly good at, is storing rapidly changing persistent parameters. This could for example be a boot counter.
+If a parameter is marked with the PARAM_F_PERSIST in the parameter table and if a valid FRAM address has been initialized,
+every write operation to a persistent parameter will yield an update of the value stored in FRAM.
+After a reboot the FRAM will be checked for any stored persistent parameters and the value stored in RAM will be initialized from that.
+The advantage of using persistent parameters is that they are relatively cheap to update and does not require any checksums or similar.
+That means that they can be used for rapidly changing values without worrying about execution speed and storage wear.
+The disadvantage is that during initialization there is no checksum on the value stored in FRAM. Due to the direct memory mapping there is no
+further checksum on each individual persistent parameter.
+This means that if the FRAM fails during startup, garbage could be loaded into the persistent parameters.
+Therefore these should not be used for critical configuration variables.
+The configuration files are however protected against corruption and a very good place to put critical variables.
+However updating the configuration and running a save on each variable change costs a bit more resources.</p>
+</div>
+</div>
+</div>
+<div class="section" id="system-overview">
+<h2>System overview<a class="headerlink" href="#system-overview" title="Permalink to this headline">¶</a></h2>
+<p>The parameter system is separated into three modules:</p>
+<ul class="simple">
+<li><strong>Parameter Host API</strong>: This is the local interface used by the firmware on a subsystem</li>
+<li><strong>Parameter Service</strong>: This module defines the network interfaces and implements a CSP service task to process incoming get/set requests.</li>
+<li><strong>Parameter Client API</strong>: This module contains functions for sending get/set requests to a parameter service.</li>
+</ul>
+<p>On top of these three modules lies a client layer where there is two shell-modules:</p>
+<ul class="simple">
+<li><strong>Local interface &#8216;param&#8217;</strong>: This is a set of commands that uses the Host API to modify parameters. This enables sending parameter commands directly to a system using the gomspace shell on the debug interface.</li>
+<li><strong>Remote client &#8216;rparam&#8217;</strong>: This is a set of commands that uses the Client API and the network to send requests to a remote parameter service. This can be used to remotely operate another subsystem over a CSP link. For example the spacelink.</li>
+</ul>
+<p>This can be illustrated in the following way:</p>
+<div class="figure" id="id6">
+<a class="reference internal image-reference" href="../../../../_images/param_system1.png"><img alt="../../../../_images/param_system1.png" src="../../../../_images/param_system1.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Parameter system modules</span></p>
+</div>
+</div>
+<div class="section" id="gosh-local-parameter-interface">
+<h2>GOSH: Local parameter interface<a class="headerlink" href="#gosh-local-parameter-interface" title="Permalink to this headline">¶</a></h2>
+<p>The local parameter interface can be used to directly modify the paramters of a system using the debug interface only. It&#8217;s a quick and direct method of interfaceing to the parameter system which bypasses all network communication completely and goes directly to the memory of a running system. It can therefore be used as debugging tool on a running system, without having to bother with setup of a parameter service and client.
+Here is a list of sub-commands to the &#8216;param&#8217; command:</p>
+<div class="highlight-c"><div class="highlight"><pre>nanocom-ax # param
+&#39;param&#39; contains sub-commands:
+  mem                 Set cmds working mem
+  list                List parameters
+  set                 Set parameter
+  setq                Set parameter (quiet)
+  get                 Get parameter
+  copy                Copy parameter sets from mem to mem
+  load                Load config from file/fram to mem
+  save                Save config from mem to file/fram
+  clear               Clear config from file/fram
+</pre></div>
+</div>
+<p>The local client can be used by simply typing &#8216;param get &lt;name&gt;&#8217; or &#8216;param set &lt;name&gt; &lt;value&gt;&#8217;, here is an example:</p>
+<div class="highlight-c"><div class="highlight"><pre>nanocom-ax # param get rx_freq
+  GET rx_freq = 437250000
+nanocom-ax # param set rx_freq 437555000
+  SET rx_freq = 437555000 (4)
+nanocom-ax # param get rx_freq
+  GET rx_freq = 437555000
+</pre></div>
+</div>
+<p>The example shows the &#8216;rx_freq&#8217; parameter before and after setting the value using the &#8216;set&#8217; command.
+Another example is the &#8216;param list&#8217; command, which will return the parameter table, and the value of each parameter.
+Here is an example from the NanoCom AX100.</p>
+<div class="highlight-c"><div class="highlight"><pre>nanocom-ax # param list
+  0x0000 rx_freq                U32 437555000
+  0x0004 rx_baud                U32 4800
+  0x000C rx_bw                  U32 15000
+  0x0020 tx_freq                U32 437250000
+  0x0024 tx_baud                U32 4800
+  0x0028 tx_modindex            FLT 0
+  0x002C preamb                 X8  0x55
+  0x002D preamblen              U8  50
+  0x002E preambflags            U8  56
+  0x002F intfrm                 X8  0x7E
+  0x0030 intfrmlen              U8  0
+  0x0031 intfrmflags            U8  56
+  0x0034 tx_guard               U16 50
+  0x0032 tx_max_time            U16 10
+  0x0036 tx_rssibusy            I16 -95
+  0x0038 rx_idle_s              U16 3600
+  0x003A mode                   U8  2
+  0x003B fcs                    U8  1
+  0x0040 pllrang_rx             U8  9
+  0x0041 pllrang_tx             U8  9
+  0x0044 max_temp               I16 60
+  0x0050 csp_node               U8  5
+  0x0060 reboot_in              U16 0
+  0x0064 tx_inhibit             U32 0
+  0x0070 bcn_interval           U32 10
+  0x0074 bcn_holdoff            U32 4800
+  0x0078 bcn_epsdata            U8  1
+</pre></div>
+</div>
+<p>Another very important command is the &#8216;param mem &lt;memid&gt;&#8217; command, which will change the currently selected memory for the interface.
+For example the AX100 has two parameter tables, 0 which is the running configuration, and 4 which is the telemetry table.
+Changing the param mem-id will change which memory area that the get/set/list commands operate on.
+The default parameter table selected is 0. Here is an example from the AX100 after selecting the telemetry table 4.</p>
+<div class="highlight-c"><div class="highlight"><pre>nanocom-ax # param mem 4
+Using param mem 4
+nanocom-ax # param list
+  0x0000 temp_brd               I16 248
+  0x0002 temp_pa                I16 257
+  0x0004 last_rssi              I16 -103
+  0x0006 last_rferr             I16 143
+  0x0008 tx_count               U32 0
+  0x000C rx_count               U32 0
+  0x0010 tx_bytes               U32 0
+  0x0014 rx_bytes               U32 0
+  0x0020 boot_count             U16 32
+  0x0024 boot_cause             X32 0x00000100
+  0x0028 last_contact           U32 946855591
+  0x0030 tot_tx_count           U32 32537
+  0x0034 tot_rx_count           U32 172097
+  0x0038 tot_tx_bytes           U32 4902966
+  0x003C tot_rx_bytes           U32 35692697
+</pre></div>
+</div>
+<p>The &#8216;save/load/copy/clear&#8217; commands can be used to move entire tables between different memories.
+For example to load the default boot configuration which is stored in file number zero the command is:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">param</span> <span class="n">load</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>This tells the system to read the contents of file number zero into the parameter table with index zero.
+The same goes for saving a configuration back to the file</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">param</span> <span class="n">save</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Or to completely clear a file:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">param</span> <span class="n">clear</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gosh-remote-parameter-client">
+<h2>GOSH: Remote parameter client<a class="headerlink" href="#gosh-remote-parameter-client" title="Permalink to this headline">¶</a></h2>
+<p>The remote parameter system client can be used to remotely update paramters on other systems from a GOSH command interface.
+The &#8216;rparam&#8217; client must first be initialized by downloading the list of remote parameters:</p>
+<div class="highlight-c"><div class="highlight"><pre>nanocom-ax # rparam download 5 1
+Downloading RPARAM table for node 5 on port 7, with endian set big = 1
+Checksum is: 0xB670
+  0x0000 rx_freq
+  0x0004 rx_baud
+  0x000C rx_bw
+  0x0020 tx_freq
+  0x0024 tx_baud
+  0x0028 tx_modindex
+  0x002C preamb
+  0x002D preamblen
+  0x002E preambflags
+  0x002F intfrm
+  0x0030 intfrmlen
+  0x0031 intfrmflags
+  0x0034 tx_guard
+  0x0032 tx_max_time
+  0x0036 tx_rssibusy
+  0x0038 rx_idle_s
+  0x003A mode
+  0x003B fcs
+  0x0040 pllrang_rx
+  0x0041 pllrang_tx
+  0x0044 max_temp
+  0x0050 csp_node
+  0x0060 reboot_in
+  0x0064 tx_inhibit
+  0x0070 bcn_interval
+  0x0074 bcn_holdoff
+  0x0078 bcn_epsdata
+</pre></div>
+</div>
+<p>Now that the &#8216;rparam&#8217; client knows which parameters exists on the remote system, we can request or modify individual parameters:</p>
+<div class="highlight-c"><div class="highlight"><pre>nanocom-ax # rparam get preamblen
+  REP preamblen = 50 (1)
+nanocom-ax # rparam set preamblen 70
+  INP preamblen = 70
+Result: 1
+nanocom-ax # rparam get preamblen
+  REP preamblen = 70 (1)
+</pre></div>
+</div>
+<p>We can also modify more than one parameter at once by disabling the &#8216;rparam autosend&#8217; function and build up more than one get call for each rparam query:</p>
+<div class="highlight-c"><div class="highlight"><pre>nanocom-ax # rparam autosend 0
+rparam autosend set to 0
+nanocom-ax # rparam get rx_freq
+nanocom-ax # rparam get tx_freq
+nanocom-ax # rparam send
+  REP rx_freq = 437555000 (4)
+  REP tx_freq = 437250000 (4)
+</pre></div>
+</div>
+<p>This function is very useful when changing both the uplink and downlink baudrate of a radio.
+Putting multiple set calls into one packet ensures that the system will never do a partial parameter update.</p>
+</div>
+<div class="section" id="network-api">
+<h2>Network API<a class="headerlink" href="#network-api" title="Permalink to this headline">¶</a></h2>
+<p>This section will document the following parameter commands:</p>
+<table border="1" class="docutils" id="id7">
+<caption><span class="caption-text">List of parameter commands</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="30%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>CMD</strong></th>
+<th class="head"><strong>Name</strong></th>
+<th class="head"><strong>Description</strong></th>
+</tr>
+<tr class="row-even"><th class="head">0x00</th>
+<th class="head">RPARAM_GET</th>
+<th class="head">Get one or more parameter values</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>0xFF</td>
+<td>RPARAM_SET</td>
+<td>Set one or more parameter values</td>
+</tr>
+<tr class="row-even"><td>0x55</td>
+<td>RPARAM_REPLY</td>
+<td>Packet containing parameters (from GET command)</td>
+</tr>
+<tr class="row-odd"><td>0x44</td>
+<td>RPARAM_TABLE</td>
+<td>Download full parameter table</td>
+</tr>
+<tr class="row-even"><td>0x77</td>
+<td>RPARAM_COPY</td>
+<td>Copy from mem to mem</td>
+</tr>
+<tr class="row-odd"><td>0x88</td>
+<td>RPARAM_LOAD</td>
+<td>Load from storage to mem</td>
+</tr>
+<tr class="row-even"><td>0x99</td>
+<td>RPARAM_SAVE</td>
+<td>Save from mem to storage</td>
+</tr>
+<tr class="row-odd"><td>0xAA</td>
+<td>RPARAM_CLEAR</td>
+<td>Delete from storage</td>
+</tr>
+</tbody>
+</table>
+<p>The parameter commands is sent in the following format:</p>
+<div class="section" id="packet-structure">
+<h3>Packet structure<a class="headerlink" href="#packet-structure" title="Permalink to this headline">¶</a></h3>
+<p>The parameter server expects all requests to be in CSP format, and to contain the following data:</p>
+<div class="figure" id="id8">
+<a class="reference internal image-reference" href="../../../../_images/param_packet_format1.png"><img alt="../../../../_images/param_packet_format1.png" src="../../../../_images/param_packet_format1.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Parameter Packet Format</span></p>
+</div>
+<p>The fields is described in the following table:</p>
+<table border="1" class="docutils" id="id9">
+<caption><span class="caption-text">Packet structure</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="30%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Field</strong></th>
+<th class="head"><strong>Length (bytes)</strong></th>
+<th class="head"><strong>Description</strong></th>
+</tr>
+<tr class="row-even"><th class="head">CMD</th>
+<th class="head">1</th>
+<th class="head">Command ID from table above</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>MEM</td>
+<td>1</td>
+<td>Memory area to operate on</td>
+</tr>
+<tr class="row-even"><td>LEN</td>
+<td>2</td>
+<td>Length of DATA field</td>
+</tr>
+<tr class="row-odd"><td>CHKSUM</td>
+<td>2</td>
+<td>Fletcher-16 checksum of parameter table with memory ID specified.</td>
+</tr>
+<tr class="row-even"><td>DATA</td>
+<td>0 .. 180</td>
+<td>Data field must be set according to command type</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="parameter-table-checksum">
+<h3>Parameter table checksum<a class="headerlink" href="#parameter-table-checksum" title="Permalink to this headline">¶</a></h3>
+<p>The checksum is a part of all commands, and must match the on-board checksum of the parameter table.
+The checksum can be obtained by running a fletcher-16 checksum on the parameter table.
+The algorithm for fletcher-16 is:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">static</span> <span class="kr">inline</span> <span class="kt">uint16_t</span> <span class="nf">fletcher16</span><span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kt">uint16_t</span> <span class="n">sum1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="kt">uint16_t</span> <span class="n">sum2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="kt">int</span> <span class="n">index</span><span class="p">;</span>
+   <span class="k">for</span> <span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">index</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">sum1</span> <span class="o">=</span> <span class="p">(</span><span class="n">sum1</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">])</span> <span class="o">%</span> <span class="mi">255</span><span class="p">;</span>
+      <span class="n">sum2</span> <span class="o">=</span> <span class="p">(</span><span class="n">sum2</span> <span class="o">+</span> <span class="n">sum1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">255</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="p">(</span><span class="n">sum2</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="n">sum1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you do not have access to the parameter table, you must download the table using RPARAM_TABLE, and run the checksum on the table itself.
+This check is done in order to verify that the request has been generated using the same parameter table definition as is used by the server.
+If this is not verified, it may be possible to GET or SET a parameter which does not exist (out of memory scope) and can lead to undefined behavior.
+In order to bypass the checksum feature, the CHKSUM field can be set to the following magic value: &#8216;0xB0 0x0B&#8217;.
+This can be helpful while writing test code for the parameter client.</p>
+</div>
+<div class="section" id="data-formats">
+<h3>Data formats<a class="headerlink" href="#data-formats" title="Permalink to this headline">¶</a></h3>
+<p>The DATA field of the parameter packet is formatted differently for each command. Here is a description of how each command is packed:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">packed</span><span class="p">))</span> <span class="n">rparam_frame_s</span> <span class="p">{</span>
+   <span class="n">rparam_action</span> <span class="n">action</span><span class="p">;</span>            <span class="c1">//! Type is the action performed</span>
+   <span class="kt">uint8_t</span> <span class="n">mem</span><span class="p">;</span>               <span class="c1">//! Memory area to work on (0 = RUNNING, 1 = SCRATCH)</span>
+   <span class="kt">uint16_t</span> <span class="n">length</span><span class="p">;</span>              <span class="c1">//! Length of the payload in bytes</span>
+   <span class="kt">uint16_t</span> <span class="n">checksum</span><span class="p">;</span>               <span class="c1">//! Fletcher&#39;s checksum</span>
+   <span class="k">union</span> <span class="p">{</span>
+      <span class="kt">uint16_t</span> <span class="n">addr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>          <span class="c1">//! action = PARAM_GET</span>
+      <span class="kt">uint8_t</span> <span class="n">packed</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>            <span class="c1">//! action = PARAM_REPLY | PARAM_SET</span>
+      <span class="k">struct</span> <span class="p">{</span>
+         <span class="kt">uint8_t</span> <span class="n">from</span><span class="p">;</span>
+         <span class="kt">uint8_t</span> <span class="n">to</span><span class="p">;</span>
+      <span class="p">}</span> <span class="n">copy</span><span class="p">;</span>              <span class="c1">//! action = PARAM_SAVE | PARAM_LOAD |PARAM_CLEAR</span>
+      <span class="k">struct</span> <span class="p">{</span>
+         <span class="kt">uint8_t</span> <span class="n">id</span><span class="p">;</span>
+      <span class="p">}</span> <span class="n">clear</span><span class="p">;</span>
+   <span class="p">};</span>
+<span class="p">}</span> <span class="n">rparam_query</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="section" id="get-command">
+<h4>GET command<a class="headerlink" href="#get-command" title="Permalink to this headline">¶</a></h4>
+<p>The GET command uses a packed 16-bit address array. Here you should put the list of parameters to download.
+A special case is an empty GET command, which will download all parameters in a single packet.
+Please note that this could is some cases exceed the MTU of the network system, in which case the message will be truncated to the maximum length.
+In this case you must split your request into two GET commands.</p>
+</div>
+<div class="section" id="set-reply-packet-data">
+<h4>SET / REPLY &#8216; Packet data<a class="headerlink" href="#set-reply-packet-data" title="Permalink to this headline">¶</a></h4>
+<p>When setting, or getting a reply on a GET command, the data will come in a serialized packed format.
+This uses the parameter table to pack data in the following format: &lt;addr&gt;&lt;value&gt;, &lt;addr&gt;&lt;value&gt;, &#8216; etc.
+The unpack algorithm is as follows:</p>
+<ol class="arabic simple">
+<li>Read 16-bit addr into memory (note that this is big-endian)</li>
+<li>Find the parameter name, type and size using the parameter table</li>
+<li>Read the next &lt;size&gt; number of bytes into memory</li>
+<li>Convert endian from big-endian to host byte order</li>
+<li>Save result into local memory using memcpy</li>
+</ol>
+<p>The serializer and deserializer is the heart of the parameter system, making it possible to request and modify any arbitrary parameter.
+The source code for this requires a bit of programming experience, but can be obtained by contacting gomspace, or buying a subsystem containing the parameter system.</p>
+</div>
+<div class="section" id="copy">
+<h4>COPY<a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h4>
+<p>The copy data field contains two bytes containing two memory areas &lt;from&gt; and &lt;to&gt;.</p>
+</div>
+<div class="section" id="save-load-clear">
+<h4>SAVE / LOAD / CLEAR<a class="headerlink" href="#save-load-clear" title="Permalink to this headline">¶</a></h4>
+<p>The save/load/clear commands uses the mem-id from the parameter packet header, and an additional storage file-id to know which file to operate on.</p>
+</div>
+</div>
+<div class="section" id="parameter-table">
+<h3>Parameter Table<a class="headerlink" href="#parameter-table" title="Permalink to this headline">¶</a></h3>
+<p>The table download requires no data in the DATA field of the parameter request packet.
+The response will be formatted as an array of the following data structures:</p>
+<table border="1" class="docutils" id="id10">
+<caption><span class="caption-text">Parameter table format</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="30%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Field</strong></th>
+<th class="head"><strong>Length (bytes)</strong></th>
+<th class="head"><strong>Description</strong></th>
+</tr>
+<tr class="row-even"><th class="head">ADDR</th>
+<th class="head">2</th>
+<th class="head">Parameter Address</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>TYPE</td>
+<td>1</td>
+<td>Type of parameter (see table below)</td>
+</tr>
+<tr class="row-even"><td>SIZE</td>
+<td>1</td>
+<td>Size of the parameter</td>
+</tr>
+<tr class="row-odd"><td>FLAGS</td>
+<td>1</td>
+<td>Reserved field</td>
+</tr>
+<tr class="row-even"><td>NAME</td>
+<td>14</td>
+<td>Name of parameter</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="parameter-types">
+<h3>Parameter Types<a class="headerlink" href="#parameter-types" title="Permalink to this headline">¶</a></h3>
+<p>The parameter table describes the parameter types using a single byte according to the following table:</p>
+<table border="1" class="docutils" id="id11">
+<caption><span class="caption-text">List of parameter types</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="30%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Type</strong></th>
+<th class="head"><strong>Name</strong></th>
+<th class="head"><strong>Description</strong></th>
+</tr>
+<tr class="row-even"><th class="head">0</th>
+<th class="head">PARAM_UINT8</th>
+<th class="head">8-bit unsigned</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>1</td>
+<td>PARAM_UINT16</td>
+<td>16-bit unsigned</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>PARAM_UINT32</td>
+<td>32-bit unsigned</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>PARAM_UINT64</td>
+<td>64-bit unsigned</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>PARAM_INT8</td>
+<td>8-bit signed</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>PARAM_INT16</td>
+<td>16-bit signed</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>PARAM_INT32</td>
+<td>32-bit signed</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>PARAM_INT64</td>
+<td>64-bit signed</td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td>PARAM_X8</td>
+<td>8-bit unsigned (printed as hex)</td>
+</tr>
+<tr class="row-odd"><td>9</td>
+<td>PARAM_X16</td>
+<td>16-bit unsigned (printed as hex)</td>
+</tr>
+<tr class="row-even"><td>10</td>
+<td>PARAM_X32</td>
+<td>32-bit unsigned (printed as hex)</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>PARAM_X64</td>
+<td>64-bit unsigned (printed as hex)</td>
+</tr>
+<tr class="row-even"><td>12</td>
+<td>PARAM_DOUBLE</td>
+<td>Double</td>
+</tr>
+<tr class="row-odd"><td>13</td>
+<td>PARAM_FLOAT</td>
+<td>Float</td>
+</tr>
+<tr class="row-even"><td>14</td>
+<td>PARAM_STRING</td>
+<td>Array of bytes, dynamic length, printed as string</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>PARAM_DATA</td>
+<td>Array of bytes, dynamic length, printed as hex</td>
+</tr>
+<tr class="row-even"><td>16</td>
+<td>PARAM_BOOL</td>
+<td>Boolean</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="parameter-table-download">
+<h3>Parameter table download<a class="headerlink" href="#parameter-table-download" title="Permalink to this headline">¶</a></h3>
+<p>When requesting the parameter table, the reply will come as CSP packets using the Simple Fragmentation Protocol (SFP).
+The reason is that the parameter table will normally span multiple CSP packets, and without any additional information, it is not possible to detect a missing packet.
+If you have the latest version of libcsp, SFP will come as standard, otherwise look at libcsp.org in order to get the source code for this protocol.
+The SFP protocol adds a 32-bit data_offset and a 32-bit total_length, field at the end of every CSP message.
+This can be used to know if any data has been missed during reception and do another request.
+SFP does not have automatic retransmission, for that you need to enable RDP.
+If you do not wish to use the SFP protocol, you can simply throw away the last 8-bytes of the message.</p>
+</div>
+</div>
+<div class="section" id="structure">
+<span id="libparam-structure"></span><h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace Parameter Library is structured as follows:</p>
+<table border="1" class="docutils" id="id12">
+<caption><span class="caption-text">GomSpace Parameter Library structure</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Folder</strong></th>
+<th class="head"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>libparam/bindings/python</td>
+<td>Python bindings for GomSpace Parameter Library</td>
+</tr>
+<tr class="row-odd"><td>libparam/include/param</td>
+<td>GomSpace Parameter Library API header files</td>
+</tr>
+<tr class="row-even"><td>libparam/src</td>
+<td>GomSpace Parameter Library API source code files. See <a class="reference internal" href="#libparam-api"><span>API</span></a> below for further details</td>
+</tr>
+<tr class="row-odd"><td>libparam/doc</td>
+<td>The doc folder contains the source code for this documentation</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="api">
+<span id="libparam-api"></span><h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p>TBW</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, GomSpace.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'v0.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

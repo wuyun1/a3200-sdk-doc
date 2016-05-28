@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GomSpace Storage Library &mdash; A3200 SDK v0.6 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="A3200 SDK v0.6 documentation" href="../../../index.html"/>
+        <link rel="next" title="GomSpace FTP Library" href="../../libftp/doc/libftp.html"/>
+        <link rel="prev" title="Client Commands" href="../../liblog/doc/client-cmd.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../doc/index.html" class="fa fa-home"> A3200 SDK</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../doc/a3200-full.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/a3200-full.html#a3200-sdk-main-modules">A3200 SDK Main modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libasf/doc/libasf.html">GomSpace ASF Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libasf/doc/libasf.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libasf/doc/libasf.html#structure">Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../liba3200/doc/liba3200.html">GomSpace A3200 Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#a3200-board">A3200 board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#a3200-board-parameters">A3200 Board Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../liba3200/doc/liba3200.html#drivers-and-api">Drivers and API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcsp/doc/libcsp.html">CubeSat Space Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/README.html">The Cubesat Space Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/history.html">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/structure.html">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/interfaces.html">CSP Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/memory.html">How CSP uses memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/protocolstack.html">The Protocol Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/topology.html">Network Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/mtu.html">Maximum Transfer Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libcsp/doc/example.html">Client and server example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libutil/doc/libutil.html">GomSpace Util Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libutil/doc/libutil.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libutil/doc/libutil.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libutil/doc/libutil.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libparam/doc/libparam.html">GomSpace Parameter Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#system-overview">System overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#gosh-local-parameter-interface">GOSH: Local parameter interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#gosh-remote-parameter-client">GOSH: Remote parameter client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#network-api">Network API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libparam/doc/libparam.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libgosh/doc/libgosh.html">GOSH - GomSpace Shell Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#console">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#command-parser">Command Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#defining-new-commands">Defining new commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#linker-optimizations">Linker-optimizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#implementing-a-handler-function">Implementing a handler function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgosh/doc/libgosh.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libgssb/doc/libgssb.html">GomSpace Sensor Bus Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libgssb/doc/libgssb.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgssb/doc/libgssb.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libgssb/doc/libgssb.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../liblog/doc/liblog.html">GomSpace Log Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../liblog/doc/client-cmd.html">Client Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">GomSpace Storage Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../libftp/doc/libftp.html">GomSpace FTP Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../libftp/doc/libftp.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libftp/doc/libftp.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../libftp/doc/libftp.html#gosh-commands">GOSH Commands</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../doc/index.html">A3200 SDK</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../doc/index.html">Docs</a> &raquo;</li>
+      
+    <li>GomSpace Storage Library</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../../_sources/lib/libstorage/doc/libstorage.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="libstorage">
+<span id="id1"></span><h1>GomSpace Storage Library<a class="headerlink" href="#libstorage" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace Storage Library contains implementations of two embedded filesystems (UFFS and FAT) and a Virtual File System layer (VFS) that provides an abstraction of the APIs for the two filesystems. The VFS layer ensures that code using the filesystems can be written in a portable manner, using the C standard library file access primitives such as <code class="docutils literal"><span class="pre">fopen</span></code>, <code class="docutils literal"><span class="pre">fread</span></code>, and <code class="docutils literal"><span class="pre">fwrite</span></code>. A set of GOSH command-line functions for the filesystems are also included in the library. These are implemented in <code class="docutils literal"><span class="pre">libstorage/src/vfs/cmd_fs.c</span></code>.</p>
+<p>The figure below shows the call chain from C standard library functions to filesystem specific calls.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../../_images/vfs.png"><img alt="../../../_images/vfs.png" src="../../../_images/vfs.png" style="width: 40%;" /></a>
+<p class="caption"><span class="caption-text">File System interfaces</span></p>
+</div>
+<p>On the NanoMind A3200, the UFFS filesystem is used on the 128 MB SPI flash. The UFFS partition is mounted at <code class="docutils literal"><span class="pre">/flash</span></code>, so all filesystem paths should be prefixed with this string. NanoMind A712D systems use UFFS for the 2 MB parallel NOR flash, mounted at <code class="docutils literal"><span class="pre">/boot</span></code>, and FAT for the SD-card which is mounted under <code class="docutils literal"><span class="pre">/sd</span></code>. The VFS layer uses the mount point prefix to select the device specific filesystem functions.</p>
+<div class="section" id="fat-filesystem">
+<h3>FAT Filesystem<a class="headerlink" href="#fat-filesystem" title="Permalink to this headline">¶</a></h3>
+<p>The FAT filesystem is a logic block-filesystem that has no knowledge of the physical storage medium below. For this reason the FAT filesystem can only be used with disk-drives that has an embedded storage manager which takes care of mapping the virtual sectors, clusters and pages into physical memory, such as an SD-Card.</p>
+<p>The FAT system consists of a small and simple C-implementation of the filesystem called <a class="reference external" href="http://elm-chan.org/fsw/ff/00index_e.html">ChaN-FS</a> and an SD-SPI driver written by GomSpace. The driver utilizes the direct memory access (DMA) function of the SPI peripheral. This means that entire pages of 512 bytes can be written without the processor being interrupted.</p>
+<p>All public API functions of the FAT filesystem are available in the include file <code class="docutils literal"><span class="pre">fat_sd/ff.h</span></code>. The FAT functions are prepended with <code class="docutils literal"><span class="pre">f_</span></code>, like <code class="docutils literal"><span class="pre">f_open</span></code>, <code class="docutils literal"><span class="pre">f_read</span></code>, <code class="docutils literal"><span class="pre">f_write</span></code> and <code class="docutils literal"><span class="pre">f_close</span></code>. The details about calling these functions can be found in the official documentation referenced in the table above.</p>
+<p>The built-in C standard library functions, <code class="docutils literal"><span class="pre">fopen</span></code>, <code class="docutils literal"><span class="pre">fread</span></code>, <code class="docutils literal"><span class="pre">fwrite</span></code> and <code class="docutils literal"><span class="pre">fclose</span></code> can be used with the FAT filesystem if the partitions name <code class="docutils literal"><span class="pre">/sd/</span></code> is used in front of the filename. If you wish to keep your code portable, using the POSIX API is the recommended.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The stability of the FAT filesystem can be compromised by turning off the power during a write. This will typically result in the written file being truncated to zero size, which means loss of data. In rare occasions the power-loss could corrupt the FAT table, which would require a new formatting of the filesystem (see <code class="docutils literal"><span class="pre">f_mkfs</span></code> and the <code class="docutils literal"><span class="pre">mkfs</span></code> GOSH command). The FAT filesystem should therefore not be used for storing mission critical information such as configuration files unless care is taken to verify the validity of the data.</p>
+</div>
+</div>
+<div class="section" id="uffs-filesystem">
+<h3>UFFS Filesystem<a class="headerlink" href="#uffs-filesystem" title="Permalink to this headline">¶</a></h3>
+<p>As a result of the inherent reliability issues with a FAT filesystem, GomSpace has implemented and ported a journalized filesystem designed for NAND and NOR flash called <a class="reference external" href="http://sites.google.com/site/gouffs/">UFFS</a>. This filesystem can use either the built in external memory controller on the A712D or the serial SPI flash on the A3200.</p>
+<p>UFFS manages all the pages and blocks on the NOR flash directly and will ensure an even load of the flash pages. This makes it much more robust and it can theoretically survive a power-cut at any time.</p>
+<p>If a problem occurs during the writing of a flash page, UFFS will mark the entire block as a bad block, and not attempt writing to it again. The user must be aware that at some point, all blocks could be marked as bad and the filesystem will mount without any storage capacity. In such a case, user intervention is required in order to try to recover bad blocks. The easiest way to reset the bad blocks is to format the filesystem. In the event that all blocks are damaged, which will happen once the FLASH medium wears out, the filesystem will be unable to mount. In this case a reformat and reboot will put the system into a reboot-loop, and potentially render the OBC responseless. A safe mechanism to be able to execute without filesystem is therefore recommended.</p>
+<p>In order to use the UFFS filesystem, use the <code class="docutils literal"><span class="pre">uffs_open</span></code>, <code class="docutils literal"><span class="pre">uffs_read</span></code> etc. API functions. You can also use the Newlib C-library as a wrapper (and cache) with the <code class="docutils literal"><span class="pre">fopen</span></code>, <code class="docutils literal"><span class="pre">fread</span></code> etc. calls. If you wish to keep your code portable, the POSIX API is the best choice. The POSIX api is in <code class="docutils literal"><span class="pre">stdio.h</span></code> and the UFFS API in <code class="docutils literal"><span class="pre">uffs/uffs_fd.h</span></code></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The UFFS implementation has some limitations to the usage. The maximum number of open files are 10 and maximum dir handles 5. Furthermore the page cache of a file is kept per file handle, so two simultaneous file handles to the same file is not possible. Finally, if a file handle is shared between two tasks, external locking will be required since the UFFS is not thread safe when sharing handles. Generally sharing files should be avoided if possible.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The UFFS cache will not automatically flush data to the filesystem, so to ensure your data is written use <code class="docutils literal"><span class="pre">fsync()</span></code> or <code class="docutils literal"><span class="pre">uffs_sync()</span></code> after writing. Closing the file will also trigger a cache flush.</p>
+</div>
+</div>
+</div>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace Storage Library is structured as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Folder</strong></th>
+<th class="head"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">libstorage/include</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">GomSpace Storage Library API header files.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">libstorage/src/fat</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">FAT implementation and device driver.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">libstorage/src/uffs</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">UFFS implementation and device drivers.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">libstorage/src/vfs</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">This folder contains the VFS layer.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">libstorage/doc</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">The doc folder contains the source code for this documentation.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal"><span class="pre">libstorage/src</span></code> directory also contains <code class="docutils literal"><span class="pre">syscalls_vfs.c</span></code> which implements Newlib system calls that integrate with the VFS layer.</p>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>Initialization of the storage layer and mounting of filesystems takes place during startup of the system. On both the NanoMind A3200 and A712D, the operations run in separate tasks to avoid blocking the system while booting. The time it takes to mount a filesystem is dependent on the usage of the partition, and can take several minutes if the device is full. Empty or sparsely used filesystems usually mount in less than 30 seconds.</p>
+<div class="section" id="nanomind-a3200">
+<h3>NanoMind A3200<a class="headerlink" href="#nanomind-a3200" title="Permalink to this headline">¶</a></h3>
+<p>On A3200 systems, the filesystem setup is implemented in the <code class="docutils literal"><span class="pre">task_mount()</span></code> function in <code class="docutils literal"><span class="pre">liba3200/src/task_init.c</span></code>. The task first initializes the Spansion SPI flash using <code class="docutils literal"><span class="pre">spn_fl512s_init()</span></code>. The VFS layer is then configured using <code class="docutils literal"><span class="pre">vfs_init()</span></code>, which takes a list of <code class="docutils literal"><span class="pre">struct</span> <span class="pre">vfs_partitions</span></code> elements as argument. Each element contains the name of the partition (in the <code class="docutils literal"><span class="pre">name</span></code> field) and a struct with filesystem specific functions (the <code class="docutils literal"><span class="pre">fops</span></code> structure). Since the A3200 only have one partition, the list only contains one element:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">static</span> <span class="k">struct</span> <span class="n">vfs_partition</span> <span class="n">part_table</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span>
+        <span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;flash&quot;</span><span class="p">,</span>
+        <span class="p">.</span><span class="n">fops</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">vfs_uffs_ops</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Next, the UFFS filesystem on the flash partition is initialized. This consists of allocating memory buffers for the filesystem state and caches, linking the SPI flash driver to the filesystem, and actually mounting the partition using <code class="docutils literal"><span class="pre">uffs_Mount()</span></code>:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="n">flash_static_buffer_size</span> <span class="o">=</span> <span class="n">UFFS_STATIC_BUFF_SIZE</span><span class="p">(</span><span class="n">FL512S_PAGES_PER_BLOCK</span><span class="p">,</span> <span class="n">FL512S_PAGE_SIZE</span><span class="p">,</span> <span class="n">FL512S_PAR_BLOCKS</span><span class="p">);</span>
+<span class="n">flash_static_buffer</span> <span class="o">=</span> <span class="n">pvPortMalloc</span><span class="p">(</span><span class="n">flash_static_buffer_size</span><span class="p">);</span>
+
+<span class="n">uffs_MemSetupStaticAllocator</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fl512s_device</span><span class="p">.</span><span class="n">mem</span><span class="p">,</span> <span class="n">flash_static_buffer</span><span class="p">,</span> <span class="n">flash_static_buffer_size</span><span class="p">);</span>
+<span class="n">uffs_RegisterMountTable</span><span class="p">(</span><span class="o">&amp;</span><span class="n">flash_table</span><span class="p">);</span>
+<span class="n">uffs_Mount</span><span class="p">(</span><span class="s">&quot;/flash/&quot;</span><span class="p">);</span>
+
+<span class="n">uffs_InitFileSystemObjects</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Note that error handling has been omitted in the code excerpt above to keep it shorter. If the UFFS partition is succesfully mounted, it is linked to the FTP server by calling <code class="docutils literal"><span class="pre">ftp_register_backend(BACKEND_FILE,</span> <span class="pre">&amp;backend_file);</span></code>.</p>
+</div>
+<div class="section" id="nanomind-a712d">
+<h3>NanoMind A712D<a class="headerlink" href="#nanomind-a712d" title="Permalink to this headline">¶</a></h3>
+<p>On A712D systems, the storage initialization is implemented in the <code class="docutils literal"><span class="pre">init_storage()</span></code> function in <code class="docutils literal"><span class="pre">liba712/src/board/task_init.c</span></code>. The VFS and UFFS initialization is similar to the A3200, with the exception that the VFS partition table now contains both a UFFS and a FAT partition.</p>
+<p>The SD-card is configured in SPI mode. If succesful, the on-disk FAT filesystem is then mounted using <code class="docutils literal"><span class="pre">f_mount()</span></code>. Like the A3200, the FTP file backend is registered using <code class="docutils literal"><span class="pre">f_register_backend()</span></code> to provide access to the UFFS and FAT partitions via FTP.</p>
+</div>
+</div>
+<div class="section" id="gosh-commands">
+<h2>GOSH Commands<a class="headerlink" href="#gosh-commands" title="Permalink to this headline">¶</a></h2>
+<p>The GomSpace Shell includes a number of commands for debugging the filesystems. Most commands are named to match the corresponding Linux shell commands (e.g <code class="docutils literal"><span class="pre">ls</span></code>, <code class="docutils literal"><span class="pre">rm</span></code>, <code class="docutils literal"><span class="pre">cp</span></code>).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Command</strong></th>
+<th class="head"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>uffs</td>
+<td>UFFS specific commands</td>
+</tr>
+<tr class="row-odd"><td>testfs</td>
+<td>Test R/W-speeds</td>
+</tr>
+<tr class="row-even"><td>ls</td>
+<td>List files in directory</td>
+</tr>
+<tr class="row-odd"><td>rm</td>
+<td>Remove file</td>
+</tr>
+<tr class="row-even"><td>mv</td>
+<td>Move or rename file</td>
+</tr>
+<tr class="row-odd"><td>cp</td>
+<td>Copy file</td>
+</tr>
+<tr class="row-even"><td>mkdir</td>
+<td>Make directory</td>
+</tr>
+<tr class="row-odd"><td>touch</td>
+<td>Create empty file</td>
+</tr>
+<tr class="row-even"><td>cat</td>
+<td>Show the contents of a file</td>
+</tr>
+<tr class="row-odd"><td>append</td>
+<td>Append data (basic file editor)</td>
+</tr>
+<tr class="row-even"><td>chksum</td>
+<td>Calculate CRC32 checksum of a file</td>
+</tr>
+<tr class="row-odd"><td>hexdump</td>
+<td>Show the contents of a file in hex format</td>
+</tr>
+<tr class="row-even"><td>mkfs</td>
+<td>Recreate filesystem</td>
+</tr>
+<tr class="row-odd"><td>df</td>
+<td>show filesystem usage</td>
+</tr>
+</tbody>
+</table>
+<p>Like all GOSH commands, the expected command arguments can be listed by entering the command name and pressing the <code class="docutils literal"><span class="pre">&lt;tab&gt;</span></code> key. The <code class="docutils literal"><span class="pre">df</span></code> command is used for showing the status of the mounted filesystems. On an A712D with NOR flash and SD-card, the output will look like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>nanomind # df
+Filesystem    Size    Used   Avail  Use% Mounted on
+uffs          1.9M  124.0K    1.8M    6% /boot
+fat        1905.0M  128.0K 1904.9M    0% /sd
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">mkfs</span></code> can be used to recreate a filesystem. <strong>Note that this will permanently erase all stored files</strong>. To use it, simply run <code class="docutils literal"><span class="pre">mkfs</span> <span class="pre">&lt;partition&gt;</span></code>, where the partition string is the mountpoint without preceeding slash, i.e. <code class="docutils literal"><span class="pre">mkfs</span> <span class="pre">sd</span></code> to recreate the FAT filesystem on the SD-card. Be aware that recreating the filesystems can take up to 2 minutes.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../libftp/doc/libftp.html" class="btn btn-neutral float-right" title="GomSpace FTP Library">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../liblog/doc/client-cmd.html" class="btn btn-neutral" title="Client Commands"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, GomSpace.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'v0.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
